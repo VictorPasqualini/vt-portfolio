@@ -4,11 +4,11 @@ How to update the site whenever the resume, experience, or project list changes.
 
 ## Resume changed (new job, updated summary, new certification, etc.)
 
-1. Drop the new PDF(s) into `resumes/` (source of truth) and `public/resumes/` (served to visitors — filenames are referenced directly in `components/Hero.tsx`).
+1. Drop the new PDF(s) into `resumes/` (source of truth, where dated filenames are fine) and copy them over the two files in `public/resumes/`. Those served filenames are deliberately undated and referenced directly in `components/Hero.tsx`, so overwriting them keeps the download links — and the name the visitor's browser saves — working with no code change.
 2. Update **both** `content/en.ts` and `content/pt.ts` — they are independent objects, not translations generated from one another, so nothing keeps them in sync automatically. Update:
    - `hero.summary` — the top summary paragraph.
    - `experience[]` — add new entries at the top (array order = display order, newest first). Each entry: `period`, `role`, `company`, `description`, `stack[]`.
-   - `education[]`, `certifications[]` if applicable.
+   - `education[]` if applicable, and `certifications[]` — each entry is `{ name, year, icon?, url? }`. `icon` points at a vendored logo in `public/icons`; `url` is the issuer's certificate link and is what makes the badge clickable. Certificate URLs are shared by both locales, so they live in `lib/site.ts` and are imported.
    - `skills[]` — grouped tag lists; add new tools to the right group or create a new group.
 3. Check `lib/types.ts` (`SiteContent`) if a new *field* (not just new content) is needed — TypeScript will fail the build if `en.ts`/`pt.ts` don't satisfy the shape, which is intentional (catches missing translations).
 

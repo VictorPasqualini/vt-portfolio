@@ -1,3 +1,4 @@
+import { MONGODB_CERTIFICATE_URL } from '@/lib/site';
 import type { SiteContent } from '@/lib/types';
 
 export const en: SiteContent = {
@@ -32,7 +33,7 @@ export const en: SiteContent = {
   },
   experience: [
     {
-      period: '2025 — Present',
+      period: '2025 — 2026',
       role: 'Data Specialist',
       company: 'Serasa Experian',
       companyUrl: 'https://www.serasaexperian.com.br',
@@ -128,11 +129,30 @@ export const en: SiteContent = {
     { period: '2020 – 2022', institution: 'FATEC São Paulo', program: "Bachelor's, Systems Analysis and Development" },
     { period: '2017 – 2019', institution: 'ETEC Jardim Ângela', program: 'Technical, Computer Science — Integrated High School' },
   ],
-  certifications: ['MongoDB SI Associate (2025)'],
+  certifications: [
+    { name: 'MongoDB SI Associate', year: '2025', icon: '/icons/mongodb.svg', url: MONGODB_CERTIFICATE_URL },
+  ],
   skills: [
-    { label: 'Languages', items: ['Python (PySpark, Pandas, Polars, DuckDB)', 'Scala', 'Java', 'SQL', 'Cobol'] },
-    { label: 'ETL / ELT', items: ['Spark (Batch/Streaming)', 'Glue', 'EMR', 'EC2 (spot)', 'Lambda', 'Sqoop', 'Databricks', 'Compute Engine', 'Cloud Functions', 'CDC'] },
-    { label: 'Messaging', items: ['Kafka', 'SQS', 'MSK', 'RabbitMQ'] },
+    { label: 'Languages', items: ['Python (PySpark, Pandas, Polars, DuckDB)', 'Scala', 'Java', 'SQL', 'Cobol', 'Rust'] },
+    {
+      label: 'ETL / ELT',
+      items: [
+        'Spark (Batch/Streaming)',
+        'Glue',
+        'EMR',
+        'EC2 (spot)',
+        'Lambda',
+        'Sqoop',
+        'DataFusion Comet',
+        'Databricks',
+        'Snowflake',
+        'Compute Engine',
+        'Cloud Functions',
+        'Incremental',
+        'CDC',
+      ],
+    },
+    { label: 'Messaging', items: ['Kafka', 'SQS', 'MSK', 'RabbitMQ', 'Redpanda'] },
     { label: 'Orchestration', items: ['Airflow', 'MWAA', 'EventBridge', 'Step Functions', 'Composer', 'Ctrl-M', 'NiFi', 'Databricks DLT', 'Databricks Workflows'] },
     { label: 'Storage & Lakehouse', items: ['S3', 'Glue Catalog', 'Iceberg', 'Hadoop', 'Kudu', 'BigQuery', 'Cloud Storage', 'Delta Lake', 'Unity Catalog', 'Medallion Architecture'] },
     { label: 'Databases', items: ['RDS/Aurora', 'PostgreSQL', 'MySQL', 'DynamoDB', 'MongoDB', 'DocumentDB', 'Oracle', 'DB2'] },

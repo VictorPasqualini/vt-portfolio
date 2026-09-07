@@ -28,6 +28,13 @@ export const CONTACT_EMAIL = 'victor.pasqualini@outlook.com';
 export const GITHUB_URL = 'https://github.com/VictorPasqualini';
 export const LINKEDIN_URL = 'https://www.linkedin.com/in/victor-pasqualini-b459b51b0/';
 
+/**
+ * The MongoDB SI Associate certificate PDF, as issued. It is the same document
+ * in both locales, so it lives here instead of being duplicated in content/.
+ */
+export const MONGODB_CERTIFICATE_URL =
+  'https://ti-user-certificates.s3.amazonaws.com/ae62dcd7-abdc-4e90-a570-83eccba49043/86bec6ac-b1ee-4832-8fb9-08ceba5c908e-victor-ramos-pasqualini-4ac01021-586b-4780-ba40-c917289b580f-certificate.pdf';
+
 /** Narrows an unknown route segment to a supported locale, defaulting to English. */
 export function resolveLocale(segment: string): Locale {
   return segment === 'pt' ? 'pt' : 'en';

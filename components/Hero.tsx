@@ -1,7 +1,7 @@
 'use client';
 
 import { useLocale } from '@/lib/i18n-context';
-import { GithubIcon, LinkedinIcon, PdfIcon } from '@/lib/icons';
+import { DownloadIcon, GithubIcon, LinkedinIcon } from '@/lib/icons';
 import { GITHUB_URL, LINKEDIN_URL } from '@/lib/site';
 import LetterCurtain from './LetterCurtain';
 
@@ -38,13 +38,15 @@ export default function Hero() {
             <LinkedinIcon className="h-4 w-4" />
             LinkedIn
           </a>
+          {/* `download` makes the arrow icon tell the truth: the browser saves the
+              PDF (under its already descriptive filename) instead of opening it
+              in a viewer tab. */}
           <a
             href={resumeFile}
-            target="_blank"
-            rel="noreferrer"
+            download
             className="flex items-center gap-2 rounded-full bg-fg px-4 py-2 text-bg hover:opacity-80"
           >
-            <PdfIcon className="h-4 w-4" />
+            <DownloadIcon className="h-4 w-4" />
             {t.nav.resume} (PDF)
           </a>
         </div>
