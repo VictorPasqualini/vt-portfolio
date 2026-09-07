@@ -19,9 +19,7 @@ Implementation notes for whoever picks this up:
 
 ### Deploy pipeline
 
-Hosting target wasn't decided yet (GitHub Pages vs Vercel vs other). Once chosen:
-- GitHub Pages: GitHub Actions workflow running `npm run build`, publishing `out/` to the `gh-pages` branch (or `docs/` on `main`), plus a `next.config.js` `basePath`/`assetPrefix` if served from a subpath.
-- Vercel: just connect the repo, no static-export needed (could drop `output: 'export'` and use SSR/ISR features if ever wanted).
+Hosting decided: **Netlify**. `netlify.toml` at repo root sets build command (`npm run build`) and publish dir (`out`) — connect the repo in Netlify's UI and it should build with no manual config. Remaining: set up a custom domain if Victor wants one, and decide whether PR/branch deploy previews are wanted (Netlify does this by default once the repo is connected).
 
 ## Medium priority
 

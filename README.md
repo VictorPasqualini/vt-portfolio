@@ -4,7 +4,7 @@ Victor Ramos Pasqualini's personal portfolio site — bilingual (English/Portugu
 
 ## Stack
 
-- Next.js 14 (App Router), static export (`output: 'export'`) — deployable to GitHub Pages, Vercel, Netlify, or any static host.
+- Next.js 14 (App Router), static export (`output: 'export'`), deployed on Netlify.
 - TypeScript, Tailwind CSS.
 - No routing-based i18n: a `LocaleProvider` React context holds `en`/`pt`, persisted in `localStorage`, defaulting to `en`.
 
@@ -36,6 +36,10 @@ See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for how the pieces fit together
 - **Projects**: edit `content/projects.ts`. Data (language, topics, stars, homepage) can be refreshed from the GitHub API: `GET https://api.github.com/repos/VictorPasqualini/<repo>`.
 - **Resume PDFs**: replace the files in `public/resumes/` and update the filenames referenced in `components/Hero.tsx` if they change.
 
+## Deploy
+
+Hosted on Netlify via `netlify.toml`: build command `npm run build`, publish directory `out`, base directory blank (repo root), no functions directory needed. Connect the repo in Netlify and it builds with no extra manual config.
+
 ## Roadmap
 
-See [BACKLOG.md](BACKLOG.md) — includes the planned letter-curtain hero animation, deploy pipeline, dark mode, and more.
+See [BACKLOG.md](BACKLOG.md) — includes the planned letter-curtain hero animation, dark mode, and more.
