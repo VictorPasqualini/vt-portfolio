@@ -34,6 +34,7 @@ export const en: SiteContent = {
       company: 'Serasa',
       companyUrl: 'https://www.serasa.com.br',
       viaCompany: 'ACT Digital',
+      viaCompanyUrl: 'https://actdigital.com',
       description:
         'Led a complex mainframe (Cobol/DB2) to AWS pipeline migration processing massive daily positional file ingestion. Implemented data validation and quality with consolidated table generation (bronze/silver/gold) for ML and other products. Production deployment with dual-running across environments, integrations via EventBridge, REST APIs and IaC with CloudFormation.',
       stack: [

@@ -39,14 +39,6 @@ export function MoonIcon({ className }: { className?: string }) {
   );
 }
 
-export function CloudIcon({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
-      <path d="M17.5 19a4.5 4.5 0 0 0 0-9 6 6 0 0 0-11.6-1.5A4.5 4.5 0 0 0 6.5 19h11Z" />
-    </svg>
-  );
-}
-
 export function AwsIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
@@ -63,6 +55,87 @@ export function TagIcon({ className }: { className?: string }) {
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className} aria-hidden="true">
       <path d="M20.59 13.41 11 3.83A2 2 0 0 0 9.6 3.2L4 3a1 1 0 0 0-1 1l.2 5.6a2 2 0 0 0 .63 1.4l9.58 9.59a2 2 0 0 0 2.83 0l5.35-5.35a2 2 0 0 0 0-2.83Z" />
       <circle cx="7.5" cy="7.5" r="1.2" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+const stroke = {
+  fill: 'none',
+  stroke: 'currentColor',
+  strokeWidth: 1.8,
+  strokeLinecap: 'round',
+  strokeLinejoin: 'round',
+} as const;
+
+export function DatabaseIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" {...stroke} className={className} aria-hidden="true">
+      <ellipse cx="12" cy="5.5" rx="7.5" ry="3" />
+      <path d="M4.5 5.5v13c0 1.66 3.36 3 7.5 3s7.5-1.34 7.5-3v-13M4.5 12c0 1.66 3.36 3 7.5 3s7.5-1.34 7.5-3" />
+    </svg>
+  );
+}
+
+export function CodeIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" {...stroke} className={className} aria-hidden="true">
+      <path d="m8.5 8-4.5 4 4.5 4M15.5 8l4.5 4-4.5 4M13.5 4.5l-3 15" />
+    </svg>
+  );
+}
+
+export function SyncIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" {...stroke} className={className} aria-hidden="true">
+      <path d="M20 10a8 8 0 0 0-14.3-3.3M4 14a8 8 0 0 0 14.3 3.3" />
+      <path d="M20 4.5V10h-5.5M4 19.5V14h5.5" />
+    </svg>
+  );
+}
+
+export function LayersIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" {...stroke} className={className} aria-hidden="true">
+      <path d="m12 2.5 9 4.75-9 4.75-9-4.75 9-4.75Z" />
+      <path d="m3 12 9 4.75L21 12M3 16.75 12 21.5l9-4.75" />
+    </svg>
+  );
+}
+
+export function ScheduleIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" {...stroke} className={className} aria-hidden="true">
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 6.5V12l3.5 2.5" />
+    </svg>
+  );
+}
+
+export function PipelineIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" {...stroke} className={className} aria-hidden="true">
+      <circle cx="5" cy="6" r="2.5" />
+      <circle cx="5" cy="18" r="2.5" />
+      <circle cx="19" cy="12" r="2.5" />
+      <path d="M7.5 6h4a3 3 0 0 1 3 3v.8M7.5 18h4a3 3 0 0 0 3-3v-.8" />
+    </svg>
+  );
+}
+
+export function ChartIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" {...stroke} className={className} aria-hidden="true">
+      <path d="M4 20V4M4 20h16M8 20v-6M13 20V9M18 20v-9" />
+    </svg>
+  );
+}
+
+export function InfraIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" {...stroke} className={className} aria-hidden="true">
+      <rect x="3" y="4" width="18" height="7" rx="1.8" />
+      <rect x="3" y="13" width="18" height="7" rx="1.8" />
+      <path d="M7 7.5h.01M7 16.5h.01" />
     </svg>
   );
 }

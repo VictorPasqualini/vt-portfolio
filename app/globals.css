@@ -30,3 +30,52 @@ body {
   background: rgb(var(--bg));
   color: rgb(var(--fg));
 }
+
+/* Hero letter curtain: strips sway in CSS (cheap, compositor-only) while JS
+   only moves the handful of letters currently near the pointer. */
+.curtain {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 13px;
+  line-height: 1;
+  color: rgb(var(--fg) / 0.3);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 45%, transparent 92%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 45%, transparent 92%);
+}
+
+.curtain-strip {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 22px;
+  transform-origin: top center;
+  animation: curtain-sway 7s ease-in-out infinite;
+}
+
+.curtain-letter {
+  position: absolute;
+  left: 0;
+  width: 22px;
+  text-align: center;
+  opacity: 0.5;
+}
+
+@keyframes curtain-sway {
+  0%,
+  100% {
+    transform: translateX(-3px) rotate(-0.3deg);
+  }
+  50% {
+    transform: translateX(3px) rotate(0.3deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .curtain-strip {
+    animation: none;
+  }
+}

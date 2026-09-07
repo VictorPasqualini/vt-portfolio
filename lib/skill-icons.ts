@@ -6,6 +6,8 @@ const BRAND_SLUGS: [string, string][] = [
   ['mysql', 'mysql'],
   ['mongodb', 'mongodb'],
   ['databricks', 'databricks'],
+  ['unity catalog', 'databricks'],
+  ['unitycatalog', 'databricks'],
   ['airflow', 'apacheairflow'],
   ['kafka', 'apachekafka'],
   ['spark', 'apachespark'],
@@ -37,46 +39,77 @@ const BRAND_SLUGS: [string, string][] = [
   ['django', 'django'],
 ];
 
-// AWS has zero product logos on Simple Icons (trademark takedown), so these get
-// a hand-drawn "AWS" badge instead of a missing/wrong brand mark.
-const AWS_KEYWORDS = [
-  'aws',
-  'glue',
-  'emr',
-  'ec2',
-  'lambda',
-  'sqoop',
-  'sqs',
-  'msk',
-  'mwaa',
-  'eventbridge',
-  'event bridge',
-  'step functions',
-  's3',
-  'rds',
-  'dynamodb',
-  'documentdb',
-  'cloudformation',
-  'cloudwatch',
-  'athena',
-];
+export type InlineIconName =
+  | 'aws'
+  | 'database'
+  | 'code'
+  | 'sync'
+  | 'layers'
+  | 'schedule'
+  | 'pipeline'
+  | 'chart'
+  | 'infra'
+  | 'tag';
 
-// Neither AWS- nor GCP-specific, but still no brand asset available.
-const CLOUD_SERVICE_KEYWORDS = ['kudu', 'impala'];
+// Skills with no usable brand asset anywhere (AWS pulled all its logos from
+// Simple Icons; the rest are concepts, legacy tech or vendor tools that never
+// had one) get a hand-drawn icon that at least says what kind of thing it is.
+const INLINE_KEYWORDS: [string, InlineIconName][] = [
+  ['aws', 'aws'],
+  ['glue', 'aws'],
+  ['emr', 'aws'],
+  ['ec2', 'aws'],
+  ['lambda', 'aws'],
+  ['sqoop', 'aws'],
+  ['sqs', 'aws'],
+  ['msk', 'aws'],
+  ['mwaa', 'aws'],
+  ['eventbridge', 'aws'],
+  ['event bridge', 'aws'],
+  ['step functions', 'aws'],
+  ['s3', 'aws'],
+  ['rds', 'aws'],
+  ['dynamodb', 'aws'],
+  ['documentdb', 'aws'],
+  ['cloudformation', 'aws'],
+  ['cloudwatch', 'aws'],
+  ['athena', 'aws'],
+  ['sql', 'database'],
+  ['oracle', 'database'],
+  ['db2', 'database'],
+  ['kudu', 'database'],
+  ['impala', 'database'],
+  ['cobol', 'code'],
+  ['cdc', 'sync'],
+  ['iceberg', 'layers'],
+  ['delta lake', 'layers'],
+  ['deltalake', 'layers'],
+  ['medallion', 'layers'],
+  ['medalhão', 'layers'],
+  ['composer', 'schedule'],
+  ['ctrl-m', 'schedule'],
+  ['ctrlm', 'schedule'],
+  ['power bi', 'chart'],
+  ['powerbi', 'chart'],
+  ['terragrunt', 'infra'],
+];
 
 function primaryOf(label: string): string {
   return label.split(/[/(]/)[0]?.trim().toLowerCase() ?? '';
 }
 
-export type SkillIcon = { kind: 'brand'; slug: string } | { kind: 'aws' } | { kind: 'cloud' } | { kind: 'generic' };
+export type SkillIcon = { kind: 'brand'; slug: string } | { kind: 'inline'; name: InlineIconName };
 
 /** Matches against the part of the skill label before the first "(" or "/" so
  * parenthetical extras (e.g. "Python (PySpark, Pandas...)") don't steal the icon. */
 export function getSkillIcon(label: string): SkillIcon {
+  // "CI/CD (Cockpit)" would otherwise be truncated to "ci" by primaryOf.
+  if (label.toLowerCase().includes('ci/cd')) return { kind: 'inline', name: 'pipeline' };
+
   const primary = primaryOf(label);
   const brand = BRAND_SLUGS.find(([keyword]) => primary.includes(keyword));
   if (brand) return { kind: 'brand', slug: brand[1] };
-  if (AWS_KEYWORDS.some((keyword) => primary.includes(keyword))) return { kind: 'aws' };
-  if (CLOUD_SERVICE_KEYWORDS.some((keyword) => primary.includes(keyword))) return { kind: 'cloud' };
-  return { kind: 'generic' };
+
+  const inline = INLINE_KEYWORDS.find(([keyword]) => primary.includes(keyword));
+  return { kind: 'inline', name: inline ? inline[1] : 'tag' };
 }

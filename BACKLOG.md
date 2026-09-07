@@ -4,19 +4,6 @@ Future work for vt-portfolio, roughly prioritized. Nothing here is scheduled —
 
 ## High priority
 
-### Hero letter-curtain effect (explicitly requested — deferred, not built yet)
-
-Victor wants the hero section (top of the page, first thing visitors see) to open with a **curtain made of letters** — a wall/curtain of characters hanging across the hero — that **moves/reacts when the mouse passes over it**, like a physical curtain being brushed aside.
-
-Not implemented in the current version — needs its own design + prototyping pass before going into the main hero, since it changes the "restrained, minimalist" look of the rest of the site and needs to stay readable/accessible (name + role text must remain legible, effect must degrade gracefully on mobile where there's no hover).
-
-Implementation notes for whoever picks this up:
-- Likely a `<canvas>` or absolutely-positioned `<span>` grid of characters covering the hero, with a `mousemove` listener computing per-letter displacement (e.g. distance-based push/parallax, or a wave that ripples outward from the cursor).
-- Options: hand-rolled physics (simple spring/lerp per letter back to rest position), or a small library (e.g. a text-scramble/particle-text library) — evaluate bundle size cost before adding a dependency.
-- Must respect `prefers-reduced-motion` (skip/tone down the animation).
-- No mouse on touch devices — needs a fallback (static curtain, or a subtle scroll-triggered version).
-- Should not block LCP — the real hero text should render immediately; the curtain is decorative and can hydrate/animate in after.
-
 ### Deploy pipeline
 
 Hosting decided: **Netlify**. `netlify.toml` at repo root sets build command (`npm run build`) and publish dir (`out`) — connect the repo in Netlify's UI and it should build with no manual config. Remaining: set up a custom domain if Victor wants one, and decide whether PR/branch deploy previews are wanted (Netlify does this by default once the repo is connected).
@@ -27,10 +14,11 @@ Hosting decided: **Netlify**. `netlify.toml` at repo root sets build command (`n
 
 ## Done
 
+- ~~Hero letter-curtain effect~~ — shipped 2026-09-07. `components/LetterCurtain.tsx` + `.curtain*` rules in `app/globals.css`. Grid of monospace characters behind the hero text, built imperatively on mount (no SSR markup, so it can't block LCP). Columns sway via a CSS keyframe animation (compositor-only, one animation per column); JS runs a spring simulation only for letters within the pointer's radius, so an idle page costs nothing per frame. Respects `prefers-reduced-motion` (static grid, no listeners, no rAF) and degrades to the same static grid on touch devices.
+- ~~Project thumbnails~~ — reverted 2026-09-07. The GitHub OG-image banners made the cards too tall and pushed the description into a 2-line clamp; cards now show the full description instead. The banners came from GitHub's OG endpoint (`https://opengraph.githubassets.com/1/VictorPasqualini/<repo>`), derived from the repo URL — nothing to restore in `content/projects.ts` if this is ever revisited.
 - ~~Dark mode~~ — shipped 2026-09-07. `lib/theme-context.tsx` (`ThemeProvider`/`useTheme`), CSS variables in `app/globals.css`, `dark` class default in `app/layout.tsx`. Dark is the default regardless of OS preference; toggle in `Nav.tsx` persists to `localStorage` (`vt-portfolio-theme`).
 - ~~Auto-detect browser locale~~ — shipped 2026-09-07. `lib/i18n-context.tsx` reads `navigator.languages` on first load (no stored preference yet) and picks `pt` if any tag starts with `pt`, else `en`. A stored `localStorage` choice always wins over detection.
 - ~~Favicon~~ — shipped 2026-09-07. `app/icon.svg` (VP monogram), picked up automatically by Next's file-convention metadata.
-- ~~Project screenshots/thumbnails~~ — shipped 2026-09-07. `ProjectCard.tsx` renders each repo's GitHub-generated Open Graph image (`https://opengraph.githubassets.com/1/VictorPasqualini/<repo>`) as a thumbnail — real, zero-maintenance, updates itself when the repo's description/stars change. See `content/projects.ts` `image` field.
 
 ## Won't do (for now)
 

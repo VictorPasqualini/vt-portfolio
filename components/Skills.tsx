@@ -1,8 +1,37 @@
 'use client';
 
 import { useLocale } from '@/lib/i18n-context';
-import { getSkillIcon } from '@/lib/skill-icons';
-import { AwsIcon, CloudIcon, TagIcon } from '@/lib/icons';
+import { getSkillIcon, type InlineIconName } from '@/lib/skill-icons';
+import {
+  AwsIcon,
+  ChartIcon,
+  CodeIcon,
+  DatabaseIcon,
+  InfraIcon,
+  LayersIcon,
+  PipelineIcon,
+  ScheduleIcon,
+  SyncIcon,
+  TagIcon,
+} from '@/lib/icons';
+
+const INLINE_ICONS: Record<InlineIconName, (props: { className?: string }) => JSX.Element> = {
+  aws: AwsIcon,
+  database: DatabaseIcon,
+  code: CodeIcon,
+  sync: SyncIcon,
+  layers: LayersIcon,
+  schedule: ScheduleIcon,
+  pipeline: PipelineIcon,
+  chart: ChartIcon,
+  infra: InfraIcon,
+  tag: TagIcon,
+};
+
+function SkillGlyph({ name }: { name: InlineIconName }) {
+  const Icon = INLINE_ICONS[name];
+  return <Icon className="h-3.5 w-3.5 text-fg/40" />;
+}
 
 export default function Skills() {
   const { t } = useLocale();
@@ -24,13 +53,14 @@ export default function Skills() {
                   >
                     {icon.kind === 'brand' ? (
                       // eslint-disable-next-line @next/next/no-img-element
-                      <img src={`https://cdn.simpleicons.org/${icon.slug}`} alt="" loading="lazy" className="h-3.5 w-3.5" />
-                    ) : icon.kind === 'aws' ? (
-                      <AwsIcon className="h-3.5 w-3.5 text-fg/40" />
-                    ) : icon.kind === 'cloud' ? (
-                      <CloudIcon className="h-3.5 w-3.5 text-fg/40" />
+                      <img
+                        src={`https://cdn.simpleicons.org/${icon.slug}`}
+                        alt=""
+                        loading="lazy"
+                        className="h-3.5 w-3.5"
+                      />
                     ) : (
-                      <TagIcon className="h-3.5 w-3.5 text-fg/40" />
+                      <SkillGlyph name={icon.name} />
                     )}
                     {item}
                   </span>

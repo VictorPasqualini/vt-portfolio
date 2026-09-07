@@ -34,6 +34,7 @@ export const pt: SiteContent = {
       company: 'Serasa',
       companyUrl: 'https://www.serasa.com.br',
       viaCompany: 'ACT Digital',
+      viaCompanyUrl: 'https://actdigital.com',
       description:
         'Liderou migração complexa de pipeline mainframe (Cobol/DB2) para AWS processando ingestão massiva de arquivos posicionais diários. Implementou validação e qualidade de dados com geração de tabelas consolidadas (bronze/silver/gold) para ML e outros produtos. Deploy em produção com dual-running entre ambientes, integrações via EventBridge, APIs REST e IaC com CloudFormation.',
       stack: [
