@@ -23,17 +23,20 @@ Hosting decided: **Netlify**. `netlify.toml` at repo root sets build command (`n
 
 ## Medium priority
 
-- **Writing/blog section** — the reference site (joachimhodana.com) has a "Writing" section linking Medium articles. Add if/when Victor starts publishing.
 - **OG image / social preview card** — `app/layout.tsx` metadata has no `openGraph`/`twitter` image yet.
 
 ## Done
 
 - ~~Dark mode~~ — shipped 2026-09-07. `lib/theme-context.tsx` (`ThemeProvider`/`useTheme`), CSS variables in `app/globals.css`, `dark` class default in `app/layout.tsx`. Dark is the default regardless of OS preference; toggle in `Nav.tsx` persists to `localStorage` (`vt-portfolio-theme`).
 - ~~Auto-detect browser locale~~ — shipped 2026-09-07. `lib/i18n-context.tsx` reads `navigator.languages` on first load (no stored preference yet) and picks `pt` if any tag starts with `pt`, else `en`. A stored `localStorage` choice always wins over detection.
+- ~~Favicon~~ — shipped 2026-09-07. `app/icon.svg` (VP monogram), picked up automatically by Next's file-convention metadata.
+- ~~Project screenshots/thumbnails~~ — shipped 2026-09-07. `ProjectCard.tsx` renders each repo's GitHub-generated Open Graph image (`https://opengraph.githubassets.com/1/VictorPasqualini/<repo>`) as a thumbnail — real, zero-maintenance, updates itself when the repo's description/stars change. See `content/projects.ts` `image` field.
+
+## Won't do (for now)
+
+- **Writing/blog section** — decided 2026-09-07: skip until Victor actually starts writing; revisit then instead of building it speculatively.
 
 ## Low priority
 
 - Contact form or booking link (Calendly-style) instead of just `mailto:`.
 - Automate `content/projects.ts` refresh (language/topics/stars) via a small script hitting the GitHub API, instead of manual `curl` updates (see `docs/CONTENT_GUIDE.md`).
-- Add a favicon (currently using Next.js defaults).
-- Project screenshots/thumbnails on project cards (reference site shows thumbnails).

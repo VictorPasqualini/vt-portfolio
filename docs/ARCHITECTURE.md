@@ -42,6 +42,8 @@ components/*                   -> pure presentation, no data fetching, no hardco
 
 Nothing is fetched at runtime or at build time from the GitHub API — repo metadata (language, topics, stars, homepage) was captured manually into `content/projects.ts` and should be refreshed by hand when it goes stale (see CONTENT_GUIDE.md).
 
+Project card thumbnails are GitHub's auto-generated Open Graph images, derived in `ProjectCard.tsx` from `project.githubUrl` (`github.com/x/y` → `opengraph.githubassets.com/1/x/y`) rather than stored as a field — no extra data to keep in sync, and the image updates itself if the repo's description/stars change.
+
 ## Styling
 
 Tailwind CSS utility classes only, no component library. Palette is theme-aware via CSS variables (see Theme section above): dark by default (near-black `#0a0a0a` background, near-white `#f5f5f5` text), with a light theme (`#fff`/`#111`) available via the toggle. A single blue accent (lighter in dark mode for contrast) is reserved for links. Layout is constrained to a `max-w-content` (760px) column, mirroring the reference site's single-column, generous-whitespace look.
