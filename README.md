@@ -4,7 +4,7 @@ Victor Ramos Pasqualini's personal portfolio site — bilingual (English/Portugu
 
 ## Stack
 
-- Next.js 14 (App Router), static export (`output: 'export'`), deployed on Netlify.
+- Next.js 14 (App Router), static export (`output: 'export'`), deployed on Vercel.
 - TypeScript, Tailwind CSS (`darkMode: 'class'`, CSS-variable color tokens).
 - One URL per language (`/en`, `/pt`) prerendered from an `app/[locale]` route; `/` only detects a language (stored preference, then `navigator.languages`) and redirects. A `LocaleProvider` React context takes the locale from the URL and navigates when it changes.
 - Theme: a `ThemeProvider` React context holds `light`/`dark`, persisted in `localStorage`; **defaults to dark** regardless of OS preference.
@@ -43,9 +43,9 @@ See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for how the pieces fit together
 
 ## Deploy
 
-Hosted on Netlify via `netlify.toml`: build command `npm run build`, publish directory `out`, base directory blank (repo root), no functions directory needed. Connect the repo in Netlify and it builds with no extra manual config.
+Hosted on Vercel. Import the repo and take the defaults — Vercel detects Next.js, runs `npm run build`, and serves the exported `out/` directory. No config file is needed, which is why there isn't one.
 
-Set `NEXT_PUBLIC_SITE_URL` in the Netlify environment before the first real deploy — canonical URLs, hreflang alternates, Open Graph tags and `sitemap.xml` are all built from it, and it falls back to a placeholder domain when unset.
+Set `NEXT_PUBLIC_SITE_URL` in the project's environment variables before the first real deploy — canonical URLs, hreflang alternates, Open Graph tags and `sitemap.xml` are all built from it, and it falls back to a placeholder domain when unset. It is read at build time, so redeploy after changing it.
 
 ## Analytics
 

@@ -5,11 +5,11 @@ import type { Locale } from './types';
  * canonical URLs, hreflang alternates, sitemap entries, Open Graph tags — is
  * built from it.
  *
- * Nothing is deployed yet, so this falls back to the expected Netlify subdomain.
- * Set NEXT_PUBLIC_SITE_URL in the deploy environment once the real domain is
- * decided; it is inlined at build time, so changing it needs a rebuild.
+ * Nothing is deployed yet, so this falls back to a placeholder. Set
+ * NEXT_PUBLIC_SITE_URL in the Vercel project settings to the real deployment
+ * domain; it is inlined at build time, so changing it needs a rebuild.
  */
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://victorpasqualini.netlify.app').replace(/\/+$/, '');
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://victorpasqualini.vercel.app').replace(/\/+$/, '');
 
 /** Every locale that gets its own URL. Order matters: the first one is the default. */
 export const LOCALES: readonly Locale[] = ['en', 'pt'];
