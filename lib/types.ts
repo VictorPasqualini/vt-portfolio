@@ -4,6 +4,10 @@ export interface ExperienceEntry {
   period: string;
   role: string;
   company: string;
+  companyUrl?: string;
+  /** Staffing/consulting agency the role was placed through, if any (e.g. "via Stech Soluções"). */
+  viaCompany?: string;
+  viaCompanyUrl?: string;
   description: string;
   stack: string[];
 }
@@ -24,6 +28,10 @@ export interface SiteContent {
     name: string;
     role: string;
     location: string;
+    /** Browser tab title (also what the tab's hover tooltip shows). */
+    pageTitle: string;
+    /** Meta description, reused for Open Graph and JSON-LD. Keep under ~160 chars. */
+    description: string;
   };
   nav: {
     experience: string;
@@ -53,13 +61,17 @@ export interface SiteContent {
     intro: string;
     emailLabel: string;
     phoneLabel: string;
+    /** Label of the copy-to-clipboard button next to the email address. */
+    copy: string;
+    /** Confirmation shown for a couple of seconds after a successful copy. */
+    copied: string;
   };
   footer: {
     rights: string;
   };
   projects: {
     viewRepo: string;
-    viewDemo: string;
+    website: string;
     fewDetails: string;
   };
 }
@@ -72,6 +84,8 @@ export interface ProjectData {
   language?: string;
   topics: string[];
   stars: number;
+  /** [from, to] hex colors for the card's accent gradient. */
+  accent: [string, string];
   description: {
     en: string;
     pt: string;

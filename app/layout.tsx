@@ -1,18 +1,28 @@
 import type { Metadata } from 'next';
-import { LocaleProvider } from '@/lib/i18n-context';
+import Analytics from '@/components/Analytics';
+import { en } from '@/content/en';
+import { GITHUB_URL, SITE_URL } from '@/lib/site';
+import { ThemeProvider } from '@/lib/theme-context';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Victor Ramos Pasqualini — Data Engineer',
-  description:
-    'Data Engineer with 5+ years of experience building robust pipelines in cloud architectures (AWS/GCP), specialized in Spark, Kafka and Airflow.',
+  // Lets every page express canonical/OG URLs as absolute ones.
+  metadataBase: new URL(SITE_URL),
+  title: en.meta.pageTitle,
+  description: en.meta.description,
+  authors: [{ name: en.meta.name, url: GITHUB_URL }],
+  creator: en.meta.name,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className="font-sans antialiased">
-        <LocaleProvider>{children}</LocaleProvider>
+    // This layout is shared by /en and /pt, so lang can only be a default here;
+    // LocaleProvider corrects it on the client. The "dark" class is server-rendered
+    // so the default theme never flashes light before ThemeProvider hydrates.
+    <html lang="en" className="dark">
+      <body className="bg-bg font-sans text-fg antialiased">
+        <ThemeProvider>{children}</ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );

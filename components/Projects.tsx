@@ -10,7 +10,7 @@ export default function Projects() {
   return (
     <section id="projects" className="py-16">
       <h2 className="mb-8 text-xl font-semibold tracking-tight">{t.sections.projects}</h2>
-      <div className="grid gap-5 sm:grid-cols-2">
+      <div className="grid gap-4 sm:grid-cols-2">
         {projects.map((project) => (
           <ProjectCard key={project.slug} project={project} />
         ))}

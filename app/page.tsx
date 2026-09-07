@@ -1,25 +1,14 @@
-import Nav from '@/components/Nav';
-import Hero from '@/components/Hero';
-import Experience from '@/components/Experience';
-import Projects from '@/components/Projects';
-import Skills from '@/components/Skills';
-import Education from '@/components/Education';
-import Contact from '@/components/Contact';
-import Footer from '@/components/Footer';
+import type { Metadata } from 'next';
+import LocaleRedirect from '@/components/LocaleRedirect';
+import { SITE_URL } from '@/lib/site';
 
-export default function Home() {
-  return (
-    <main>
-      <Nav />
-      <div className="mx-auto max-w-content px-6">
-        <Hero />
-        <Experience />
-        <Projects />
-        <Skills />
-        <Education />
-        <Contact />
-      </div>
-      <Footer />
-    </main>
-  );
+// Entry point only: it forwards to /en or /pt, so it must not compete with them
+// in search results — hence noindex plus a canonical pointing at the default.
+export const metadata: Metadata = {
+  alternates: { canonical: `${SITE_URL}/en` },
+  robots: { index: false, follow: true },
+};
+
+export default function RootPage() {
+  return <LocaleRedirect />;
 }

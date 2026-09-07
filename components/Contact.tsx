@@ -1,32 +1,67 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { useLocale } from '@/lib/i18n-context';
+import { CheckIcon, CopyIcon, GithubIcon, LinkedinIcon } from '@/lib/icons';
+import { CONTACT_EMAIL, GITHUB_URL, LINKEDIN_URL } from '@/lib/site';
 
 export default function Contact() {
   const { t } = useLocale();
+  const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    if (!copied) return;
+    const timer = setTimeout(() => setCopied(false), 2000);
+    return () => clearTimeout(timer);
+  }, [copied]);
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(CONTACT_EMAIL);
+      setCopied(true);
+    } catch {
+      // Clipboard blocked (insecure origin, denied permission) — the address is
+      // right there as a mailto link, so there is nothing to fall back to.
+    }
+  };
 
   return (
     <section id="contact" className="py-16">
       <h2 className="mb-4 text-xl font-semibold tracking-tight">{t.sections.contact}</h2>
-      <p className="mb-6 max-w-lg text-sm leading-relaxed text-black/70">{t.contact.intro}</p>
+      <p className="mb-6 max-w-lg text-sm leading-relaxed text-fg/70">{t.contact.intro}</p>
       <div className="flex flex-wrap gap-4 text-sm">
-        <a href="mailto:victor.pasqualini@outlook.com" className="rounded-full border border-black/15 px-4 py-2 hover:border-black">
-          {t.contact.emailLabel}: victor.pasqualini@outlook.com
-        </a>
+        <div className="flex items-center rounded-full border border-line/15 hover:border-fg">
+          <a href={`mailto:${CONTACT_EMAIL}`} className="py-2 pl-4 pr-3">
+            {t.contact.emailLabel}: {CONTACT_EMAIL}
+          </a>
+          <button
+            type="button"
+            onClick={copyEmail}
+            title={copied ? t.contact.copied : t.contact.copy}
+            className="flex items-center gap-1.5 self-stretch border-l border-line/15 py-2 pl-3 pr-4 text-fg/60 transition-colors hover:text-fg"
+          >
+            {copied ? <CheckIcon className="h-4 w-4" /> : <CopyIcon className="h-4 w-4" />}
+            <span className="text-xs" aria-live="polite">
+              {copied ? t.contact.copied : t.contact.copy}
+            </span>
+          </button>
+        </div>
         <a
-          href="https://www.linkedin.com/in/victor-ramos-pasqualini-b459b51b0"
+          href={LINKEDIN_URL}
           target="_blank"
           rel="noreferrer"
-          className="rounded-full border border-black/15 px-4 py-2 hover:border-black"
+          className="flex items-center gap-2 rounded-full border border-line/15 px-4 py-2 hover:border-fg"
         >
+          <LinkedinIcon className="h-4 w-4" />
           LinkedIn
         </a>
         <a
-          href="https://github.com/VictorPasqualini"
+          href={GITHUB_URL}
           target="_blank"
           rel="noreferrer"
-          className="rounded-full border border-black/15 px-4 py-2 hover:border-black"
+          className="flex items-center gap-2 rounded-full border border-line/15 px-4 py-2 hover:border-fg"
         >
+          <GithubIcon className="h-4 w-4" />
           GitHub
         </a>
       </div>
