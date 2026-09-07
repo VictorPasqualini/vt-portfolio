@@ -21,7 +21,6 @@ export const pt: SiteContent = {
     greeting: 'Olá, eu sou o Victor.',
     summary:
       'Engenheiro de Dados com 5+ anos de experiência construindo pipelines robustos em arquiteturas cloud. Especializado em migração de sistemas legados, processamento ETL/ELT com Spark, e infraestrutura de dados em AWS/GCP. Foco em qualidade, integridade e disponibilidade dos dados usando tecnologias open source como Spark, Kafka e Airflow.',
-    availability: 'Aberto a oportunidades',
   },
   sections: {
     experience: 'Experiência',

@@ -44,8 +44,6 @@ export interface SiteContent {
   hero: {
     greeting: string;
     summary: string;
-    /** Text of the "open to opportunities" badge. */
-    availability: string;
   };
   sections: {
     experience: string;

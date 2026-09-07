@@ -2,6 +2,7 @@
 
 import { useLocale } from '@/lib/i18n-context';
 import { GithubIcon, LinkedinIcon, PdfIcon } from '@/lib/icons';
+import { GITHUB_URL, LINKEDIN_URL } from '@/lib/site';
 import LetterCurtain from './LetterCurtain';
 
 export default function Hero() {
@@ -13,23 +14,14 @@ export default function Hero() {
     <section id="top" className="relative py-16 sm:py-24">
       <LetterCurtain />
       <div className="relative flex flex-col gap-6">
-        <div className="flex flex-wrap items-center gap-3">
-          <span className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
-            </span>
-            {t.hero.availability}
-          </span>
-          <p className="text-sm text-fg/50">{t.meta.location}</p>
-        </div>
+        <p className="text-sm text-fg/50">{t.meta.location}</p>
         <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
           {t.hero.greeting} <span className="text-fg/60">{t.meta.role}.</span>
         </h1>
         <p className="max-w-xl text-base leading-relaxed text-fg/70">{t.hero.summary}</p>
         <div className="flex flex-wrap gap-4 text-sm">
           <a
-            href="https://github.com/VictorPasqualini"
+            href={GITHUB_URL}
             target="_blank"
             rel="noreferrer"
             className="flex items-center gap-2 rounded-full border border-line/15 bg-bg px-4 py-2 hover:border-fg"
@@ -38,7 +30,7 @@ export default function Hero() {
             GitHub
           </a>
           <a
-            href="https://www.linkedin.com/in/victor-ramos-pasqualini-b459b51b0"
+            href={LINKEDIN_URL}
             target="_blank"
             rel="noreferrer"
             className="flex items-center gap-2 rounded-full border border-line/15 bg-bg px-4 py-2 hover:border-fg"

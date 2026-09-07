@@ -42,15 +42,15 @@ const ACCENT = '#d99e5c';
 const STACK = ['Spark', 'Kafka', 'Airflow', 'Databricks', 'AWS', 'GCP'];
 
 const COPY = {
-  en: { availability: 'Open to opportunities', role: 'Data Engineer', location: 'São Paulo, Brazil' },
-  pt: { availability: 'Aberto a oportunidades', role: 'Engenheiro de Dados', location: 'São Paulo, Brasil' },
+  en: { tagline: '5+ years building data pipelines', role: 'Data Engineer', location: 'São Paulo, Brazil' },
+  pt: { tagline: '5+ anos construindo pipelines de dados', role: 'Engenheiro de Dados', location: 'São Paulo, Brasil' },
 };
 
 // satori accepts plain {type, props} nodes, so no JSX build step is needed here.
 // Every element with more than one child must declare display: flex.
 const el = (type, style, children) => ({ type, props: { style, children } });
 
-function card({ availability, role, location }) {
+function card({ tagline, role, location }) {
   return el(
     'div',
     {
@@ -67,7 +67,7 @@ function card({ availability, role, location }) {
       el('div', { display: 'flex', flexDirection: 'column' }, [
         el('div', { display: 'flex', alignItems: 'center', fontSize: 26, color: ACCENT, marginBottom: 24 }, [
           el('div', { width: 14, height: 14, borderRadius: 7, background: ACCENT, marginRight: 14 }, ''),
-          el('div', { display: 'flex' }, availability),
+          el('div', { display: 'flex' }, tagline),
         ]),
         el(
           'div',

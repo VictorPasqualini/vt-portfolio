@@ -19,7 +19,7 @@ export const LOCALE_TAGS: Record<Locale, string> = { en: 'en-US', pt: 'pt-BR' };
 
 export const CONTACT_EMAIL = 'victor.pasqualini@outlook.com';
 export const GITHUB_URL = 'https://github.com/VictorPasqualini';
-export const LINKEDIN_URL = 'https://www.linkedin.com/in/victor-ramos-pasqualini-b459b51b0';
+export const LINKEDIN_URL = 'https://www.linkedin.com/in/victor-pasqualini-b459b51b0/';
 
 /** Narrows an unknown route segment to a supported locale, defaulting to English. */
 export function resolveLocale(segment: string): Locale {

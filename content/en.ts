@@ -21,7 +21,6 @@ export const en: SiteContent = {
     greeting: "Hi, I'm Victor.",
     summary:
       'Data Engineer with 5+ years of experience building robust pipelines in cloud architectures. Specialized in legacy system migration, ETL/ELT processing with Spark, and data infrastructure on AWS/GCP. Focused on data quality, integrity and availability using open source technologies like Spark, Kafka and Airflow.',
-    availability: 'Open to opportunities',
   },
   sections: {
     experience: 'Experience',
