@@ -69,4 +69,4 @@ Tailwind CSS utility classes only, no component library. Palette is theme-aware 
 
 ## Static export
 
-`next.config.js` sets `output: 'export'` and `images.unoptimized: true` so `npm run build` produces a fully static `out/` directory with no Node server required — deployable to GitHub Pages, Vercel, Netlify, S3, etc. No deploy workflow is configured yet (hosting target undecided — see BACKLOG.md).
+`next.config.js` sets `output: 'export'` and `images.unoptimized: true` so `npm run build` produces a fully static `out/` directory with no Node server required — deployable to Vercel, GitHub Pages, S3, or anywhere that serves files. Vercel is the host; it detects Next.js and needs no config file in the repo. The static-export constraint is what forces the client-side redirect at `/` and the shared `lang="en"` in the root layout (see the i18n section and BACKLOG.md).

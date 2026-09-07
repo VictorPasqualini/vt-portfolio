@@ -6,7 +6,9 @@ Future work for vt-portfolio, roughly prioritized. Nothing here is scheduled —
 
 ### Deploy pipeline
 
-Hosting decided: **Netlify**. `netlify.toml` at repo root sets build command (`npm run build`) and publish dir (`out`) — connect the repo in Netlify's UI and it should build with no manual config. Remaining: set up a custom domain if Victor wants one, and decide whether PR/branch deploy previews are wanted (Netlify does this by default once the repo is connected).
+Hosting decided: **Vercel** (Netlify was tried first and dropped). Import the repo and take the defaults — Vercel detects Next.js and serves the export, so no config file is committed. Remaining: set `NEXT_PUBLIC_SITE_URL` in the project's environment variables, and set up a custom domain if Victor wants one. Preview deploys per branch/PR are on by default.
+
+Worth reconsidering now that the host runs Node: dropping `output: 'export'` would let the server handle the two things the static build can't. `/` could redirect for real instead of via a client-side stub, and `app/[locale]/layout.tsx` could become the root layout so `/pt` ships `lang="pt"` in its HTML. The cost is that the build stops being host-agnostic.
 
 ## Medium priority
 
