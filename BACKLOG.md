@@ -23,10 +23,13 @@ Hosting decided: **Netlify**. `netlify.toml` at repo root sets build command (`n
 
 ## Medium priority
 
-- **Dark mode** — currently light-only (`#111` on `#fff`). Would need CSS variables + a toggle, similar pattern to the locale toggle in `Nav.tsx`.
 - **Writing/blog section** — the reference site (joachimhodana.com) has a "Writing" section linking Medium articles. Add if/when Victor starts publishing.
-- **Auto-detect browser locale** — current default is always `en` (explicit product decision). Could offer an opt-in "match my browser" toggle without changing the hard default.
 - **OG image / social preview card** — `app/layout.tsx` metadata has no `openGraph`/`twitter` image yet.
+
+## Done
+
+- ~~Dark mode~~ — shipped 2026-09-07. `lib/theme-context.tsx` (`ThemeProvider`/`useTheme`), CSS variables in `app/globals.css`, `dark` class default in `app/layout.tsx`. Dark is the default regardless of OS preference; toggle in `Nav.tsx` persists to `localStorage` (`vt-portfolio-theme`).
+- ~~Auto-detect browser locale~~ — shipped 2026-09-07. `lib/i18n-context.tsx` reads `navigator.languages` on first load (no stored preference yet) and picks `pt` if any tag starts with `pt`, else `en`. A stored `localStorage` choice always wins over detection.
 
 ## Low priority
 

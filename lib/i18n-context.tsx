@@ -24,10 +24,15 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
       const stored = window.localStorage.getItem(STORAGE_KEY);
       if (stored === 'en' || stored === 'pt') {
         setLocaleState(stored);
+        return;
       }
     } catch {
-      // localStorage unavailable, keep default
+      // localStorage unavailable, fall through to browser detection
     }
+
+    const browserLanguages = window.navigator.languages ?? [window.navigator.language];
+    const detected = browserLanguages.some((lang) => lang.toLowerCase().startsWith('pt')) ? 'pt' : 'en';
+    setLocaleState(detected);
   }, []);
 
   const setLocale = (next: Locale) => {

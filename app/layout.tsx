@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { LocaleProvider } from '@/lib/i18n-context';
+import { ThemeProvider } from '@/lib/theme-context';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -10,9 +11,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className="font-sans antialiased">
-        <LocaleProvider>{children}</LocaleProvider>
+    // Server-rendered with the "dark" class already applied so the default theme
+    // (dark) never flashes light before ThemeProvider hydrates and takes over.
+    <html lang="en" className="dark">
+      <body className="bg-bg font-sans text-fg antialiased">
+        <ThemeProvider>
+          <LocaleProvider>{children}</LocaleProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

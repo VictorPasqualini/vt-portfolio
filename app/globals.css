@@ -4,6 +4,21 @@
 
 :root {
   --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* light theme tokens (RGB triplets, consumed via rgb(var(--x) / <alpha-value>)) */
+  --bg: 255 255 255;
+  --fg: 17 17 17;
+  --line: 17 17 17;
+  --soft: 17 17 17;
+  --accent: 37 99 235; /* blue-600 */
+}
+
+.dark {
+  --bg: 10 10 10;
+  --fg: 245 245 245;
+  --line: 245 245 245;
+  --soft: 245 245 245;
+  --accent: 96 165 250; /* blue-400, better contrast on dark */
 }
 
 html {
@@ -11,6 +26,6 @@ html {
 }
 
 body {
-  color: #111111;
-  background: #ffffff;
+  background: rgb(var(--bg));
+  color: rgb(var(--fg));
 }

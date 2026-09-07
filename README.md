@@ -1,12 +1,13 @@
 # vt-portfolio
 
-Victor Ramos Pasqualini's personal portfolio site — bilingual (English/Portuguese, default English), built with Next.js + TypeScript + Tailwind CSS. Visual style inspired by [joachimhodana.com](https://joachimhodana.com): minimalist, single-page, timeline + project grid.
+Victor Ramos Pasqualini's personal portfolio site — bilingual (English/Portuguese, auto-detected from the browser), dark by default with a light mode toggle, built with Next.js + TypeScript + Tailwind CSS. Visual style inspired by [joachimhodana.com](https://joachimhodana.com): minimalist, single-page, timeline + project grid.
 
 ## Stack
 
 - Next.js 14 (App Router), static export (`output: 'export'`), deployed on Netlify.
-- TypeScript, Tailwind CSS.
-- No routing-based i18n: a `LocaleProvider` React context holds `en`/`pt`, persisted in `localStorage`, defaulting to `en`.
+- TypeScript, Tailwind CSS (`darkMode: 'class'`, CSS-variable color tokens).
+- No routing-based i18n: a `LocaleProvider` React context holds `en`/`pt`, persisted in `localStorage`; auto-detects from `navigator.languages` on first visit.
+- Theme: a `ThemeProvider` React context holds `light`/`dark`, persisted in `localStorage`; **defaults to dark** regardless of OS preference.
 
 ## Getting started
 
@@ -42,4 +43,4 @@ Hosted on Netlify via `netlify.toml`: build command `npm run build`, publish dir
 
 ## Roadmap
 
-See [BACKLOG.md](BACKLOG.md) — includes the planned letter-curtain hero animation, dark mode, and more.
+See [BACKLOG.md](BACKLOG.md) — includes the planned letter-curtain hero animation and more.

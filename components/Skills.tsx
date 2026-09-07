@@ -11,10 +11,10 @@ export default function Skills() {
       <div className="grid gap-6 sm:grid-cols-2">
         {t.skills.map((group) => (
           <div key={group.label}>
-            <h3 className="mb-2 text-sm font-medium text-black/50">{group.label}</h3>
+            <h3 className="mb-2 text-sm font-medium text-fg/50">{group.label}</h3>
             <div className="flex flex-wrap gap-2">
               {group.items.map((item) => (
-                <span key={item} className="rounded-full bg-black/5 px-2.5 py-1 text-xs text-black/70">
+                <span key={item} className="rounded-full bg-soft/10 px-2.5 py-1 text-xs text-fg/70">
                   {item}
                 </span>
               ))}
