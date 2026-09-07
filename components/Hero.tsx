@@ -13,7 +13,16 @@ export default function Hero() {
     <section id="top" className="relative py-16 sm:py-24">
       <LetterCurtain />
       <div className="relative flex flex-col gap-6">
-        <p className="text-sm text-fg/50">{t.meta.location}</p>
+        <div className="flex flex-wrap items-center gap-3">
+          <span className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+            </span>
+            {t.hero.availability}
+          </span>
+          <p className="text-sm text-fg/50">{t.meta.location}</p>
+        </div>
         <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
           {t.hero.greeting} <span className="text-fg/60">{t.meta.role}.</span>
         </h1>

@@ -94,3 +94,20 @@ export function PipelineIcon({ className }: { className?: string }) {
   );
 }
 
+export function CopyIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" {...stroke} className={className} aria-hidden="true">
+      <rect x="9" y="9" width="11" height="11" rx="2" />
+      <path d="M5 15a2 2 0 0 1-1-1.73V6a2 2 0 0 1 2-2h7.27A2 2 0 0 1 15 5" />
+    </svg>
+  );
+}
+
+export function CheckIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" {...stroke} className={className} aria-hidden="true">
+      <path d="m4.5 12.5 5 5 10-11" />
+    </svg>
+  );
+}
+

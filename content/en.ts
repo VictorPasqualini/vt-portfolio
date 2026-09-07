@@ -6,6 +6,8 @@ export const en: SiteContent = {
     role: 'Data Engineer',
     location: 'São Paulo, Brazil',
     pageTitle: 'Victor Pasqualini - Senior Data Engineer',
+    description:
+      'Senior Data Engineer with 5+ years building large-scale pipelines on AWS and GCP — Spark, Kafka, Airflow, Databricks and lakehouse architectures.',
   },
   nav: {
     experience: 'Experience',
@@ -19,6 +21,7 @@ export const en: SiteContent = {
     greeting: "Hi, I'm Victor.",
     summary:
       'Data Engineer with 5+ years of experience building robust pipelines in cloud architectures. Specialized in legacy system migration, ETL/ELT processing with Spark, and data infrastructure on AWS/GCP. Focused on data quality, integrity and availability using open source technologies like Spark, Kafka and Airflow.',
+    availability: 'Open to opportunities',
   },
   sections: {
     experience: 'Experience',
@@ -142,6 +145,8 @@ export const en: SiteContent = {
     intro: "I'm open to new opportunities and collaborations — feel free to reach out.",
     emailLabel: 'Email',
     phoneLabel: 'Phone',
+    copy: 'Copy',
+    copied: 'Copied',
   },
   footer: {
     rights: 'All rights reserved.',

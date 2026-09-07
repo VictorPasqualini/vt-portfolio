@@ -6,6 +6,8 @@ export const pt: SiteContent = {
     role: 'Engenheiro de Dados',
     location: 'São Paulo, Brasil',
     pageTitle: 'Victor Pasqualini - Engenheiro de Dados Senior',
+    description:
+      'Engenheiro de Dados Senior com 5+ anos construindo pipelines de larga escala em AWS e GCP — Spark, Kafka, Airflow, Databricks e arquiteturas lakehouse.',
   },
   nav: {
     experience: 'Experiência',
@@ -19,6 +21,7 @@ export const pt: SiteContent = {
     greeting: 'Olá, eu sou o Victor.',
     summary:
       'Engenheiro de Dados com 5+ anos de experiência construindo pipelines robustos em arquiteturas cloud. Especializado em migração de sistemas legados, processamento ETL/ELT com Spark, e infraestrutura de dados em AWS/GCP. Foco em qualidade, integridade e disponibilidade dos dados usando tecnologias open source como Spark, Kafka e Airflow.',
+    availability: 'Aberto a oportunidades',
   },
   sections: {
     experience: 'Experiência',
@@ -142,6 +145,8 @@ export const pt: SiteContent = {
     intro: 'Estou aberto a novas oportunidades e colaborações — fique à vontade para entrar em contato.',
     emailLabel: 'Email',
     phoneLabel: 'Telefone',
+    copy: 'Copiar',
+    copied: 'Copiado',
   },
   footer: {
     rights: 'Todos os direitos reservados.',

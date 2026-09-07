@@ -30,6 +30,8 @@ export interface SiteContent {
     location: string;
     /** Browser tab title (also what the tab's hover tooltip shows). */
     pageTitle: string;
+    /** Meta description, reused for Open Graph and JSON-LD. Keep under ~160 chars. */
+    description: string;
   };
   nav: {
     experience: string;
@@ -42,6 +44,8 @@ export interface SiteContent {
   hero: {
     greeting: string;
     summary: string;
+    /** Text of the "open to opportunities" badge. */
+    availability: string;
   };
   sections: {
     experience: string;
@@ -59,6 +63,10 @@ export interface SiteContent {
     intro: string;
     emailLabel: string;
     phoneLabel: string;
+    /** Label of the copy-to-clipboard button next to the email address. */
+    copy: string;
+    /** Confirmation shown for a couple of seconds after a successful copy. */
+    copied: string;
   };
   footer: {
     rights: string;
