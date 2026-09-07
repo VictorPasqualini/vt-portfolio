@@ -33,7 +33,7 @@ export const en: SiteContent = {
   },
   experience: [
     {
-      period: '2025 — 2026',
+      period: '2025 — Now',
       role: 'Data Specialist',
       company: 'Serasa Experian',
       companyUrl: 'https://www.serasaexperian.com.br',
