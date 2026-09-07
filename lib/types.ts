@@ -18,6 +18,16 @@ export interface EducationEntry {
   program: string;
 }
 
+export interface Certification {
+  name: string;
+  /** Year printed on the certificate. */
+  year: string;
+  /** Issuer logo under public/icons, when the issuer has one vendored. */
+  icon?: string;
+  /** Public link to the certificate itself; the badge is only clickable with it. */
+  url?: string;
+}
+
 export interface SkillGroup {
   label: string;
   items: string[];
@@ -55,7 +65,7 @@ export interface SiteContent {
   };
   experience: ExperienceEntry[];
   education: EducationEntry[];
-  certifications: string[];
+  certifications: Certification[];
   skills: SkillGroup[];
   contact: {
     intro: string;
