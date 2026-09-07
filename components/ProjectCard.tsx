@@ -10,6 +10,10 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
 
   return (
     <article className="flex flex-col gap-3 overflow-hidden rounded-xl border border-line/10">
+      <div
+        className="h-1.5 w-full"
+        style={{ background: `linear-gradient(90deg, ${project.accent[0]}, ${project.accent[1]})` }}
+      />
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={thumbnail}

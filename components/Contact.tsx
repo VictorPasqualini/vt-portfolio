@@ -1,6 +1,7 @@
 'use client';
 
 import { useLocale } from '@/lib/i18n-context';
+import { GithubIcon, LinkedinIcon } from '@/lib/icons';
 
 export default function Contact() {
   const { t } = useLocale();
@@ -17,16 +18,18 @@ export default function Contact() {
           href="https://www.linkedin.com/in/victor-ramos-pasqualini-b459b51b0"
           target="_blank"
           rel="noreferrer"
-          className="rounded-full border border-line/15 px-4 py-2 hover:border-fg"
+          className="flex items-center gap-2 rounded-full border border-line/15 px-4 py-2 hover:border-fg"
         >
+          <LinkedinIcon className="h-4 w-4" />
           LinkedIn
         </a>
         <a
           href="https://github.com/VictorPasqualini"
           target="_blank"
           rel="noreferrer"
-          className="rounded-full border border-line/15 px-4 py-2 hover:border-fg"
+          className="flex items-center gap-2 rounded-full border border-line/15 px-4 py-2 hover:border-fg"
         >
+          <GithubIcon className="h-4 w-4" />
           GitHub
         </a>
       </div>

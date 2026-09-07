@@ -34,17 +34,21 @@ export default function Nav() {
               onClick={() => setTheme('light')}
               aria-pressed={theme === 'light'}
               aria-label="Light mode"
-              className={`px-2 py-1 ${theme === 'light' ? 'bg-fg text-bg' : 'text-fg/60 hover:text-fg'}`}
+              className={`flex items-center gap-1 px-2.5 py-1 ${
+                theme === 'light' ? 'bg-accent text-bg' : 'text-fg/60 hover:text-fg'
+              }`}
             >
-              ☀
+              ☀ {locale === 'pt' ? 'Claro' : 'Light'}
             </button>
             <button
               onClick={() => setTheme('dark')}
               aria-pressed={theme === 'dark'}
               aria-label="Dark mode"
-              className={`px-2 py-1 ${theme === 'dark' ? 'bg-fg text-bg' : 'text-fg/60 hover:text-fg'}`}
+              className={`flex items-center gap-1 px-2.5 py-1 ${
+                theme === 'dark' ? 'bg-accent text-bg' : 'text-fg/60 hover:text-fg'
+              }`}
             >
-              ☾
+              ☾ {locale === 'pt' ? 'Escuro' : 'Dark'}
             </button>
           </div>
           <div className="flex overflow-hidden rounded-full border border-line/15 text-xs">

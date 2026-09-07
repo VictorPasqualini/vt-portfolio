@@ -72,6 +72,8 @@ export interface ProjectData {
   language?: string;
   topics: string[];
   stars: number;
+  /** [from, to] hex colors for the card's accent gradient. */
+  accent: [string, string];
   description: {
     en: string;
     pt: string;
