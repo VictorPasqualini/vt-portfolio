@@ -83,15 +83,6 @@ export function LayersIcon({ className }: { className?: string }) {
   );
 }
 
-export function ScheduleIcon({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" {...stroke} className={className} aria-hidden="true">
-      <circle cx="12" cy="12" r="9" />
-      <path d="M12 6.5V12l3.5 2.5" />
-    </svg>
-  );
-}
-
 export function PipelineIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" {...stroke} className={className} aria-hidden="true">
@@ -103,20 +94,3 @@ export function PipelineIcon({ className }: { className?: string }) {
   );
 }
 
-export function ChartIcon({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" {...stroke} className={className} aria-hidden="true">
-      <path d="M4 20V4M4 20h16M8 20v-6M13 20V9M18 20v-9" />
-    </svg>
-  );
-}
-
-export function InfraIcon({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" {...stroke} className={className} aria-hidden="true">
-      <rect x="3" y="4" width="18" height="7" rx="1.8" />
-      <rect x="3" y="13" width="18" height="7" rx="1.8" />
-      <path d="M7 7.5h.01M7 16.5h.01" />
-    </svg>
-  );
-}

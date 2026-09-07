@@ -41,6 +41,14 @@ const ICON_FILES: [string, string][] = [
   ['django', 'django'],
   ['oracle', 'oracle'],
   ['cobol', 'cobol'],
+  ['power bi', 'powerbi'],
+  ['powerbi', 'powerbi'],
+  ['terragrunt', 'terragrunt'],
+  // Control-M is a BMC product with no standalone logo published — the BMC
+  // corporate mark is the closest official asset.
+  ['ctrl-m', 'controlm'],
+  ['ctrlm', 'controlm'],
+  ['control-m', 'controlm'],
   ['bigquery', 'gcp-bigquery'],
   ['cloud storage', 'gcp-cloud-storage'],
   ['compute engine', 'gcp-compute-engine'],
@@ -66,19 +74,11 @@ const ICON_FILES: [string, string][] = [
   ['cloudwatch', 'aws-cloudwatch'],
 ];
 
-export type InlineIconName =
-  | 'database'
-  | 'sync'
-  | 'layers'
-  | 'schedule'
-  | 'pipeline'
-  | 'chart'
-  | 'infra'
-  | 'tag';
+export type InlineIconName = 'database' | 'sync' | 'layers' | 'pipeline' | 'tag';
 
-// Concepts, legacy tech and vendor tools with no logo published anywhere
-// (SQL, DB2, Delta Lake, Power BI, Terragrunt, Control-M...) get a hand-drawn
-// glyph that says what kind of thing it is. See lib/icons.tsx.
+// Concepts and generic terms with no logo anywhere (SQL, DB2, CDC, Delta Lake,
+// Medallion, CI/CD) get a hand-drawn glyph that says what kind of thing it is.
+// See lib/icons.tsx.
 const INLINE_KEYWORDS: [string, InlineIconName][] = [
   ['sql', 'database'],
   ['db2', 'database'],
@@ -87,11 +87,6 @@ const INLINE_KEYWORDS: [string, InlineIconName][] = [
   ['deltalake', 'layers'],
   ['medallion', 'layers'],
   ['medalhão', 'layers'],
-  ['ctrl-m', 'schedule'],
-  ['ctrlm', 'schedule'],
-  ['power bi', 'chart'],
-  ['powerbi', 'chart'],
-  ['terragrunt', 'infra'],
 ];
 
 function primaryOf(label: string): string {

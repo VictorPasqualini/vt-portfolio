@@ -5,7 +5,7 @@ export const en: SiteContent = {
     name: 'Victor Ramos Pasqualini',
     role: 'Data Engineer',
     location: 'São Paulo, Brazil',
-    pageTitle: 'Victor Ramos Pasqualini - Senior Data Engineer',
+    pageTitle: 'Victor Pasqualini - Senior Data Engineer',
   },
   nav: {
     experience: 'Experience',

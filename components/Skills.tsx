@@ -2,25 +2,13 @@
 
 import { useLocale } from '@/lib/i18n-context';
 import { getSkillIcon, type InlineIconName } from '@/lib/skill-icons';
-import {
-  ChartIcon,
-  DatabaseIcon,
-  InfraIcon,
-  LayersIcon,
-  PipelineIcon,
-  ScheduleIcon,
-  SyncIcon,
-  TagIcon,
-} from '@/lib/icons';
+import { DatabaseIcon, LayersIcon, PipelineIcon, SyncIcon, TagIcon } from '@/lib/icons';
 
 const INLINE_ICONS: Record<InlineIconName, (props: { className?: string }) => JSX.Element> = {
   database: DatabaseIcon,
   sync: SyncIcon,
   layers: LayersIcon,
-  schedule: ScheduleIcon,
   pipeline: PipelineIcon,
-  chart: ChartIcon,
-  infra: InfraIcon,
   tag: TagIcon,
 };
 
@@ -49,7 +37,7 @@ export default function Skills() {
                   >
                     {icon.kind === 'img' ? (
                       // eslint-disable-next-line @next/next/no-img-element
-                      <img src={icon.src} alt="" loading="lazy" className="h-4 w-4" />
+                      <img src={icon.src} alt="" loading="lazy" className="h-4 w-4 object-contain" />
                     ) : (
                       <SkillGlyph name={icon.name} />
                     )}
