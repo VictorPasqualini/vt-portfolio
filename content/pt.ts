@@ -29,9 +29,10 @@ export const pt: SiteContent = {
   },
   experience: [
     {
-      period: 'ago 2025 — jul 2026',
+      period: '2025 — 2026',
       role: 'Especialista de Dados',
       company: 'Serasa (pela ACT Digital)',
+      companyUrl: 'https://www.serasa.com.br',
       description:
         'Liderou migração complexa de pipeline mainframe (Cobol/DB2) para AWS processando ingestão massiva de arquivos posicionais diários. Implementou validação e qualidade de dados com geração de tabelas consolidadas (bronze/silver/gold) para ML e outros produtos. Deploy em produção com dual-running entre ambientes, integrações via EventBridge, APIs REST e IaC com CloudFormation.',
       stack: [
@@ -60,25 +61,28 @@ export const pt: SiteContent = {
       ],
     },
     {
-      period: 'abr 2025 — mai 2026',
+      period: '2025 — 2026',
       role: 'Engenheiro de Dados III',
       company: 'Vert Capital (pela Stech Soluções)',
+      companyUrl: 'https://www.vert-capital.com',
       description:
         'Manteve ecossistema Databricks com DLT, Unity Catalog e Delta Lake garantindo SLA de 90% de disponibilidade. Otimizou pipelines batch PySpark, reduzindo tempo de processamento em 40% através de query optimization. Implementou novo pipeline end-to-end utilizando PySpark, Kafka e APIs, colaborando com o time de Analytics para confiabilidade de dados.',
       stack: ['Databricks', 'DLT', 'UnityCatalog', 'PySpark', 'DeltaLake', 'Kafka', 'PostgreSQL', 'Django', 'Metabase', 'PowerBI'],
     },
     {
-      period: 'nov 2024 — mai 2025',
+      period: '2024 — 2025',
       role: 'Engenheiro de Dados II',
       company: 'Stech Soluções',
+      companyUrl: 'https://stechsolucoes.com',
       description:
         'Desenvolveu pipeline GCP end-to-end focado em ingestão de dados de múltiplas fontes. Implementou validações de qualidade de dados com DuckDB em Cloud Functions, e automatizou processos com Composer (Apache Airflow), reduzindo intervenções manuais.',
       stack: ['GCP', 'Cloud Storage', 'BigQuery', 'Compute Engine', 'Cloud Functions', 'Composer', 'Python', 'DuckDB'],
     },
     {
-      period: 'ago 2022 — ago 2025',
+      period: '2022 — 2025',
       role: 'Engenheiro de Dados I',
       company: 'SPC Brasil',
+      companyUrl: 'https://www.spcbrasil.com.br',
       description:
         'Arquiteto de Data Lake em Hadoop/AWS (20+ TB diários) liderando a migração on-premise para AWS. Entregou projetos de qualidade de dados, geração de leads, pipelines de crédito e alimentação de ML. Processamento incremental de arquivos XML/CSV on-premise e em AWS, com orquestração robusta de 100+ jobs diários e APIs REST.',
       stack: [
@@ -102,9 +106,10 @@ export const pt: SiteContent = {
       ],
     },
     {
-      period: 'set 2021 — ago 2022',
+      period: '2021 — 2022',
       role: 'Estagiário em Engenharia de Dados',
       company: 'SPC Brasil',
+      companyUrl: 'https://www.spcbrasil.com.br',
       description:
         'Manteve Data Lake em Hadoop com limpeza de dados e compactação de partições. Desenvolveu scripts Python/Scala para validação de integridade e reprocessamento histórico, e deu suporte à infraestrutura de Spark em ambientes staging e produção.',
       stack: ['Hadoop', 'Python', 'Scala', 'Spark'],
@@ -138,7 +143,7 @@ export const pt: SiteContent = {
   },
   projects: {
     viewRepo: 'Ver repositório',
-    viewDemo: 'Demo ao vivo',
+    website: 'Site',
     fewDetails: 'Projeto em estágio inicial — poucos detalhes públicos ainda.',
   },
 };

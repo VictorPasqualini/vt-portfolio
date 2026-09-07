@@ -44,7 +44,7 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
           </a>
           {project.homepage && (
             <a href={project.homepage} target="_blank" rel="noreferrer" className="text-accent hover:underline">
-              {t.projects.viewDemo}
+              {t.projects.website}
             </a>
           )}
         </div>

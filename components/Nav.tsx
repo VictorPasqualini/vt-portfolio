@@ -2,6 +2,7 @@
 
 import { useLocale } from '@/lib/i18n-context';
 import { useTheme } from '@/lib/theme-context';
+import { SunIcon, MoonIcon } from '@/lib/icons';
 
 const LINKS = [
   { id: 'experience', key: 'experience' as const },
@@ -28,29 +29,33 @@ export default function Nav() {
             </a>
           ))}
         </nav>
-        <div className="flex items-center gap-2 text-sm">
-          <div className="flex overflow-hidden rounded-full border border-line/15 text-xs">
-            <button
-              onClick={() => setTheme('light')}
-              aria-pressed={theme === 'light'}
-              aria-label="Light mode"
-              className={`flex items-center gap-1 px-2.5 py-1 ${
-                theme === 'light' ? 'bg-accent text-bg' : 'text-fg/60 hover:text-fg'
+        <div className="flex items-center gap-3 text-sm">
+          <button
+            type="button"
+            role="switch"
+            aria-checked={theme === 'dark'}
+            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            aria-label={
+              theme === 'dark'
+                ? locale === 'pt'
+                  ? 'Tema escuro ativo — mudar para claro'
+                  : 'Dark theme active — switch to light'
+                : locale === 'pt'
+                  ? 'Tema claro ativo — mudar para escuro'
+                  : 'Light theme active — switch to dark'
+            }
+            className="relative flex h-7 w-[52px] shrink-0 items-center rounded-full border border-line/15 bg-soft/10 transition-colors"
+          >
+            <SunIcon className="absolute left-1.5 h-3.5 w-3.5 text-fg/40" />
+            <MoonIcon className="absolute right-1.5 h-3.5 w-3.5 text-fg/40" />
+            <span
+              className={`absolute left-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-fg text-bg shadow-sm transition-transform duration-200 ease-out ${
+                theme === 'dark' ? 'translate-x-6' : 'translate-x-0'
               }`}
             >
-              ☀ {locale === 'pt' ? 'Claro' : 'Light'}
-            </button>
-            <button
-              onClick={() => setTheme('dark')}
-              aria-pressed={theme === 'dark'}
-              aria-label="Dark mode"
-              className={`flex items-center gap-1 px-2.5 py-1 ${
-                theme === 'dark' ? 'bg-accent text-bg' : 'text-fg/60 hover:text-fg'
-              }`}
-            >
-              ☾ {locale === 'pt' ? 'Escuro' : 'Dark'}
-            </button>
-          </div>
+              {theme === 'dark' ? <MoonIcon className="h-3.5 w-3.5" /> : <SunIcon className="h-3.5 w-3.5" />}
+            </span>
+          </button>
           <div className="flex overflow-hidden rounded-full border border-line/15 text-xs">
             <button
               onClick={() => setLocale('en')}

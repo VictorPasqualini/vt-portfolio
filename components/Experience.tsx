@@ -14,7 +14,19 @@ export default function Experience() {
             <span className="absolute -left-[29px] top-1.5 h-2 w-2 rounded-full bg-fg" />
             <p className="text-xs uppercase tracking-wide text-fg/50">{job.period}</p>
             <h3 className="mt-1 text-base font-medium">
-              {job.role} · <span className="text-fg/70">{job.company}</span>
+              {job.role} ·{' '}
+              {job.companyUrl ? (
+                <a
+                  href={job.companyUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-fg/70 underline decoration-line/30 underline-offset-2 hover:text-fg hover:decoration-fg"
+                >
+                  {job.company}
+                </a>
+              ) : (
+                <span className="text-fg/70">{job.company}</span>
+              )}
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-fg/70">{job.description}</p>
             <div className="mt-3 flex flex-wrap gap-2">

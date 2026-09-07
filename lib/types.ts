@@ -4,6 +4,7 @@ export interface ExperienceEntry {
   period: string;
   role: string;
   company: string;
+  companyUrl?: string;
   description: string;
   stack: string[];
 }
@@ -59,7 +60,7 @@ export interface SiteContent {
   };
   projects: {
     viewRepo: string;
-    viewDemo: string;
+    website: string;
     fewDetails: string;
   };
 }

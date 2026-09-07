@@ -22,6 +22,31 @@ export function PdfIcon({ className }: { className?: string }) {
   );
 }
 
+export function SunIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className={className} aria-hidden="true">
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+    </svg>
+  );
+}
+
+export function MoonIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+      <path d="M20.742 13.045a8.088 8.088 0 0 1-2.077.273c-4.475 0-8.102-3.627-8.102-8.102 0-.71.093-1.398.267-2.055a.75.75 0 0 0-.923-.917A10.5 10.5 0 1 0 22.5 15.4a.75.75 0 0 0-.922-.917 8.05 8.05 0 0 1-.836.562Z" />
+    </svg>
+  );
+}
+
+export function CloudIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <path d="M17.5 19a4.5 4.5 0 0 0 0-9 6 6 0 0 0-11.6-1.5A4.5 4.5 0 0 0 6.5 19h11Z" />
+    </svg>
+  );
+}
+
 export function TagIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className} aria-hidden="true">
