@@ -28,6 +28,8 @@ export interface SiteContent {
     name: string;
     role: string;
     location: string;
+    /** Browser tab title (also what the tab's hover tooltip shows). */
+    pageTitle: string;
   };
   nav: {
     experience: string;

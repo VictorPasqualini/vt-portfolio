@@ -3,9 +3,7 @@
 import { useLocale } from '@/lib/i18n-context';
 import { getSkillIcon, type InlineIconName } from '@/lib/skill-icons';
 import {
-  AwsIcon,
   ChartIcon,
-  CodeIcon,
   DatabaseIcon,
   InfraIcon,
   LayersIcon,
@@ -16,9 +14,7 @@ import {
 } from '@/lib/icons';
 
 const INLINE_ICONS: Record<InlineIconName, (props: { className?: string }) => JSX.Element> = {
-  aws: AwsIcon,
   database: DatabaseIcon,
-  code: CodeIcon,
   sync: SyncIcon,
   layers: LayersIcon,
   schedule: ScheduleIcon,
@@ -30,7 +26,7 @@ const INLINE_ICONS: Record<InlineIconName, (props: { className?: string }) => JS
 
 function SkillGlyph({ name }: { name: InlineIconName }) {
   const Icon = INLINE_ICONS[name];
-  return <Icon className="h-3.5 w-3.5 text-fg/40" />;
+  return <Icon className="h-4 w-4 text-fg/40" />;
 }
 
 export default function Skills() {
@@ -51,14 +47,9 @@ export default function Skills() {
                     key={item}
                     className="flex items-center gap-1.5 rounded-full bg-soft/10 px-2.5 py-1 text-xs text-fg/70"
                   >
-                    {icon.kind === 'brand' ? (
+                    {icon.kind === 'img' ? (
                       // eslint-disable-next-line @next/next/no-img-element
-                      <img
-                        src={`https://cdn.simpleicons.org/${icon.slug}`}
-                        alt=""
-                        loading="lazy"
-                        className="h-3.5 w-3.5"
-                      />
+                      <img src={icon.src} alt="" loading="lazy" className="h-4 w-4" />
                     ) : (
                       <SkillGlyph name={icon.name} />
                     )}

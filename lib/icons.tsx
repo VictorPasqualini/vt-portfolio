@@ -39,17 +39,6 @@ export function MoonIcon({ className }: { className?: string }) {
   );
 }
 
-export function AwsIcon({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
-      <rect x="1" y="7" width="22" height="10" rx="2" stroke="currentColor" strokeWidth="1.4" />
-      <text x="12" y="14.5" textAnchor="middle" fontSize="6.5" fontWeight="700" fill="currentColor" fontFamily="Arial, sans-serif">
-        AWS
-      </text>
-    </svg>
-  );
-}
-
 export function TagIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className} aria-hidden="true">
@@ -72,14 +61,6 @@ export function DatabaseIcon({ className }: { className?: string }) {
     <svg viewBox="0 0 24 24" {...stroke} className={className} aria-hidden="true">
       <ellipse cx="12" cy="5.5" rx="7.5" ry="3" />
       <path d="M4.5 5.5v13c0 1.66 3.36 3 7.5 3s7.5-1.34 7.5-3v-13M4.5 12c0 1.66 3.36 3 7.5 3s7.5-1.34 7.5-3" />
-    </svg>
-  );
-}
-
-export function CodeIcon({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" {...stroke} className={className} aria-hidden="true">
-      <path d="m8.5 8-4.5 4 4.5 4M15.5 8l4.5 4-4.5 4M13.5 4.5l-3 15" />
     </svg>
   );
 }

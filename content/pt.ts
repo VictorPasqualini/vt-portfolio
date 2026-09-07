@@ -5,6 +5,7 @@ export const pt: SiteContent = {
     name: 'Victor Ramos Pasqualini',
     role: 'Engenheiro de Dados',
     location: 'São Paulo, Brasil',
+    pageTitle: 'Victor Ramos Pasqualini - Engenheiro de Dados Sênior',
   },
   nav: {
     experience: 'Experiência',
@@ -31,8 +32,8 @@ export const pt: SiteContent = {
     {
       period: '2025 — Hoje',
       role: 'Especialista de Dados',
-      company: 'Serasa',
-      companyUrl: 'https://www.serasa.com.br',
+      company: 'Serasa Experian',
+      companyUrl: 'https://www.serasaexperian.com.br',
       viaCompany: 'ACT Digital',
       viaCompanyUrl: 'https://actdigital.com',
       description:

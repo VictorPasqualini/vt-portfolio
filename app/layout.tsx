@@ -4,7 +4,7 @@ import { ThemeProvider } from '@/lib/theme-context';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Victor Ramos Pasqualini — Data Engineer',
+  title: 'Victor Ramos Pasqualini - Senior Data Engineer',
   description:
     'Data Engineer with 5+ years of experience building robust pipelines in cloud architectures (AWS/GCP), specialized in Spark, Kafka and Airflow.',
 };

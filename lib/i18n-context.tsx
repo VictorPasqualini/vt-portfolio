@@ -46,6 +46,9 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     document.documentElement.lang = locale;
+    // Locale is client-side only, so the static <title> from app/layout.tsx is
+    // swapped here to match the language the visitor actually sees.
+    document.title = DICTIONARIES[locale].meta.pageTitle;
   }, [locale]);
 
   const value = useMemo(() => ({ locale, setLocale, t: DICTIONARIES[locale] }), [locale]);
