@@ -8,8 +8,15 @@ import type { Locale } from './types';
  * Nothing is deployed yet, so this falls back to a placeholder. Set
  * NEXT_PUBLIC_SITE_URL in the Vercel project settings to the real deployment
  * domain; it is inlined at build time, so changing it needs a rebuild.
+ *
+ * A variable that exists but holds an empty string counts as unset — that is how
+ * hosting dashboards store a variable created without a value, and `??` would
+ * happily pass the empty string through to `new URL()` in app/layout.tsx, which
+ * throws ERR_INVALID_URL and fails the whole build.
  */
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://victorpasqualini.vercel.app').replace(/\/+$/, '');
+const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+
+export const SITE_URL = (configuredSiteUrl || 'https://victorpasqualini.vercel.app').replace(/\/+$/, '');
 
 /** Every locale that gets its own URL. Order matters: the first one is the default. */
 export const LOCALES: readonly Locale[] = ['en', 'pt'];
