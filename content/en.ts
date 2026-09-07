@@ -29,10 +29,11 @@ export const en: SiteContent = {
   },
   experience: [
     {
-      period: '2025 — 2026',
+      period: '2025 — Present',
       role: 'Data Specialist',
-      company: 'Serasa (via ACT Digital)',
+      company: 'Serasa',
       companyUrl: 'https://www.serasa.com.br',
+      viaCompany: 'ACT Digital',
       description:
         'Led a complex mainframe (Cobol/DB2) to AWS pipeline migration processing massive daily positional file ingestion. Implemented data validation and quality with consolidated table generation (bronze/silver/gold) for ML and other products. Production deployment with dual-running across environments, integrations via EventBridge, REST APIs and IaC with CloudFormation.',
       stack: [
@@ -63,8 +64,10 @@ export const en: SiteContent = {
     {
       period: '2025 — 2026',
       role: 'Data Engineer III',
-      company: 'Vert Capital (via Stech Soluções)',
+      company: 'Vert Capital',
       companyUrl: 'https://www.vert-capital.com',
+      viaCompany: 'Stech Soluções',
+      viaCompanyUrl: 'https://stechsolucoes.com',
       description:
         'Maintained a Databricks ecosystem with DLT, Unity Catalog and Delta Lake ensuring 90% SLA availability. Optimized batch PySpark pipelines, reducing processing time by 40% through query optimization. Implemented a new end-to-end pipeline using PySpark, Kafka and APIs, collaborating with the Analytics team on data reliability.',
       stack: ['Databricks', 'DLT', 'Unity Catalog', 'PySpark', 'Delta Lake', 'Kafka', 'PostgreSQL', 'Django', 'Metabase', 'Power BI'],

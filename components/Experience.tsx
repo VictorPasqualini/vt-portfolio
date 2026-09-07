@@ -3,7 +3,8 @@
 import { useLocale } from '@/lib/i18n-context';
 
 export default function Experience() {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
+  const viaWord = locale === 'pt' ? 'pela' : 'via';
 
   return (
     <section id="experience" className="py-16">
@@ -26,6 +27,25 @@ export default function Experience() {
                 </a>
               ) : (
                 <span className="text-fg/70">{job.company}</span>
+              )}
+              {job.viaCompany && (
+                <span className="text-fg/70">
+                  {' '}
+                  ({viaWord}{' '}
+                  {job.viaCompanyUrl ? (
+                    <a
+                      href={job.viaCompanyUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="underline decoration-line/30 underline-offset-2 hover:text-fg hover:decoration-fg"
+                    >
+                      {job.viaCompany}
+                    </a>
+                  ) : (
+                    job.viaCompany
+                  )}
+                  )
+                </span>
               )}
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-fg/70">{job.description}</p>

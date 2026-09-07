@@ -5,20 +5,21 @@
 :root {
   --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
-  /* light theme tokens (RGB triplets, consumed via rgb(var(--x) / <alpha-value>)) */
-  --bg: 255 255 255;
-  --fg: 17 17 17;
-  --line: 17 17 17;
-  --soft: 17 17 17;
-  --accent: 37 99 235; /* blue-600 */
+  /* light theme tokens — cream (RGB triplets, consumed via rgb(var(--x) / <alpha-value>)) */
+  --bg: 250 245 235;
+  --fg: 46 32 24;
+  --line: 46 32 24;
+  --soft: 46 32 24;
+  --accent: 180 83 9; /* amber-700, coffee-toned accent */
 }
 
 .dark {
-  --bg: 10 10 10;
-  --fg: 245 245 245;
-  --line: 245 245 245;
-  --soft: 245 245 245;
-  --accent: 96 165 250; /* blue-400, better contrast on dark */
+  /* dark theme tokens — coffee */
+  --bg: 28 19 15;
+  --fg: 237 224 209;
+  --line: 237 224 209;
+  --soft: 237 224 209;
+  --accent: 217 158 92; /* warm caramel, better contrast on dark */
 }
 
 html {

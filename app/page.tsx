@@ -14,9 +14,7 @@ export default function Home() {
       <div className="mx-auto max-w-content px-6">
         <Hero />
         <Experience />
-      </div>
-      <Projects />
-      <div className="mx-auto max-w-content px-6">
+        <Projects />
         <Skills />
         <Education />
         <Contact />

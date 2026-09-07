@@ -47,6 +47,17 @@ export function CloudIcon({ className }: { className?: string }) {
   );
 }
 
+export function AwsIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <rect x="1" y="7" width="22" height="10" rx="2" stroke="currentColor" strokeWidth="1.4" />
+      <text x="12" y="14.5" textAnchor="middle" fontSize="6.5" fontWeight="700" fill="currentColor" fontFamily="Arial, sans-serif">
+        AWS
+      </text>
+    </svg>
+  );
+}
+
 export function TagIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className} aria-hidden="true">

@@ -56,22 +56,24 @@ export default function Nav() {
               {theme === 'dark' ? <MoonIcon className="h-3.5 w-3.5" /> : <SunIcon className="h-3.5 w-3.5" />}
             </span>
           </button>
-          <div className="flex overflow-hidden rounded-full border border-line/15 text-xs">
-            <button
-              onClick={() => setLocale('en')}
-              aria-pressed={locale === 'en'}
-              className={`px-2 py-1 ${locale === 'en' ? 'bg-fg text-bg' : 'text-fg/60 hover:text-fg'}`}
+          <button
+            type="button"
+            role="switch"
+            aria-checked={locale === 'pt'}
+            onClick={() => setLocale(locale === 'en' ? 'pt' : 'en')}
+            aria-label={locale === 'en' ? 'English active — switch to Portuguese' : 'Português ativo — mudar para inglês'}
+            className="relative flex h-7 w-[52px] shrink-0 items-center rounded-full border border-line/15 bg-soft/10 text-[10px] font-semibold transition-colors"
+          >
+            <span className="absolute left-1.5 text-fg/40">EN</span>
+            <span className="absolute right-1.5 text-fg/40">PT</span>
+            <span
+              className={`absolute left-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-fg text-bg shadow-sm transition-transform duration-200 ease-out ${
+                locale === 'pt' ? 'translate-x-6' : 'translate-x-0'
+              }`}
             >
-              EN
-            </button>
-            <button
-              onClick={() => setLocale('pt')}
-              aria-pressed={locale === 'pt'}
-              className={`px-2 py-1 ${locale === 'pt' ? 'bg-fg text-bg' : 'text-fg/60 hover:text-fg'}`}
-            >
-              PT
-            </button>
-          </div>
+              {locale === 'pt' ? 'PT' : 'EN'}
+            </span>
+          </button>
         </div>
       </div>
     </header>

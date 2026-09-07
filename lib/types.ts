@@ -5,6 +5,9 @@ export interface ExperienceEntry {
   role: string;
   company: string;
   companyUrl?: string;
+  /** Staffing/consulting agency the role was placed through, if any (e.g. "via Stech Soluções"). */
+  viaCompany?: string;
+  viaCompanyUrl?: string;
   description: string;
   stack: string[];
 }
