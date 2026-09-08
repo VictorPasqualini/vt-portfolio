@@ -35,6 +35,13 @@ export const LINKEDIN_URL = 'https://www.linkedin.com/in/victor-pasqualini-b459b
 export const MONGODB_CERTIFICATE_URL =
   'https://ti-user-certificates.s3.amazonaws.com/ae62dcd7-abdc-4e90-a570-83eccba49043/86bec6ac-b1ee-4832-8fb9-08ceba5c908e-victor-ramos-pasqualini-4ac01021-586b-4780-ba40-c917289b580f-certificate.pdf';
 
+/**
+ * Public identifier of the Hurcane agent embedded by components/HurcaneAgent.tsx.
+ * It is visible in the page anyway (the widget puts it in an iframe URL), so it
+ * is a constant rather than an environment variable.
+ */
+export const HURCANE_AGENT_ID = 'pasu-1788825510599';
+
 /** Narrows an unknown route segment to a supported locale, defaulting to English. */
 export function resolveLocale(segment: string): Locale {
   return segment === 'pt' ? 'pt' : 'en';
