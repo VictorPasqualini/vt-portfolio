@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { useLocale } from '@/lib/i18n-context';
-import { CheckIcon, CopyIcon, GithubIcon, LinkedinIcon } from '@/lib/icons';
-import { CONTACT_EMAIL, GITHUB_URL, LINKEDIN_URL } from '@/lib/site';
+import { CheckIcon, CopyIcon, GithubIcon, LinkedinIcon, WhatsappIcon } from '@/lib/icons';
+import { CONTACT_EMAIL, GITHUB_URL, LINKEDIN_URL, WHATSAPP_URL } from '@/lib/site';
 
 export default function Contact() {
   const { t } = useLocale();
@@ -63,6 +63,15 @@ export default function Contact() {
         >
           <GithubIcon className="h-4 w-4" />
           GitHub
+        </a>
+        <a
+          href={WHATSAPP_URL}
+          target="_blank"
+          rel="noreferrer"
+          className="flex items-center gap-2 rounded-full border border-line/15 px-4 py-2 hover:border-fg"
+        >
+          <WhatsappIcon className="h-4 w-4" />
+          WhatsApp
         </a>
       </div>
     </section>
