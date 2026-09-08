@@ -11,7 +11,17 @@ import HurcaneAgent from '@/components/HurcaneAgent';
 import { en } from '@/content/en';
 import { pt } from '@/content/pt';
 import { LocaleProvider } from '@/lib/i18n-context';
-import { CONTACT_EMAIL, GITHUB_URL, LINKEDIN_URL, LOCALES, LOCALE_TAGS, SITE_URL, resolveLocale } from '@/lib/site';
+import {
+  CONTACT_EMAIL,
+  GITHUB_URL,
+  LINKEDIN_URL,
+  LOCALES,
+  LOCALE_TAGS,
+  SITE_URL,
+  WHATSAPP_NUMBER,
+  WHATSAPP_URL,
+  resolveLocale,
+} from '@/lib/site';
 import type { Locale, SiteContent } from '@/lib/types';
 
 const DICTIONARIES: Record<Locale, SiteContent> = { en, pt };
@@ -97,7 +107,8 @@ export default function LocalePage({ params }: { params: { locale: string } }) {
       'Scala',
       'SQL',
     ],
-    sameAs: [GITHUB_URL, LINKEDIN_URL],
+    telephone: WHATSAPP_NUMBER,
+    sameAs: [GITHUB_URL, LINKEDIN_URL, WHATSAPP_URL],
   };
 
   return (

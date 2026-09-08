@@ -29,6 +29,13 @@ export const GITHUB_URL = 'https://github.com/VictorPasqualini';
 export const LINKEDIN_URL = 'https://www.linkedin.com/in/victor-pasqualini-b459b51b0/';
 
 /**
+ * WhatsApp, as the same phone number in two shapes: the one people read, and the
+ * one wa.me needs (digits only, country code included — 55 for Brazil).
+ */
+export const WHATSAPP_NUMBER = '+55 11 99735-6148';
+export const WHATSAPP_URL = 'https://wa.me/5511997356148';
+
+/**
  * The MongoDB SI Associate certificate PDF, as issued. It is the same document
  * in both locales, so it lives here instead of being duplicated in content/.
  */
