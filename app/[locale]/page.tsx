@@ -7,6 +7,7 @@ import Skills from '@/components/Skills';
 import Education from '@/components/Education';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import HurcaneAgent from '@/components/HurcaneAgent';
 import { en } from '@/content/en';
 import { pt } from '@/content/pt';
 import { LocaleProvider } from '@/lib/i18n-context';
@@ -114,6 +115,7 @@ export default function LocalePage({ params }: { params: { locale: string } }) {
         </div>
         <Footer />
       </main>
+      <HurcaneAgent />
     </LocaleProvider>
   );
 }
