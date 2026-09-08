@@ -64,7 +64,10 @@ export function LocaleProvider({ initialLocale, children }: { initialLocale: Loc
     (next: Locale) => {
       setLocaleState(next);
       rememberLocale(next);
-      router.push(`/${next}`);
+      // scroll: false — switching language is not navigating somewhere new, so
+      // the reader should stay on the section they were reading. Without it the
+      // App Router's default jumps both locale pages back to the top.
+      router.push(`/${next}`, { scroll: false });
     },
     [router],
   );
