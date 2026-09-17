@@ -189,6 +189,8 @@ export const en: SiteContent = {
   projects: {
     viewRepo: 'View repo',
     website: 'Website',
-    fewDetails: 'Early-stage project — public details still light.',
+    caseStudy: 'Use case',
+    back: 'All projects',
+    nextCase: 'Next project',
   },
 };

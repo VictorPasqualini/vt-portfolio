@@ -8,9 +8,13 @@ import { useEffect, useRef } from 'react';
 // so the columns hang and swing like a string curtain. The pointer pushes
 // characters away from it; gravity and the constraints bring them back.
 const CHARSET = '01<>/{}[]#$%&*+-=:;.ETLSPARKFWIODNM';
-const COL_WIDTH = 22;
+const COL_WIDTH = 13;
 const ROW_HEIGHT = 24;
-const MAX_PARTICLES = 700;
+// Budget, not a column cap: columns are whatever the width asks for, and rows
+// are whatever is left over. It has to be generous now that the hero is
+// full-bleed, or a wide viewport spends the whole budget on columns and the
+// curtain ends up a few rows deep.
+const MAX_PARTICLES = 2600;
 
 const GRAVITY = 0.18;
 const DAMPING = 0.99;

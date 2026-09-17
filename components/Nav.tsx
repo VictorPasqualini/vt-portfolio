@@ -1,8 +1,10 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { useLocale } from '@/lib/i18n-context';
 import { useTheme } from '@/lib/theme-context';
-import { SunIcon, MoonIcon } from '@/lib/icons';
+import { DownloadIcon, SunIcon, MoonIcon } from '@/lib/icons';
+import { resumeFor } from '@/lib/site';
 
 const LINKS = [
   { id: 'experience', key: 'experience' as const },
@@ -12,24 +14,94 @@ const LINKS = [
   { id: 'contact', key: 'contact' as const },
 ];
 
-export default function Nav() {
+/** How far below the sticky header a section counts as the one being read. */
+const PROBE_OFFSET = 140;
+
+/**
+ * @param onHome false on a case study page, where the section ids do not exist:
+ * the links become absolute so they navigate home first, and the scroll spy is
+ * switched off because there is nothing for it to track.
+ */
+/** @param wide matches the header column to a page that uses the wide layout. */
+export default function Nav({ onHome = true, wide = false }: { onHome?: boolean; wide?: boolean }) {
   const { locale, setLocale, t } = useLocale();
   const { theme, setTheme } = useTheme();
+  const [active, setActive] = useState('');
+
+  useEffect(() => {
+    if (!onHome) return;
+
+    const sync = () => {
+      const probe = window.scrollY + PROBE_OFFSET;
+      // Last section whose top has passed the probe line — sections are stacked
+      // siblings, so the one furthest down that still qualifies is the one on
+      // screen.
+      let current = '';
+      for (const link of LINKS) {
+        const el = document.getElementById(link.id);
+        if (el && el.offsetTop <= probe) current = link.id;
+      }
+      setActive(current);
+    };
+
+    sync();
+    window.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', sync);
+    return () => {
+      window.removeEventListener('scroll', sync);
+      window.removeEventListener('resize', sync);
+    };
+  }, [onHome]);
+
+  const home = `/${locale}`;
 
   return (
     <header className="sticky top-0 z-50 border-b border-line/10 bg-bg/80 backdrop-blur">
-      <div className="mx-auto flex max-w-content items-center justify-between px-6 py-4">
-        <a href="#top" className="text-sm font-semibold tracking-tight">
+      <div className={`mx-auto flex ${wide ? 'max-w-wide' : 'max-w-content'} items-center justify-between px-6 py-4`}>
+        <a href={onHome ? '#top' : home} className="text-sm font-semibold tracking-tight">
           {t.meta.name}
         </a>
-        <nav className="hidden gap-5 text-sm text-fg/70 sm:flex">
-          {LINKS.map((link) => (
-            <a key={link.id} href={`#${link.id}`} className="hover:text-fg">
-              {t.nav[link.key]}
-            </a>
-          ))}
+        <nav className="hidden gap-7 font-mono text-xs uppercase tracking-[0.14em] sm:flex">
+          {LINKS.map((link) => {
+            const isActive = onHome && active === link.id;
+            return (
+              <a
+                key={link.id}
+                href={`${onHome ? '' : home}#${link.id}`}
+                aria-current={isActive ? 'true' : undefined}
+                className={`relative py-1 transition-colors ${isActive ? 'text-fg' : 'text-fg-2 hover:text-fg'}`}
+              >
+                {t.nav[link.key]}
+                {/* The rule is always mounted and only scales in, so the label
+                    never shifts when a section becomes the active one. */}
+                <span
+                  aria-hidden
+                  className={`absolute inset-x-0 -bottom-0.5 h-px origin-left bg-accent transition-transform duration-200 ${
+                    isActive ? 'scale-x-100' : 'scale-x-0'
+                  }`}
+                />
+              </a>
+            );
+          })}
         </nav>
         <div className="flex items-center gap-3 text-sm">
+          {/* The one action the header exists to keep reachable: the hero's
+              button scrolls away, this one does not. Same height and shape as
+              the two toggles beside it, but painted like their selected knob —
+              it belongs to that set of controls and is still the one thing in
+              the header worth pressing. The label drops on a phone, where only
+              the icon fits. */}
+          <a
+            href={resumeFor(locale)}
+            download
+            // The label is display:none on a phone, which also takes it out of
+            // the accessibility tree, so the name is spelled out here.
+            aria-label={`${t.nav.resume} (PDF)`}
+            className="flex h-7 w-[52px] shrink-0 items-center justify-center gap-2 rounded-full border border-fg bg-fg text-[10px] font-semibold uppercase tracking-[0.08em] text-bg shadow-sm transition-opacity hover:opacity-90 sm:w-auto sm:justify-start sm:px-3"
+          >
+            <DownloadIcon className="h-3.5 w-3.5" />
+            <span className="hidden sm:inline">{t.nav.resume}</span>
+          </a>
           <button
             type="button"
             role="switch"
@@ -44,10 +116,10 @@ export default function Nav() {
                   ? 'Tema claro ativo — mudar para escuro'
                   : 'Light theme active — switch to dark'
             }
-            className="relative flex h-7 w-[52px] shrink-0 items-center rounded-full border border-line/15 bg-soft/10 transition-colors"
+            className="relative flex h-7 w-[52px] shrink-0 items-center rounded-full border border-line/15 bg-surface transition-colors"
           >
-            <SunIcon className="absolute left-1.5 h-3.5 w-3.5 text-fg/40" />
-            <MoonIcon className="absolute right-1.5 h-3.5 w-3.5 text-fg/40" />
+            <SunIcon className="absolute left-1.5 h-3.5 w-3.5 text-fg-4" />
+            <MoonIcon className="absolute right-1.5 h-3.5 w-3.5 text-fg-4" />
             <span
               className={`absolute left-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-fg text-bg shadow-sm transition-transform duration-200 ease-out ${
                 theme === 'dark' ? 'translate-x-6' : 'translate-x-0'
@@ -62,10 +134,10 @@ export default function Nav() {
             aria-checked={locale === 'pt'}
             onClick={() => setLocale(locale === 'en' ? 'pt' : 'en')}
             aria-label={locale === 'en' ? 'English active — switch to Portuguese' : 'Português ativo — mudar para inglês'}
-            className="relative flex h-7 w-[52px] shrink-0 items-center rounded-full border border-line/15 bg-soft/10 text-[10px] font-semibold transition-colors"
+            className="relative flex h-7 w-[52px] shrink-0 items-center rounded-full border border-line/15 bg-surface text-[10px] font-semibold transition-colors"
           >
-            <span className="absolute left-1.5 text-fg/40">EN</span>
-            <span className="absolute right-1.5 text-fg/40">PT</span>
+            <span className="absolute left-1.5 text-fg-4">EN</span>
+            <span className="absolute right-1.5 text-fg-4">PT</span>
             <span
               className={`absolute left-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-fg text-bg shadow-sm transition-transform duration-200 ease-out ${
                 locale === 'pt' ? 'translate-x-6' : 'translate-x-0'

@@ -18,7 +18,7 @@ export default function LocaleRedirect() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center gap-6 px-6 text-center">
-      <p className="text-sm text-fg/50">Victor Pasqualini — Data Engineer</p>
+      <p className="text-sm text-fg-3">Victor Pasqualini — Data Engineer</p>
       <div className="flex gap-3 text-sm">
         <a href="/en" className="rounded-full border border-line/15 px-4 py-2 hover:border-fg">
           English

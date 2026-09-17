@@ -66,6 +66,17 @@ export const HURCANE_AGENT_IDS: Record<Locale, string> = {
   pt: 'pasu-1788825510599',
 };
 
+/**
+ * The résumé PDF for a locale, under public/resumes. Two places link to it —
+ * the hero and the header — and the filenames are not a pattern, so they are
+ * resolved here instead of being spelled out at each call site.
+ */
+export function resumeFor(locale: Locale): string {
+  return locale === 'pt'
+    ? '/resumes/Curriculo_VictorRamosPasqualini.pdf'
+    : '/resumes/Resume_VictorRamosPasqualini.pdf';
+}
+
 /** Narrows an unknown route segment to a supported locale, defaulting to English. */
 export function resolveLocale(segment: string): Locale {
   return segment === 'pt' ? 'pt' : 'en';

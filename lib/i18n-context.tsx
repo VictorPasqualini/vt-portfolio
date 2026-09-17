@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 import type { Locale, SiteContent } from './types';
 import { en } from '@/content/en';
@@ -47,8 +47,22 @@ const LocaleContext = createContext<LocaleContextValue | null>(null);
  * `[locale]` route segment, and switching languages navigates to the sibling URL
  * rather than only flipping state, so the address bar and the content never disagree.
  */
-export function LocaleProvider({ initialLocale, children }: { initialLocale: Locale; children: ReactNode }) {
+export function LocaleProvider({
+  initialLocale,
+  titles,
+  children,
+}: {
+  initialLocale: Locale;
+  /**
+   * Document title per locale, for pages that are not the home page. Without it
+   * a language switch on a case study page would retitle the tab with the home
+   * page's title, since that is all the dictionary carries.
+   */
+  titles?: Record<Locale, string>;
+  children: ReactNode;
+}) {
   const router = useRouter();
+  const pathname = usePathname();
   const [locale, setLocaleState] = useState<Locale>(initialLocale);
 
   // A client-side navigation between /en and /pt can reuse this provider
@@ -64,20 +78,24 @@ export function LocaleProvider({ initialLocale, children }: { initialLocale: Loc
     (next: Locale) => {
       setLocaleState(next);
       rememberLocale(next);
+      // Swap the locale segment and keep the rest of the path, so switching
+      // language on a case study page stays on that case study instead of
+      // dropping the reader back on the home page.
+      const rest = pathname.split('/').slice(2).filter(Boolean).join('/');
       // scroll: false — switching language is not navigating somewhere new, so
       // the reader should stay on the section they were reading. Without it the
       // App Router's default jumps both locale pages back to the top.
-      router.push(`/${next}`, { scroll: false });
+      router.push(rest ? `/${next}/${rest}` : `/${next}`, { scroll: false });
     },
-    [router],
+    [pathname, router],
   );
 
   useEffect(() => {
     // app/layout.tsx is shared by both locales, so its prerendered lang="en" is
     // wrong on /pt until this runs. Same for the title on a client-side switch.
     document.documentElement.lang = locale;
-    document.title = DICTIONARIES[locale].meta.pageTitle;
-  }, [locale]);
+    document.title = titles ? titles[locale] : DICTIONARIES[locale].meta.pageTitle;
+  }, [locale, titles]);
 
   const value = useMemo(() => ({ locale, setLocale, t: DICTIONARIES[locale] }), [locale, setLocale]);
 
