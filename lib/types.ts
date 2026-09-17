@@ -100,7 +100,12 @@ export interface SiteContent {
   projects: {
     viewRepo: string;
     website: string;
-    fewDetails: string;
+    /** Card link into a project's case study page. */
+    caseStudy: string;
+    /** Back link at the top of a case study page. */
+    back: string;
+    /** Label above the link to the following case study. */
+    nextCase: string;
   };
 }
 
@@ -110,7 +115,12 @@ export interface ProjectData {
   githubUrl: string;
   homepage?: string;
   language?: string;
-  topics: string[];
+  /**
+   * The three technologies the project is actually built on, in the words its
+   * own docs use. Three because that is what the card can show without the row
+   * wrapping, and because a longer list stops telling the reader anything.
+   */
+  stack: [string, string, string];
   stars: number;
   /** [from, to] hex colors for the card's accent gradient. */
   accent: [string, string];
@@ -118,4 +128,70 @@ export interface ProjectData {
     en: string;
     pt: string;
   };
+}
+
+/** One labelled fact in a case study's header grid, e.g. "License" / "Apache-2.0". */
+export interface CaseFact {
+  label: string;
+  value: string;
+}
+
+/**
+ * One beat of a case study: a heading, a paragraph or two, and — where the code
+ * says it better than the prose would — the demo that makes the point.
+ */
+export interface CaseSection {
+  title: string;
+  body: string[];
+  /** Short scannable facts, for a section that is a list rather than an argument. */
+  bullets?: string[];
+  sample?: CaseSample;
+  /** A screenshot of the running product, for the sections that describe a screen. */
+  shot?: CaseShot;
+}
+
+/** A captioned code demo. */
+export interface CaseSample {
+  caption: string;
+  code: string;
+}
+
+/**
+ * A screenshot under public/cases. The intrinsic size is carried here because
+ * the export is unoptimised and a plain <img> without one reflows the page as
+ * it loads.
+ */
+export interface CaseShot {
+  src: string;
+  width: number;
+  height: number;
+  /** Describes the screen for a reader who cannot see it; also the caption. */
+  caption: string;
+}
+
+/** A number or claim worth pulling out of the prose, e.g. "21" / "rule types". */
+export interface CaseHighlight {
+  value: string;
+  label: string;
+}
+
+/** The whole case study for one locale. */
+export interface CaseStudyContent {
+  /** One line under the project name, positioning it. */
+  tagline: string;
+  facts: CaseFact[];
+  highlights: CaseHighlight[];
+  sections: CaseSection[];
+}
+
+/**
+ * A long-form write-up for a project, rendered at /[locale]/projects/[slug].
+ * Only projects with an entry here are linked from their card — the rest stay
+ * as a card and a repo link, which is all their public detail supports.
+ */
+export interface CaseStudy {
+  /** Matches ProjectData.slug. */
+  slug: string;
+  en: CaseStudyContent;
+  pt: CaseStudyContent;
 }

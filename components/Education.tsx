@@ -1,119 +1,39 @@
 'use client';
 
-import type { ReactNode } from 'react';
-
 import { useLocale } from '@/lib/i18n-context';
 import { ExternalLinkIcon } from '@/lib/icons';
-import type { Certification, SkillBadge } from '@/lib/types';
+import type { Certification } from '@/lib/types';
+import Section from './Section';
+
+const PILL_BASE = 'flex items-center gap-3 rounded-card border border-line/25 bg-surface px-5 py-3.5';
 
 /**
- * How loudly a credential group is drawn. Certifications are earned by sitting
- * an exam and skill badges are not, so the two are not given equal weight: the
- * certification pill is padded, tinted and set in a larger type, while the badge
- * row is deliberately quieter so its colourful art does not outshout it.
+ * A certification, fronted by the issuer's logo when one is vendored. Skill
+ * badges used to sit beside these; they moved to Skills, where a credential
+ * earned per skill reads as evidence for the skill lists rather than as a
+ * quieter sibling of an exam.
  */
-type Tone = 'primary' | 'secondary';
-
-const TONE: Record<Tone, { group: string; title: string; pill: string; name: string }> = {
-  primary: {
-    group: 'mt-10',
-    title: 'mb-3 text-sm font-semibold text-fg/70',
-    pill: 'border-line/30 bg-fg/[0.03] px-5 py-3.5',
-    name: 'text-base font-semibold',
-  },
-  secondary: {
-    group: 'mt-8',
-    title: 'mb-3 text-sm font-medium text-fg/40',
-    pill: 'border-line/15 px-4 py-2.5',
-    name: 'text-sm font-medium',
-  },
-};
-
-const PILL_BASE = 'flex items-center gap-3 rounded-xl border';
-
-/**
- * Shared shell for anything listed under Education as a credential: an image,
- * the title over the year, and — only when there is something to open — a link
- * out to it.
- */
-function CredentialPill({
-  image,
-  name,
-  year,
-  url,
-  tone,
-}: {
-  image: ReactNode;
-  name: string;
-  year: string;
-  url?: string;
-  tone: Tone;
-}) {
-  const style = TONE[tone];
+function CertificationPill({ cert }: { cert: Certification }) {
   const body = (
     <>
-      {image}
+      {cert.icon && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={cert.icon} alt="" loading="lazy" className="h-8 w-8 shrink-0 object-contain" />
+      )}
       <span className="flex flex-col leading-tight">
-        <span className={style.name}>{name}</span>
-        <span className="text-xs text-fg/50">{year}</span>
+        <span className="text-base font-medium">{cert.name}</span>
+        <span className="font-mono text-[11px] text-fg-3">{cert.year}</span>
       </span>
     </>
   );
 
-  if (!url) return <div className={`${PILL_BASE} ${style.pill}`}>{body}</div>;
+  if (!cert.url) return <div className={PILL_BASE}>{body}</div>;
 
   return (
-    <a href={url} target="_blank" rel="noreferrer" className={`${PILL_BASE} ${style.pill} hover:border-fg`}>
+    <a href={cert.url} target="_blank" rel="noreferrer" className={`${PILL_BASE} transition-colors hover:border-fg/40`}>
       {body}
-      <ExternalLinkIcon className="h-3.5 w-3.5 shrink-0 text-fg/40" />
+      <ExternalLinkIcon className="h-3.5 w-3.5 shrink-0 text-fg-4" />
     </a>
-  );
-}
-
-/** A certification, fronted by the issuer's logo when one is vendored. */
-function CertificationPill({ cert }: { cert: Certification }) {
-  return (
-    <CredentialPill
-      tone="primary"
-      name={cert.name}
-      year={cert.year}
-      url={cert.url}
-      image={
-        cert.icon && (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={cert.icon} alt="" loading="lazy" className="h-8 w-8 shrink-0 object-contain" />
-        )
-      }
-    />
-  );
-}
-
-/** A skill badge, fronted by the badge art the issuer hands out. */
-function SkillBadgePill({ badge }: { badge: SkillBadge }) {
-  return (
-    <CredentialPill
-      tone="secondary"
-      name={badge.name}
-      year={badge.year}
-      url={badge.url}
-      image={
-        // The art carries its own rounded shape on a transparent background, so
-        // it is left unclipped instead of being masked into the pill's radius.
-        // eslint-disable-next-line @next/next/no-img-element
-        <img src={badge.art} alt="" loading="lazy" className="h-8 w-8 shrink-0 object-contain" />
-      }
-    />
-  );
-}
-
-function CredentialGroup({ title, tone, children }: { title: string; tone: Tone; children: ReactNode }) {
-  const style = TONE[tone];
-
-  return (
-    <div className={style.group}>
-      <h3 className={style.title}>{title}</h3>
-      <div className="flex flex-wrap gap-3">{children}</div>
-    </div>
   );
 }
 
@@ -121,33 +41,29 @@ export default function Education() {
   const { t } = useLocale();
 
   return (
-    <section id="education" className="py-16">
-      <h2 className="mb-8 text-xl font-semibold tracking-tight">{t.sections.education}</h2>
-      <ul className="space-y-4">
+    <Section id="education" index="04" title={t.sections.education}>
+      <ul className="divide-y divide-line/10 border-y border-line/10">
         {t.education.map((entry) => (
-          <li key={`${entry.institution}-${entry.period}`} className="flex flex-col gap-0.5">
-            <p className="text-xs uppercase tracking-wide text-fg/50">{entry.period}</p>
-            <p className="text-sm font-medium">{entry.institution}</p>
-            <p className="text-sm text-fg/70">{entry.program}</p>
+          <li key={`${entry.institution}-${entry.period}`} className="grid gap-x-10 gap-y-1 py-6 sm:grid-cols-[9rem_1fr]">
+            <p className="font-mono text-xs uppercase tracking-[0.12em] text-fg-3">{entry.period}</p>
+            <div>
+              <p className="font-medium">{entry.institution}</p>
+              <p className="text-sm text-fg-2">{entry.program}</p>
+            </div>
           </li>
         ))}
       </ul>
 
       {t.certifications.length > 0 && (
-        <CredentialGroup title={t.sections.certifications} tone="primary">
-          {t.certifications.map((cert) => (
-            <CertificationPill key={cert.name} cert={cert} />
-          ))}
-        </CredentialGroup>
+        <div className="mt-12">
+          <h3 className="mb-4 font-mono text-xs uppercase tracking-[0.14em] text-fg-2">{t.sections.certifications}</h3>
+          <div className="flex flex-wrap gap-3">
+            {t.certifications.map((cert) => (
+              <CertificationPill key={cert.name} cert={cert} />
+            ))}
+          </div>
+        </div>
       )}
-
-      {t.badges.length > 0 && (
-        <CredentialGroup title={t.sections.badges} tone="secondary">
-          {t.badges.map((badge) => (
-            <SkillBadgePill key={badge.name} badge={badge} />
-          ))}
-        </CredentialGroup>
-      )}
-    </section>
+    </Section>
   );
 }

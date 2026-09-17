@@ -192,6 +192,8 @@ export const pt: SiteContent = {
   projects: {
     viewRepo: 'Ver repositório',
     website: 'Site',
-    fewDetails: 'Projeto em estágio inicial — poucos detalhes públicos ainda.',
+    caseStudy: 'Caso de uso',
+    back: 'Todos os projetos',
+    nextCase: 'Próximo projeto',
   },
 };

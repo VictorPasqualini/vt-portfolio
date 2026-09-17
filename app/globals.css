@@ -2,24 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+/* Colour tokens are RGB triplets so Tailwind can apply opacity modifiers to
+   them via rgb(var(--x) / <alpha-value>).
 
-  /* light theme tokens — cream (RGB triplets, consumed via rgb(var(--x) / <alpha-value>)) */
+   --fg-2..--fg-4 are a real hierarchy scale rather than opacities of --fg:
+   flattening the same brown at 70/50/40% washes it out on the cream theme and
+   muddies it on the coffee one, so each step is picked per theme instead.
+     fg   headings and anything that must be read first
+     fg-2 body copy
+     fg-3 metadata: periods, counts, captions
+     fg-4 decorative only — it does not reach AA at body size */
+:root {
+  /* light theme — cream */
   --bg: 250 245 235;
-  --fg: 46 32 24;
+  --surface: 243 236 223;
+  --fg: 38 26 19;
+  --fg-2: 74 58 47;
+  --fg-3: 124 105 90;
+  --fg-4: 152 134 118;
   --line: 46 32 24;
-  --soft: 46 32 24;
   --accent: 180 83 9; /* amber-700, coffee-toned accent */
+  /* What to print on top of --accent. The two themes sit on opposite sides of
+     the accent's luminance, so a filled accent button needs its own foreground
+     token rather than always using --bg or always using --fg. */
+  --accent-fg: 250 245 235;
 }
 
 .dark {
-  /* dark theme tokens — coffee */
-  --bg: 28 19 15;
-  --fg: 237 224 209;
+  /* dark theme — coffee */
+  --bg: 26 18 14;
+  --surface: 36 26 20;
+  --fg: 242 231 217;
+  --fg-2: 206 191 174;
+  --fg-3: 155 138 122;
+  --fg-4: 124 108 94;
   --line: 237 224 209;
-  --soft: 237 224 209;
   --accent: 217 158 92; /* warm caramel, better contrast on dark */
+  --accent-fg: 26 18 14;
 }
 
 html {
@@ -45,11 +64,10 @@ section[id] {
   overflow: hidden;
   pointer-events: none;
   user-select: none;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 13px;
   line-height: 1;
   color: rgb(var(--fg) / 0.3);
   mask-image: linear-gradient(to bottom, #000 0%, #000 45%, transparent 92%);
   -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 45%, transparent 92%);
 }
-

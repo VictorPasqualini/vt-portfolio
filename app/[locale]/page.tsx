@@ -116,14 +116,14 @@ export default function LocalePage({ params }: { params: { locale: string } }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personLd) }} />
       <main>
         <Nav />
-        <div className="mx-auto max-w-content px-6">
-          <Hero />
-          <Experience />
-          <Projects />
-          <Skills />
-          <Education />
-          <Contact />
-        </div>
+        {/* No shared column here on purpose: every section owns its own centred
+            column so that the tinted ones can run the full width of the page. */}
+        <Hero />
+        <Experience />
+        <Projects />
+        <Skills />
+        <Education />
+        <Contact />
         <Footer />
       </main>
       <HurcaneAgent />
