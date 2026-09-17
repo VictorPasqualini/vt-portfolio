@@ -1,4 +1,4 @@
-import { MONGODB_CERTIFICATE_URL } from '@/lib/site';
+import { CREDLY_BADGE_URLS, MONGODB_CERTIFICATE_URL } from '@/lib/site';
 import type { SiteContent } from '@/lib/types';
 
 export const pt: SiteContent = {
@@ -29,6 +29,7 @@ export const pt: SiteContent = {
     skills: 'Skills',
     education: 'Formação Acadêmica',
     certifications: 'Certificações',
+    badges: 'Badges',
     contact: 'Contato',
   },
   experience: [
@@ -131,6 +132,24 @@ export const pt: SiteContent = {
   ],
   certifications: [
     { name: 'MongoDB SI Associate', year: '2025', icon: '/icons/mongodb.svg', url: MONGODB_CERTIFICATE_URL },
+  ],
+  // Badge names stay in English here on purpose: the art beside them is printed in
+  // English and the Credly page they open is in English, so a translated caption
+  // would be the only Portuguese in sight.
+  badges: [
+    { name: 'MongoDB Overview', year: '2026', art: '/badges/mongodb-core-concepts.png', url: CREDLY_BADGE_URLS.mongodbOverview },
+    {
+      name: 'Relational to Document Model',
+      year: '2026',
+      art: '/badges/mongodb-document-model.png',
+      url: CREDLY_BADGE_URLS.mongodbDocumentModel,
+    },
+    {
+      name: 'Cluster Reliability',
+      year: '2026',
+      art: '/badges/mongodb-cluster-reliability.png',
+      url: CREDLY_BADGE_URLS.mongodbClusterReliability,
+    },
   ],
   skills: [
     { label: 'Linguagens', items: ['Python (PySpark, Pandas, Polars, DuckDB)', 'Scala', 'Java', 'SQL', 'Cobol', 'Rust'] },

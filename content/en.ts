@@ -1,4 +1,4 @@
-import { MONGODB_CERTIFICATE_URL } from '@/lib/site';
+import { CREDLY_BADGE_URLS, MONGODB_CERTIFICATE_URL } from '@/lib/site';
 import type { SiteContent } from '@/lib/types';
 
 export const en: SiteContent = {
@@ -29,6 +29,7 @@ export const en: SiteContent = {
     skills: 'Skills',
     education: 'Education',
     certifications: 'Certifications',
+    badges: 'Skill Badges',
     contact: 'Contact',
   },
   experience: [
@@ -131,6 +132,21 @@ export const en: SiteContent = {
   ],
   certifications: [
     { name: 'MongoDB SI Associate', year: '2025', icon: '/icons/mongodb.svg', url: MONGODB_CERTIFICATE_URL },
+  ],
+  badges: [
+    { name: 'MongoDB Overview', year: '2026', art: '/badges/mongodb-core-concepts.png', url: CREDLY_BADGE_URLS.mongodbOverview },
+    {
+      name: 'Relational to Document Model',
+      year: '2026',
+      art: '/badges/mongodb-document-model.png',
+      url: CREDLY_BADGE_URLS.mongodbDocumentModel,
+    },
+    {
+      name: 'Cluster Reliability',
+      year: '2026',
+      art: '/badges/mongodb-cluster-reliability.png',
+      url: CREDLY_BADGE_URLS.mongodbClusterReliability,
+    },
   ],
   skills: [
     { label: 'Languages', items: ['Python (PySpark, Pandas, Polars, DuckDB)', 'Scala', 'Java', 'SQL', 'Cobol', 'Rust'] },
