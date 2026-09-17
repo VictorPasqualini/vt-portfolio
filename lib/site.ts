@@ -43,6 +43,19 @@ export const MONGODB_CERTIFICATE_URL =
   'https://ti-user-certificates.s3.amazonaws.com/ae62dcd7-abdc-4e90-a570-83eccba49043/86bec6ac-b1ee-4832-8fb9-08ceba5c908e-victor-ramos-pasqualini-4ac01021-586b-4780-ba40-c917289b580f-certificate.pdf';
 
 /**
+ * Credly verification pages for the MongoDB skill badges, keyed by the art
+ * vendored under public/badges/. Credly's own embed is a fixed-size iframe
+ * injected by a third-party script, which neither the static export nor the dark
+ * theme get on well with, so the art is served from here and these URLs are only
+ * what the badges link out to.
+ */
+export const CREDLY_BADGE_URLS = {
+  mongodbOverview: 'https://www.credly.com/badges/c0c168d2-8a50-4a16-81c1-977c5a6fa12a/public_url',
+  mongodbDocumentModel: 'https://www.credly.com/badges/bbd164cc-0e82-45f3-b249-9cfb7d4cd1bd/public_url',
+  mongodbClusterReliability: 'https://www.credly.com/badges/43769d0f-9614-4fc5-bbbc-b332bc52a337/public_url',
+} as const;
+
+/**
  * Hurcane agent embedded by components/HurcaneAgent.tsx — one per locale, since
  * each agent is configured to answer in its own language. The ids are visible in
  * the page anyway (the widget puts them in an iframe URL), so they are constants

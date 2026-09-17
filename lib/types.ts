@@ -24,8 +24,24 @@ export interface Certification {
   year: string;
   /** Issuer logo under public/icons, when the issuer has one vendored. */
   icon?: string;
-  /** Public link to the certificate itself; the badge is only clickable with it. */
+  /** Public link to the certificate itself; the entry is only clickable with it. */
   url?: string;
+}
+
+/**
+ * A skill badge, which is a lighter credential than a certification: earned per
+ * skill rather than by sitting an exam, and issued as artwork rather than as a
+ * certificate. Both the art and the verification page always exist, so unlike
+ * `Certification` neither field is optional.
+ */
+export interface SkillBadge {
+  name: string;
+  /** Year the badge was issued. */
+  year: string;
+  /** Badge artwork under public/badges. */
+  art: string;
+  /** Issuer's public verification page for this badge. */
+  url: string;
 }
 
 export interface SkillGroup {
@@ -61,11 +77,13 @@ export interface SiteContent {
     skills: string;
     education: string;
     certifications: string;
+    badges: string;
     contact: string;
   };
   experience: ExperienceEntry[];
   education: EducationEntry[];
   certifications: Certification[];
+  badges: SkillBadge[];
   skills: SkillGroup[];
   contact: {
     intro: string;
