@@ -15,8 +15,12 @@ export default function Hero() {
   return (
     <section id="top" className="relative overflow-hidden">
       <LetterCurtain />
-      <div className="relative mx-auto grid max-w-content items-center gap-12 px-6 py-20 sm:py-28 lg:grid-cols-[1fr_auto] lg:gap-16">
-        <div className="flex flex-col gap-7">
+      {/* Tighter on a phone than anywhere else: the portrait moved above the
+          name there, and the old padding and gap pushed the buttons off the
+          first screen. */}
+      <div className="relative mx-auto grid max-w-content items-center gap-7 px-6 py-12 sm:gap-12 sm:py-28 lg:grid-cols-[1fr_auto] lg:gap-16">
+        {/* Tighter on a phone for the same reason as the padding above. */}
+        <div className="flex flex-col gap-5 sm:gap-7">
           {/* Where he is matters to whoever is hiring, so it is a badge in the
               accent rather than a grey line above the name. */}
           <p className="inline-flex w-fit items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3.5 py-1.5 font-mono text-xs uppercase tracking-[0.16em] text-accent">
@@ -61,8 +65,14 @@ export default function Hero() {
         {/* The source picture is a cut-out that stops in a straight line
             across the chest. A disc turns that into a frame: nothing is left
             hanging, the crop is deliberate, and the accent ring outside it is
-            what gives the portrait a footing on the page. */}
-        <div className="relative mx-auto w-60 shrink-0 sm:w-72 lg:mx-0 lg:w-80">
+            what gives the portrait a footing on the page.
+
+            Stacked above the name until lg, which is the usual way round on a
+            phone, and small enough there that the name, the summary and the
+            buttons all still land on the first screen. The order is visual
+            only: in the markup the name comes first, which is the order a
+            screen reader and a crawler read. */}
+        <div className="relative order-first mx-auto w-40 shrink-0 sm:w-72 lg:order-none lg:mx-0 lg:w-80">
           <span aria-hidden className="absolute -inset-3 rounded-full border border-accent/50" />
           {/* The disc is filled: the subject is cut out on transparency, and
               without a fill the curtain would run through the portrait rather
