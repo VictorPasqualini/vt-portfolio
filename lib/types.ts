@@ -52,6 +52,8 @@ export interface SkillGroup {
 export interface SiteContent {
   meta: {
     name: string;
+    /** Header wordmark: the full name does not fit the row on a phone. */
+    shortName: string;
     role: string;
     location: string;
     /** Browser tab title (also what the tab's hover tooltip shows). */
@@ -87,7 +89,6 @@ export interface SiteContent {
   skills: SkillGroup[];
   contact: {
     intro: string;
-    emailLabel: string;
     phoneLabel: string;
     /** Label of the copy-to-clipboard button next to the email address. */
     copy: string;
@@ -106,6 +107,16 @@ export interface SiteContent {
     back: string;
     /** Label above the link to the following case study. */
     nextCase: string;
+  };
+  /** The full-screen image viewer on a case study page. */
+  viewer: {
+    /** Hint over a screenshot, and the label of the control that opens it. */
+    expand: string;
+    close: string;
+    zoomIn: string;
+    zoomOut: string;
+    /** Back to the whole image at its original size. */
+    reset: string;
   };
 }
 

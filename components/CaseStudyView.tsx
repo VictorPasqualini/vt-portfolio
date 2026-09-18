@@ -1,9 +1,11 @@
 'use client';
 
+import { useState } from 'react';
 import { useLocale } from '@/lib/i18n-context';
-import { ArrowLeftIcon, ArrowRightIcon, ExternalLinkIcon, GithubIcon } from '@/lib/icons';
+import { ArrowLeftIcon, ArrowRightIcon, ExternalLinkIcon, GithubIcon, ZoomInIcon } from '@/lib/icons';
 import type { CaseSample, CaseShot, CaseStudy, ProjectData } from '@/lib/types';
 import Footer from './Footer';
+import Lightbox from './Lightbox';
 import Nav from './Nav';
 
 /**
@@ -52,11 +54,22 @@ function Sample({ sample }: { sample: CaseSample }) {
  * page reserves the space before the file arrives, and the caption doubles as
  * the alt text: it says what the screen shows, which is what a reader who
  * cannot see it needs.
+ *
+ * Inline it is a column wide at most, which is too small to read a dashboard
+ * in, so the whole thing is a button into the full-screen viewer.
  */
 function Shot({ shot }: { shot: CaseShot }) {
+  const { t } = useLocale();
+  const [open, setOpen] = useState(false);
+
   return (
     <figure className="mt-6">
-      <div className="overflow-hidden rounded-card border border-line/10 bg-surface">
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
+        aria-label={`${t.viewer.expand}: ${shot.caption}`}
+        className="group relative block w-full cursor-zoom-in overflow-hidden rounded-card border border-line/10 bg-surface transition-colors hover:border-fg/30"
+      >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={shot.src}
@@ -67,10 +80,20 @@ function Shot({ shot }: { shot: CaseShot }) {
           decoding="async"
           className="block h-auto w-full"
         />
-      </div>
+        {/* Always visible on a touch screen, where there is no hover to reveal
+            it, and where tapping an image is the least obvious of the two. */}
+        <span
+          aria-hidden
+          className="pointer-events-none absolute right-3 top-3 flex items-center gap-1.5 rounded-full bg-bg/85 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.1em] text-fg-2 backdrop-blur transition-opacity sm:opacity-0 sm:group-hover:opacity-100"
+        >
+          <ZoomInIcon className="h-3.5 w-3.5" />
+          {t.viewer.expand}
+        </span>
+      </button>
       <figcaption className="mt-2.5 font-mono text-[11px] uppercase tracking-[0.12em] text-fg-3">
         {shot.caption}
       </figcaption>
+      {open && <Lightbox src={shot.src} alt={shot.caption} onClose={() => setOpen(false)} />}
     </figure>
   );
 }
@@ -111,8 +134,12 @@ export default function CaseStudyView({
             that stays true for the whole page — name, pitch, links, numbers — so
             the reader never has to scroll back up to remember what they are
             reading about. It sticks on a wide screen and stacks on a phone. */}
+        {/* min-w-0 on both columns: a grid item refuses to shrink below its
+            content's min-content width by default, and the code blocks below
+            are wider than a phone — without it the whole page grows to fit
+            them and has to be dragged sideways. */}
         <div className="grid items-start gap-10 pb-16 lg:grid-cols-[21rem_1fr] lg:gap-14">
-          <aside className="lg:sticky lg:top-24">
+          <aside className="min-w-0 lg:sticky lg:top-24">
             <div className="overflow-hidden rounded-card border border-line/10 bg-surface">
               <span
                 aria-hidden
@@ -163,7 +190,7 @@ export default function CaseStudyView({
             </div>
           </aside>
 
-          <div>
+          <div className="min-w-0">
             {content.sections.map((section, index) => (
               <section key={section.title} className="border-t border-line/10 py-10 first:border-t-0 first:pt-0">
                 <div className="flex items-baseline gap-3">

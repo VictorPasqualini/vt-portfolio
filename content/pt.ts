@@ -4,6 +4,7 @@ import type { SiteContent } from '@/lib/types';
 export const pt: SiteContent = {
   meta: {
     name: 'Victor Ramos Pasqualini',
+    shortName: 'Victor Pasqualini',
     role: 'Engenheiro de Dados',
     location: 'São Paulo, Brasil',
     pageTitle: 'Victor Pasqualini - Engenheiro de Dados Senior',
@@ -181,7 +182,6 @@ export const pt: SiteContent = {
   ],
   contact: {
     intro: 'Estou aberto a novas oportunidades e colaborações — fique à vontade para entrar em contato.',
-    emailLabel: 'Email',
     phoneLabel: 'Telefone',
     copy: 'Copiar',
     copied: 'Copiado',
@@ -195,5 +195,12 @@ export const pt: SiteContent = {
     caseStudy: 'Caso de uso',
     back: 'Todos os projetos',
     nextCase: 'Próximo projeto',
+  },
+  viewer: {
+    expand: 'Ampliar',
+    close: 'Fechar',
+    zoomIn: 'Aproximar',
+    zoomOut: 'Afastar',
+    reset: 'Ajustar à tela',
   },
 };
