@@ -58,14 +58,27 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* The portrait is cut out on transparency, so there is no panel to
-            frame. It stands in front of an accent-outlined block instead, which
-            is what gives it a footing on the page; the curtain shows through
-            everywhere the subject does not cover. */}
+        {/* The source picture is a cut-out that stops in a straight line
+            across the chest. A disc turns that into a frame: nothing is left
+            hanging, the crop is deliberate, and the accent ring outside it is
+            what gives the portrait a footing on the page. */}
         <div className="relative mx-auto w-60 shrink-0 sm:w-72 lg:mx-0 lg:w-80">
-          <span aria-hidden className="absolute inset-x-5 bottom-0 top-20 rounded-card border border-accent/50" />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/victor.webp" alt={t.meta.name} width={768} height={979} className="relative w-full" />
+          <span aria-hidden className="absolute -inset-3 rounded-full border border-accent/50" />
+          {/* The disc is filled: the subject is cut out on transparency, and
+              without a fill the curtain would run through the portrait rather
+              than behind it. */}
+          <div className="relative aspect-square overflow-hidden rounded-full bg-surface">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/victor.webp"
+              alt={t.meta.name}
+              width={768}
+              height={979}
+              // object-top, not centre: the square crop is taken from the top
+              // of a portrait frame, which is where the face is.
+              className="h-full w-full object-cover object-top"
+            />
+          </div>
         </div>
       </div>
     </section>
