@@ -57,11 +57,18 @@ export default function Nav({ onHome = true, wide = false }: { onHome?: boolean;
 
   return (
     <header className="sticky top-0 z-50 border-b border-line/10 bg-bg/80 backdrop-blur">
-      <div className={`mx-auto flex ${wide ? 'max-w-wide' : 'max-w-content'} items-center justify-between px-6 py-4`}>
+      <div className={`mx-auto flex ${wide ? 'max-w-wide' : 'max-w-content'} items-center justify-between gap-4 px-6 py-4`}>
+        {/* The short name: the header is the one row that cannot wrap, and the
+            middle name buys nothing here — the hero and the footer still sign
+            in full. */}
         <a href={onHome ? '#top' : home} className="text-sm font-semibold tracking-tight">
-          {t.meta.name}
+          {t.meta.shortName}
         </a>
-        <nav className="hidden gap-7 font-mono text-xs uppercase tracking-[0.14em] sm:flex">
+        {/* Shown from md up, but tighter until lg: at 768px the name, the five
+            labels and the three controls fill the row almost exactly, and the
+            header is the one row on the page that cannot wrap. The smaller type
+            and narrower gaps buy the breathing room back. */}
+        <nav className="hidden gap-3 font-mono text-[10px] uppercase tracking-[0.1em] md:flex lg:gap-7 lg:text-xs lg:tracking-[0.14em]">
           {LINKS.map((link) => {
             const isActive = onHome && active === link.id;
             return (
@@ -84,23 +91,24 @@ export default function Nav({ onHome = true, wide = false }: { onHome?: boolean;
             );
           })}
         </nav>
-        <div className="flex items-center gap-3 text-sm">
+        <div className="flex items-center gap-2 text-sm lg:gap-3">
           {/* The one action the header exists to keep reachable: the hero's
               button scrolls away, this one does not. Same height and shape as
               the two toggles beside it, but painted like their selected knob —
               it belongs to that set of controls and is still the one thing in
-              the header worth pressing. The label drops on a phone, where only
-              the icon fits. */}
+              the header worth pressing. Below lg the label shortens to CV: the
+              full word is what pushes this row past a tablet's width. */}
           <a
             href={resumeFor(locale)}
             download
-            // The label is display:none on a phone, which also takes it out of
-            // the accessibility tree, so the name is spelled out here.
+            // Below lg the label reads CV, which a screen reader would spell
+            // out letter by letter, so the name is written in full here.
             aria-label={`${t.nav.resume} (PDF)`}
-            className="flex h-7 w-[52px] shrink-0 items-center justify-center gap-2 rounded-full border border-fg bg-fg text-[10px] font-semibold uppercase tracking-[0.08em] text-bg shadow-sm transition-opacity hover:opacity-90 sm:w-auto sm:justify-start sm:px-3"
+            className="flex h-7 shrink-0 items-center justify-center gap-1.5 rounded-full border border-fg bg-fg px-2.5 text-[10px] font-semibold uppercase tracking-[0.08em] text-bg shadow-sm transition-opacity hover:opacity-90 lg:gap-2 lg:px-3"
           >
+            <span className="lg:hidden">CV</span>
+            <span className="hidden lg:inline">{t.nav.resume}</span>
             <DownloadIcon className="h-3.5 w-3.5" />
-            <span className="hidden sm:inline">{t.nav.resume}</span>
           </a>
           <button
             type="button"

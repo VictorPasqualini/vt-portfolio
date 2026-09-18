@@ -4,6 +4,7 @@ import type { SiteContent } from '@/lib/types';
 export const en: SiteContent = {
   meta: {
     name: 'Victor Ramos Pasqualini',
+    shortName: 'Victor Pasqualini',
     role: 'Data Engineer',
     location: 'São Paulo, Brazil',
     pageTitle: 'Victor Pasqualini - Senior Data Engineer',
@@ -178,7 +179,6 @@ export const en: SiteContent = {
   ],
   contact: {
     intro: "I'm open to new opportunities and collaborations — feel free to reach out.",
-    emailLabel: 'Email',
     phoneLabel: 'Phone',
     copy: 'Copy',
     copied: 'Copied',
@@ -192,5 +192,12 @@ export const en: SiteContent = {
     caseStudy: 'Use case',
     back: 'All projects',
     nextCase: 'Next project',
+  },
+  viewer: {
+    expand: 'Expand',
+    close: 'Close',
+    zoomIn: 'Zoom in',
+    zoomOut: 'Zoom out',
+    reset: 'Fit to screen',
   },
 };
