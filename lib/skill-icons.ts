@@ -11,6 +11,8 @@ const ICON_FILES: [string, string][] = [
   ['mysql', 'mysql'],
   ['mongodb', 'mongodb'],
   ['databricks', 'databricks'],
+  // Photon is the Databricks execution engine, not a product with a mark of its own.
+  ['photon', 'databricks'],
   ['unity catalog', 'databricks'],
   ['unitycatalog', 'databricks'],
   ['airflow', 'apacheairflow'],
@@ -36,6 +38,15 @@ const ICON_FILES: [string, string][] = [
   ['scala', 'scala'],
   ['java', 'openjdk'],
   ['duckdb', 'duckdb'],
+  ['typescript', 'typescript'],
+  ['next', 'nextdotjs'],
+  ['react', 'react'],
+  ['fastapi', 'fastapi'],
+  ['rust', 'rust'],
+  ['snowflake', 'snowflake'],
+  ['redpanda', 'redpanda'],
+  // Apache DataFusion's own mark, recoloured off its near-black original.
+  ['datafusion', 'datafusion'],
   ['pandas', 'pandas'],
   ['numpy', 'numpy'],
   ['django', 'django'],
@@ -74,13 +85,15 @@ const ICON_FILES: [string, string][] = [
   ['cloudwatch', 'aws-cloudwatch'],
 ];
 
-export type InlineIconName = 'database' | 'sync' | 'layers' | 'pipeline' | 'tag';
+export type InlineIconName = 'database' | 'sync' | 'layers' | 'network' | 'pipeline' | 'steps' | 'tag';
 
 // Concepts and generic terms with no logo anywhere (SQL, DB2, CDC, Delta Lake,
-// Medallion, CI/CD) get a hand-drawn glyph that says what kind of thing it is.
-// See lib/icons.tsx.
+// Medallion, Incremental, CI/CD) get a hand-drawn glyph that says what kind of
+// thing it is. See lib/icons.tsx.
 const INLINE_KEYWORDS: [string, InlineIconName][] = [
   ['sql', 'database'],
+  ['incremental', 'steps'],
+  ['lightgbm', 'network'],
   ['db2', 'database'],
   ['cdc', 'sync'],
   ['delta lake', 'layers'],

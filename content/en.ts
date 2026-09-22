@@ -1,18 +1,20 @@
-import { CREDLY_BADGE_URLS, MONGODB_CERTIFICATE_URL } from '@/lib/site';
+import { CERTIFICATE_URLS, CREDLY_BADGE_URLS, MONGODB_CERTIFICATE_URL } from '@/lib/site';
 import type { SiteContent } from '@/lib/types';
 
 export const en: SiteContent = {
   meta: {
     name: 'Victor Ramos Pasqualini',
     shortName: 'Victor Pasqualini',
+    firstName: 'Victor',
+    lastName: 'Pasqualini',
     role: 'Data Engineer',
     location: 'São Paulo, Brazil',
-    pageTitle: 'Victor Pasqualini - Senior Data Engineer',
+    pageTitle: 'Victor Pasqualini - Data Specialist',
     description:
-      'Senior Data Engineer with 5+ years building large-scale pipelines on AWS and GCP — Spark, Kafka, Airflow, Databricks and lakehouse architectures.',
+      'Senior Data Engineer with 5+ years building large-scale pipelines on AWS and GCP, with Spark, Kafka, Airflow, Databricks and lakehouse architectures.',
   },
   nav: {
-    experience: 'Experience',
+    about: 'About',
     projects: 'Projects',
     skills: 'Skills',
     education: 'Education',
@@ -20,22 +22,30 @@ export const en: SiteContent = {
     resume: 'Resume',
   },
   hero: {
-    greeting: "Hi, I'm Victor.",
-    summary:
-      'Data Engineer with 5+ years of experience building robust pipelines in cloud architectures. Specialized in legacy system migration, ETL/ELT processing with Spark, and data infrastructure on AWS/GCP. Focused on data quality, integrity and availability using open source technologies like Spark, Kafka and Airflow.',
+    tagline:
+      'Data Engineer building large-scale pipelines in the cloud. I migrate legacy systems, process terabytes a day with **Spark**, **Kafka**, **Airflow** and **Databricks**, and deliver consistent pipelines on **AWS** and **GCP**, with integrity and quality end to end.',
+  },
+  about: {
+    body: [
+      "I have been a Data Engineer for more than five years, designing and running pipelines in cloud architectures. I work on moving legacy systems, from on-premise **Cloudera**, **Hadoop**/**Hive** estates to **Cobol/DB2** mainframes, onto modern data platforms such as **Databricks**, with ETL/ELT processing in **Spark** and infrastructure on **AWS** and **GCP**.",
+      'Across credit bureaus, capital markets and consultancies I have built medallion lakehouses over 20+ TB of daily ingestion, cut batch processing time by 40% on Databricks, and held a 90% SLA on pipelines other teams depend on. Data quality, integrity and availability are the part of the job I care about most, and open source is what I build it with.',
+    ],
+    stackLabel: 'Core stack',
+    stack: ['Spark', 'Kafka', 'Airflow', 'Databricks', 'Iceberg', 'Delta Lake', 'Python', 'Scala', 'SQL', 'NoSQL', 'AWS', 'GCP', 'Terraform'],
+    experienceLabel: 'Experience',
   },
   sections: {
-    experience: 'Experience',
-    projects: 'Projects',
-    skills: 'Skills',
-    education: 'Education',
+    about: { label: 'About & Experience', title: 'Data Specialist.' },
+    projects: { label: 'Projects', title: "What I've built" },
+    skills: { label: 'Skills', title: 'The day-to-day stack' },
+    education: { label: 'Education', title: 'Degrees' },
+    contact: { label: 'Contact', title: 'Get in touch' },
     certifications: 'Certifications',
     badges: 'Skill Badges',
-    contact: 'Contact',
   },
   experience: [
     {
-      period: '2025 — Now',
+      period: '2025 — now',
       role: 'Data Specialist',
       company: 'Serasa Experian',
       companyUrl: 'https://www.serasaexperian.com.br',
@@ -126,12 +136,24 @@ export const en: SiteContent = {
     },
   ],
   education: [
-    { period: '2025 – 2026', institution: 'Inbix Academy', program: 'MBA — AI for Innovation' },
-    { period: '2024 – 2025', institution: 'FIAP', program: 'MBA — Data Engineering' },
-    { period: '2020 – 2022', institution: 'FATEC São Paulo', program: "Bachelor's, Systems Analysis and Development" },
-    { period: '2017 – 2019', institution: 'ETEC Jardim Ângela', program: 'Technical, Computer Science — Integrated High School' },
+    { period: '2025 — 2026', institution: 'Inbix Academy', program: 'MBA - AI for Innovation' },
+    { period: '2024 — 2025', institution: 'FIAP', program: 'MBA - Data Engineering' },
+    { period: '2020 — 2022', institution: 'FATEC São Paulo', program: "Bachelor's, Systems Analysis and Development" },
+    { period: '2017 — 2019', institution: 'ETEC Jardim Ângela', program: 'Technical, Computer Science (integrated high school)' },
   ],
   certifications: [
+    {
+      name: 'Confluent Data Streaming Engineer',
+      year: '2026',
+      icon: '/icons/confluent.svg',
+      url: CERTIFICATE_URLS.confluentFlinkEngineer,
+    },
+    {
+      name: 'Databricks Fundamentals',
+      year: '2026',
+      icon: '/icons/databricks.svg',
+      url: CERTIFICATE_URLS.databricksFundamentals,
+    },
     { name: 'MongoDB SI Associate', year: '2025', icon: '/icons/mongodb.svg', url: MONGODB_CERTIFICATE_URL },
   ],
   badges: [
@@ -162,6 +184,7 @@ export const en: SiteContent = {
         'Sqoop',
         'DataFusion Comet',
         'Databricks',
+        'Photon',
         'Snowflake',
         'Compute Engine',
         'Cloud Functions',
@@ -178,8 +201,10 @@ export const en: SiteContent = {
     { label: 'Other', items: ['CI/CD (Cockpit)', 'Git (GitLab, Bitbucket)', 'Linux (Shell/Bash Script)'] },
   ],
   contact: {
-    intro: "I'm open to new opportunities and collaborations — feel free to reach out.",
-    phoneLabel: 'Phone',
+    headline: ["Let's talk data", 'over a coffee? ☕'],
+    intro:
+      "A pipeline that won't close, a migration stuck halfway, a role you're hiring for, or just the urge to talk data. Reach me on whichever channel you like.",
+    localTime: 'Local time',
     copy: 'Copy',
     copied: 'Copied',
   },

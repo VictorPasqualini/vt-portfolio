@@ -49,6 +49,19 @@ export const MONGODB_CERTIFICATE_URL =
  * theme get on well with, so the art is served from here and these URLs are only
  * what the badges link out to.
  */
+/**
+ * Accredible verification pages, one per credential. Both issuers host on
+ * Accredible under their own domain, and both pages are client-rendered, so
+ * there is nothing to scrape from them — the names and years below live in the
+ * content files and have to be kept right by hand.
+ */
+export const CERTIFICATE_URLS = {
+  databricksFundamentals:
+    'https://credentials.databricks.com/5ff71246-0ed0-4f7b-8a36-2275a5cdbd8c#acc.x2DEWwuj',
+  confluentFlinkEngineer:
+    'https://certificates.confluent.io/eb151eb7-e858-4607-a9f5-1d5885f5ef91#acc.C4WIa82H',
+} as const;
+
 export const CREDLY_BADGE_URLS = {
   mongodbOverview: 'https://www.credly.com/badges/c0c168d2-8a50-4a16-81c1-977c5a6fa12a/public_url',
   mongodbDocumentModel: 'https://www.credly.com/badges/bbd164cc-0e82-45f3-b249-9cfb7d4cd1bd/public_url',

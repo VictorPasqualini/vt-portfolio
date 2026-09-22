@@ -1,63 +1,50 @@
 'use client';
 
 import { useLocale } from '@/lib/i18n-context';
-import { getSkillIcon, type InlineIconName } from '@/lib/skill-icons';
-import { DatabaseIcon, ExternalLinkIcon, LayersIcon, PipelineIcon, SyncIcon, TagIcon } from '@/lib/icons';
+import { ExternalLinkIcon } from '@/lib/icons';
 import Section from './Section';
+import SkillMark from './SkillMark';
 
-const INLINE_ICONS: Record<InlineIconName, (props: { className?: string }) => JSX.Element> = {
-  database: DatabaseIcon,
-  sync: SyncIcon,
-  layers: LayersIcon,
-  pipeline: PipelineIcon,
-  tag: TagIcon,
-};
-
-function SkillGlyph({ name }: { name: InlineIconName }) {
-  const Icon = INLINE_ICONS[name];
-  return <Icon className="h-4 w-4 text-fg-3" />;
-}
-
+/**
+ * Section 03: the inventory, read as a document rather than as a bag of pills.
+ *
+ * One row per group, hairline-separated, with the group name in a left gutter
+ * and the tools themselves as plain text beside their marks. It is the same
+ * shape the job history and the education list already use, so the three
+ * sections stop looking like three different websites. Dropping the pill
+ * border is what lets the logos carry the block: they line up in a column of
+ * their own instead of each one sitting in its own little box.
+ */
 export default function Skills() {
   const { t } = useLocale();
 
   return (
-    <Section id="skills" index="03" title={t.sections.skills} band>
-      <div className="grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+    <Section id="skills" index="03" heading={t.sections.skills} band>
+      <ul className="divide-y divide-line/10 border-y border-line/10">
         {t.skills.map((group) => (
-          <div key={group.label}>
-            <h3 className="mb-3 border-b border-line/10 pb-2 font-mono text-xs uppercase tracking-[0.14em] text-fg-3">
-              {group.label}
-            </h3>
-            <div className="flex flex-wrap gap-1.5">
-              {group.items.map((item) => {
-                const icon = getSkillIcon(item);
-                return (
-                  <span
-                    key={item}
-                    className="flex items-center gap-1.5 rounded-full border border-line/15 bg-bg px-2.5 py-1 text-xs text-fg-2"
-                  >
-                    {icon.kind === 'img' ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img src={icon.src} alt="" loading="lazy" className="h-4 w-4 object-contain" />
-                    ) : (
-                      <SkillGlyph name={icon.name} />
-                    )}
-                    {item}
-                  </span>
-                );
-              })}
+          <li key={group.label} className="grid gap-x-10 gap-y-3 py-6 sm:grid-cols-[11rem_1fr]">
+            <h3 className="font-mono text-xs uppercase tracking-[0.14em] text-fg-3 sm:pt-0.5">{group.label}</h3>
+            {/* gap-x is wide enough that the names read as a list and not as a
+                run-on sentence, which is the one thing the pill border was
+                doing that the border itself was not needed for. */}
+            <div className="flex flex-wrap gap-x-6 gap-y-3">
+              {group.items.map((item) => (
+                <span key={item} className="flex items-center gap-2 text-sm text-fg-2">
+                  <SkillMark label={item} />
+                  {item}
+                </span>
+              ))}
             </div>
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
 
       {/* Skill badges live here rather than under Education: they are issued per
           skill, not by sitting an exam, so they read as evidence for the lists
           above. The art is what makes them worth showing, so it is given real
           size instead of being shrunk into a pill. */}
       {t.badges.length > 0 && (
-        <div className="mt-12 border-t border-line/10 pt-8">
+        <div className="mt-14">
           <h3 className="mb-4 font-mono text-xs uppercase tracking-[0.14em] text-fg-3">{t.sections.badges}</h3>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {t.badges.map((badge) => (

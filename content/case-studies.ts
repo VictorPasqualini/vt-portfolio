@@ -140,7 +140,7 @@ const POUCH_FLOW_CODE = `market history (Binance public API, up to 5000 candles)
                       one position per symbol, acting on closed candles only`;
 
 const POUCH_COST_CODE = `# every simulated trade is charged on both sides
-FEE      = 0.001    # 0.1% — the same rate paper trading charges
+FEE      = 0.001    # 0.1%, the same rate paper trading charges
 SLIPPAGE = 0.0005   # 0.05% assumption
 
 # and the backtester refuses to flatter itself:
@@ -168,7 +168,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: 'sparquet',
     en: {
-      tagline: 'A Spark pipeline as a JSON document — written, generated, or drawn on a canvas.',
+      tagline: 'A Spark pipeline as a JSON document: written, generated, or drawn on a canvas.',
       facts: [
         { label: 'Role', value: 'Author and maintainer' },
         { label: 'Period', value: '2026 — now' },
@@ -185,7 +185,7 @@ export const caseStudies: CaseStudy[] = [
         {
           title: 'The problem',
           body: [
-            'Batch pipelines keep the same shape — read, transform, validate, write — and each one is rewritten as code anyway. Answering "what does this job actually do?" then means reading a PySpark diff, and the answer cannot be diffed, linted, generated or drawn.',
+            'Batch pipelines keep the same shape (read, transform, validate, write) and each one is rewritten as code anyway. Answering "what does this job actually do?" then means reading a PySpark diff, and the answer cannot be diffed, linted, generated or drawn.',
           ],
         },
         {
@@ -199,14 +199,14 @@ export const caseStudies: CaseStudy[] = [
         {
           title: 'Declarative where it usually gets imperative',
           body: [
-            'The parts people drop back into code for have a declarative form: `{param}` template parameters resolved before parsing, `{{var}}` runtime variables that push a collected key set into a later read as a literal `IN (...)` — the declarative version of the `collect()` + `isin()` trick that makes Delta data skipping work — reusable `$include` fragments, and several destinations from a single pass.',
+            'The parts people drop back into code for have a declarative form: `{param}` template parameters resolved before parsing, `{{var}}` runtime variables that push a collected key set into a later read as a literal `IN (...)` (the declarative version of the `collect()` + `isin()` trick that makes Delta data skipping work), reusable `$include` fragments, and several destinations from a single pass.',
           ],
           sample: asSample('Runtime pushdown: collect keys, then skip data on the next read', SPARQUET_PUSHDOWN_CODE),
         },
         {
           title: 'Two halves, one contract',
           body: [
-            'Studio is a browser canvas that reads and writes exactly those documents: it lints as you type, generates a pipeline with an LLM of your choice, and executes through a local runner bound to 127.0.0.1 — no account, no server, no telemetry. It never invents syntax the framework does not support, and the framework never needs it to run.',
+            'Studio is a browser canvas that reads and writes exactly those documents: it lints as you type, generates a pipeline with an LLM of your choice, and executes through a local runner bound to 127.0.0.1: no account, no server, no telemetry. It never invents syntax the framework does not support, and the framework never needs it to run.',
             'Data quality is the same story: it is `sparquet-cola`, a standalone library, declared as a dependency and re-exported under `sparquet.validation.*`.',
           ],
           sample: asSample('Run it from Python, or from the command line', SPARQUET_RUN_CODE),
@@ -216,7 +216,7 @@ export const caseStudies: CaseStudy[] = [
           title: 'Where it runs',
           body: [],
           bullets: [
-            'Locally, on Databricks, EMR, Dataproc or Synapse — the session manager detects the environment',
+            'Locally, on Databricks, EMR, Dataproc or Synapse: the session manager detects the environment',
             'Python 3.9 through 3.14, on PySpark 3.4+',
             'Extensible: register your own readers, writers, transformations and validators',
             'Documented at sparquet.dev in English, Portuguese and Spanish',
@@ -225,7 +225,7 @@ export const caseStudies: CaseStudy[] = [
       ],
     },
     pt: {
-      tagline: 'Um pipeline Spark como documento JSON — escrito, gerado, ou desenhado num canvas.',
+      tagline: 'Um pipeline Spark como documento JSON: escrito, gerado, ou desenhado num canvas.',
       facts: [
         { label: 'Papel', value: 'Autor e mantenedor' },
         { label: 'Período', value: '2026 — hoje' },
@@ -242,7 +242,7 @@ export const caseStudies: CaseStudy[] = [
         {
           title: 'O problema',
           body: [
-            'Pipeline batch tem sempre a mesma forma — ler, transformar, validar, escrever — e mesmo assim cada um é reescrito em código. Responder "o que esse job faz?" vira ler um diff de PySpark, e essa resposta não dá para versionar como contrato, lintar, gerar nem desenhar.',
+            'Pipeline batch tem sempre a mesma forma (ler, transformar, validar, escrever) e mesmo assim cada um é reescrito em código. Responder "o que esse job faz?" vira ler um diff de PySpark, e essa resposta não dá para versionar como contrato, lintar, gerar nem desenhar.',
           ],
         },
         {
@@ -256,14 +256,14 @@ export const caseStudies: CaseStudy[] = [
         {
           title: 'Declarativo onde costuma virar imperativo',
           body: [
-            'As partes em que todo mundo volta para o código têm forma declarativa: parâmetros `{param}` resolvidos antes do parse, variáveis de runtime `{{var}}` que empurram um conjunto de chaves coletado para a leitura seguinte como um `IN (...)` literal — a versão declarativa do truque `collect()` + `isin()` que faz o data skipping do Delta funcionar —, fragmentos reutilizáveis via `$include`, e vários destinos numa passada só.',
+            'As partes em que todo mundo volta para o código têm forma declarativa: parâmetros `{param}` resolvidos antes do parse, variáveis de runtime `{{var}}` que empurram um conjunto de chaves coletado para a leitura seguinte como um `IN (...)` literal (a versão declarativa do truque `collect()` + `isin()` que faz o data skipping do Delta funcionar), fragmentos reutilizáveis via `$include`, e vários destinos numa passada só.',
           ],
           sample: asSample('Pushdown de runtime: coleta as chaves e pula dados na leitura seguinte', SPARQUET_PUSHDOWN_CODE),
         },
         {
           title: 'Duas metades, um contrato',
           body: [
-            'O Studio é um canvas no navegador que lê e escreve exatamente esses documentos: linta enquanto você digita, gera um pipeline com o LLM que você escolher, e executa por um runner local preso em 127.0.0.1 — sem conta, sem servidor, sem telemetria. Ele nunca inventa sintaxe que o framework não suporta, e o framework nunca precisa dele para rodar.',
+            'O Studio é um canvas no navegador que lê e escreve exatamente esses documentos: linta enquanto você digita, gera um pipeline com o LLM que você escolher, e executa por um runner local preso em 127.0.0.1: sem conta, sem servidor, sem telemetria. Ele nunca inventa sintaxe que o framework não suporta, e o framework nunca precisa dele para rodar.',
             'Qualidade de dados segue a mesma ideia: é o `sparquet-cola`, biblioteca separada, declarada como dependência e reexportada em `sparquet.validation.*`.',
           ],
           sample: asSample('Roda pelo Python, ou pela linha de comando', SPARQUET_RUN_CODE),
@@ -273,7 +273,7 @@ export const caseStudies: CaseStudy[] = [
           title: 'Onde roda',
           body: [],
           bullets: [
-            'Local, Databricks, EMR, Dataproc ou Synapse — o session manager detecta o ambiente',
+            'Local, Databricks, EMR, Dataproc ou Synapse: o session manager detecta o ambiente',
             'Python 3.9 a 3.14, sobre PySpark 3.4+',
             'Extensível: registre seus próprios readers, writers, transformações e validadores',
             'Documentado no sparquet.dev em inglês, português e espanhol',
@@ -285,7 +285,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: 'sparquet-cola',
     en: {
-      tagline: 'Data quality for Spark as a library — not another service to run.',
+      tagline: 'Data quality for Spark as a library, not another service to run.',
       facts: [
         { label: 'Role', value: 'Author and maintainer' },
         { label: 'Period', value: '2026 — now' },
@@ -295,41 +295,41 @@ export const caseStudies: CaseStudy[] = [
       highlights: [
         { value: '21', label: 'rule types out of the box' },
         { value: '1', label: 'Spark action for a whole block' },
-        { value: '1', label: 'dependency — pyspark' },
+        { value: '1', label: 'dependency: pyspark' },
         { value: '3', label: 'doc languages: EN · PT · ES' },
       ],
       sections: [
         {
           title: 'The problem',
           body: [
-            'Data quality tooling usually arrives as a platform: a service to deploy next to the cluster that is already holding the data. And its output stops at a verdict — "3,412 rows failed" says the table is bad, not which rule rejected which row, so the quarantine it writes cannot actually be worked.',
+            'Data quality tooling usually arrives as a platform: a service to deploy next to the cluster that is already holding the data. And its output stops at a verdict: "3,412 rows failed" says the table is bad, not which rule rejected which row, so the quarantine it writes cannot actually be worked.',
           ],
         },
         {
           title: 'Rules are data',
           body: [
-            'One class, `Cola`, with a registry of rule types. A rule is a plain dict — a `type` plus that check’s parameters — so a validation block can be written by hand, generated, or stored next to the pipeline that runs it. Thresholds are one small DSL shared by every metric: `> 0`, `< 5%`, `between 10 and 20`, `<= 2h`.',
+            'One class, `Cola`, with a registry of rule types. A rule is a plain dict (a `type` plus that check’s parameters), so a validation block can be written by hand, generated, or stored next to the pipeline that runs it. Thresholds are one small DSL shared by every metric: `> 0`, `< 5%`, `between 10 and 20`, `<= 2h`.',
           ],
           sample: asSample('A rule is a dict. A failed check is a result, never an exception.', COLA_RUN_CODE),
         },
         {
           title: 'Codes, so the quarantine is workable',
           body: [
-            'Every row-level rule carries a code — declared, or rendered from the rule itself, always the same string for the same rule, because that string lands in your data. `annotate` writes it beside each rejected row, built from predicates the split already computes, so it costs no extra pass.',
+            'Every row-level rule carries a code: declared, or rendered from the rule itself, always the same string for the same rule, because that string lands in your data. `annotate` writes it beside each rejected row, built from predicates the split already computes, so it costs no extra pass.',
           ],
           sample: asSample('The quarantine table says which rule rejected each row', COLA_SPLIT_CODE),
         },
         {
           title: 'One rule, several targets',
           body: [
-            'Each target expands into an independent rule with its own result, its own code and its own share of the quarantine: a single verdict over two columns would not say which of them broke. Ambiguous forms — an empty target list, a nested `targets`, a `code` on the parent — are refused at parse time instead of being silently degraded.',
+            'Each target expands into an independent rule with its own result, its own code and its own share of the quarantine: a single verdict over two columns would not say which of them broke. Ambiguous forms (an empty target list, a nested `targets`, a `code` on the parent) are refused at parse time instead of being silently degraded.',
           ],
-          sample: asSample('One rule, two targets — two independent results and two codes', COLA_TARGETS_CODE),
+          sample: asSample('One rule, two targets: two independent results and two codes', COLA_TARGETS_CODE),
         },
         {
           title: 'One Spark action instead of a dozen',
           body: [
-            'Until v0.4.0 each check fired its own action, often more than one, so a block of a dozen rules scanned the data a dozen times. Now `run` collects the columns of every check that answered, issues a single `df.agg(...)`, and hands each check back its slice. Checks registered from outside — which cannot know the mechanism exists — keep their own action and keep working unchanged.',
+            'Until v0.4.0 each check fired its own action, often more than one, so a block of a dozen rules scanned the data a dozen times. Now `run` collects the columns of every check that answered, issues a single `df.agg(...)`, and hands each check back its slice. Checks registered from outside, which cannot know the mechanism exists, keep their own action and keep working unchanged.',
             '`tests/test_run_batch_spark.py` runs each rule alone and again inside a block, comparing verdict, message, `failed_count`, `severity` and `metric_value` field by field, so the two paths cannot drift.',
           ],
           sample: asSample('A check declares what it wants measured; run() issues one df.agg(...)', COLA_BATCH_CODE),
@@ -347,7 +347,7 @@ export const caseStudies: CaseStudy[] = [
       ],
     },
     pt: {
-      tagline: 'Qualidade de dados para Spark como biblioteca — não mais um serviço para operar.',
+      tagline: 'Qualidade de dados para Spark como biblioteca, não mais um serviço para operar.',
       facts: [
         { label: 'Papel', value: 'Autor e mantenedor' },
         { label: 'Período', value: '2026 — hoje' },
@@ -357,41 +357,41 @@ export const caseStudies: CaseStudy[] = [
       highlights: [
         { value: '21', label: 'tipos de regra prontos' },
         { value: '1', label: 'action do Spark por bloco' },
-        { value: '1', label: 'dependência — pyspark' },
+        { value: '1', label: 'dependência: pyspark' },
         { value: '3', label: 'idiomas na doc: EN · PT · ES' },
       ],
       sections: [
         {
           title: 'O problema',
           body: [
-            'Ferramenta de qualidade de dados costuma chegar como plataforma: um serviço para subir ao lado do cluster que já está com os dados na mão. E a saída costuma parar no veredito — "3.412 linhas falharam" diz que a tabela está ruim, não qual regra rejeitou qual linha, então a quarentena que ela escreve não dá para trabalhar.',
+            'Ferramenta de qualidade de dados costuma chegar como plataforma: um serviço para subir ao lado do cluster que já está com os dados na mão. E a saída costuma parar no veredito: "3.412 linhas falharam" diz que a tabela está ruim, não qual regra rejeitou qual linha, então a quarentena que ela escreve não dá para trabalhar.',
           ],
         },
         {
           title: 'Regras são dados',
           body: [
-            'Uma classe, `Cola`, com um registry de tipos de regra. Uma regra é um dict simples — a chave `type` mais os parâmetros daquele check — então o bloco de validação pode ser escrito à mão, gerado, ou guardado junto do pipeline que o executa. Thresholds são uma DSL pequena compartilhada por toda métrica: `> 0`, `< 5%`, `between 10 and 20`, `<= 2h`.',
+            'Uma classe, `Cola`, com um registry de tipos de regra. Uma regra é um dict simples (a chave `type` mais os parâmetros daquele check), então o bloco de validação pode ser escrito à mão, gerado, ou guardado junto do pipeline que o executa. Thresholds são uma DSL pequena compartilhada por toda métrica: `> 0`, `< 5%`, `between 10 and 20`, `<= 2h`.',
           ],
           sample: asSample('Regra é dict. Check que falha é resultado, nunca exceção.', COLA_RUN_CODE),
         },
         {
           title: 'Códigos, para a quarentena ser acionável',
           body: [
-            'Toda regra row-level carrega um código — declarado, ou renderizado a partir da própria regra, sempre a mesma string para a mesma regra, porque essa string vai parar nos seus dados. O `annotate` escreve esse código ao lado de cada linha rejeitada, a partir dos predicados que o split já calcula, então não custa passada extra.',
+            'Toda regra row-level carrega um código: declarado, ou renderizado a partir da própria regra, sempre a mesma string para a mesma regra, porque essa string vai parar nos seus dados. O `annotate` escreve esse código ao lado de cada linha rejeitada, a partir dos predicados que o split já calcula, então não custa passada extra.',
           ],
           sample: asSample('A tabela de quarentena diz qual regra rejeitou cada linha', COLA_SPLIT_CODE),
         },
         {
           title: 'Uma regra, vários targets',
           body: [
-            'Cada target vira uma regra independente, com resultado próprio, código próprio e contribuição própria para a quarentena: um veredito único sobre duas colunas não diria qual delas quebrou. Formas ambíguas — lista de targets vazia, `targets` aninhado, `code` no pai — são recusadas em tempo de parse em vez de degradadas em silêncio.',
+            'Cada target vira uma regra independente, com resultado próprio, código próprio e contribuição própria para a quarentena: um veredito único sobre duas colunas não diria qual delas quebrou. Formas ambíguas (lista de targets vazia, `targets` aninhado, `code` no pai) são recusadas em tempo de parse em vez de degradadas em silêncio.',
           ],
-          sample: asSample('Uma regra, dois targets — dois resultados e dois códigos independentes', COLA_TARGETS_CODE),
+          sample: asSample('Uma regra, dois targets: dois resultados e dois códigos independentes', COLA_TARGETS_CODE),
         },
         {
           title: 'Uma action do Spark no lugar de uma dúzia',
           body: [
-            'Até a v0.4.0 cada check disparava sua própria action, em geral mais de uma, então um bloco de uma dúzia de regras varria os dados uma dúzia de vezes. Agora o `run` junta as colunas de todo check que respondeu, emite um único `df.agg(...)` e devolve a cada check a sua fatia. Checks registrados de fora — que não têm como saber que o mecanismo existe — seguem com a própria action e seguem funcionando sem mudança.',
+            'Até a v0.4.0 cada check disparava sua própria action, em geral mais de uma, então um bloco de uma dúzia de regras varria os dados uma dúzia de vezes. Agora o `run` junta as colunas de todo check que respondeu, emite um único `df.agg(...)` e devolve a cada check a sua fatia. Checks registrados de fora, que não têm como saber que o mecanismo existe, seguem com a própria action e seguem funcionando sem mudança.',
             'O `tests/test_run_batch_spark.py` roda cada regra sozinha e de novo dentro de um bloco, comparando veredito, mensagem, `failed_count`, `severity` e `metric_value` campo a campo, para os dois caminhos não poderem divergir.',
           ],
           sample: asSample('O check declara o que quer medido; o run() emite um df.agg(...)', COLA_BATCH_CODE),
@@ -412,7 +412,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: 'pulse',
     en: {
-      tagline: 'A finance dashboard that reads the spreadsheet you already keep — and knows a contribution is not spending.',
+      tagline: 'A finance dashboard that reads the spreadsheet you already keep, and knows a contribution is not spending.',
       facts: [
         { label: 'Role', value: 'Author' },
         { label: 'Period', value: '2025 — now' },
@@ -420,7 +420,7 @@ export const caseStudies: CaseStudy[] = [
         { label: 'Source', value: 'A OneDrive share link' },
       ],
       highlights: [
-        { value: '0', label: 'databases — the sheet is the truth' },
+        { value: '0', label: 'databases: the sheet is the truth' },
         { value: '5', label: 'buckets every row falls into' },
         { value: '4', label: 'runtime dependencies' },
         { value: '0', label: 'charting libraries: the SVG is hand-written' },
@@ -431,34 +431,34 @@ export const caseStudies: CaseStudy[] = [
           body: [
             'On a spreadsheet a contribution looks like money out and a yield looks like money in. That is correct bookkeeping and ruinous reporting: adding those rows to the cash flow inflates income and expense at once, and destroys any sense of what you actually spend and save. So every row falls into one of five buckets, and only two of them feed the cash flow.',
           ],
-          sample: asSample('src/lib/types.ts — the whole product in one union', PULSE_BUCKET_CODE),
-          shot: { ...SHOT_PULSE_INVEST, caption: 'The investments screen, where contributions and yields are the subject — demo data' },
+          sample: asSample('src/lib/types.ts: the whole product in one union', PULSE_BUCKET_CODE),
+          shot: { ...SHOT_PULSE_INVEST, caption: 'The investments screen, where contributions and yields are the subject (demo data)' },
         },
         {
           title: 'It reads your sheet, not a new format',
           body: [
-            'Paste a OneDrive share link and the reader converts it into a download URL, guesses the header row and the columns by keyword, and shows you the first rows to confirm. `.xlsx`, `.csv` and `.tsv` all work — the `.xlsx` reader is written in-house on top of `fflate`, so the only real dependency is a zip decoder.',
+            'Paste a OneDrive share link and the reader converts it into a download URL, guesses the header row and the columns by keyword, and shows you the first rows to confirm. `.xlsx`, `.csv` and `.tsv` all work; the `.xlsx` reader is written in-house on top of `fflate`, so the only real dependency is a zip decoder.',
           ],
           sample: asSample('Brazilian formats are read as they are, with no configuration', PULSE_SHEET_CODE),
         },
         {
           title: 'No database, on purpose',
           body: [
-            'Nothing is imported and nothing is stored: add a line in the sheet, click refresh, the dashboard moves. The fetch is cached for 60 seconds and guarded against SSRF, and the only persisted state is a local config file — the link, the tab, the column mapping and the classification rules. Delete it and the app is new again.',
+            'Nothing is imported and nothing is stored: add a line in the sheet, click refresh, the dashboard moves. The fetch is cached for 60 seconds and guarded against SSRF, and the only persisted state is a local config file: the link, the tab, the column mapping and the classification rules. Delete it and the app is new again.',
           ],
-          shot: { ...SHOT_PULSE_PANEL, caption: 'The month panel reading a spreadsheet straight from disk — the header names the file' },
+          shot: { ...SHOT_PULSE_PANEL, caption: 'The month panel reading a spreadsheet straight from disk; the header names the file' },
         },
         {
           title: 'Five screens, and charts that cannot go off-palette',
           body: [
-            'A month panel, an investments screen where contributions and yields are the subject rather than noise, a credit-card screen, the full filterable ledger — including the rows the reader could not interpret — and the configuration. The charts are hand-written SVG and never read a hex value: every colour comes from a custom property, so light and dark themes cannot drift apart and no component can escape the palette.',
+            'A month panel, an investments screen where contributions and yields are the subject rather than noise, a credit-card screen, the full filterable ledger (including the rows the reader could not interpret) and the configuration. The charts are hand-written SVG and never read a hex value: every colour comes from a custom property, so light and dark themes cannot drift apart and no component can escape the palette.',
           ],
           shot: { ...SHOT_PULSE_CARDS, caption: 'The credit-card screen: hand-written SVG, and every colour from the palette' },
         },
       ],
     },
     pt: {
-      tagline: 'Um painel financeiro que lê a planilha que você já mantém — e sabe que aporte não é gasto.',
+      tagline: 'Um painel financeiro que lê a planilha que você já mantém, e sabe que aporte não é gasto.',
       facts: [
         { label: 'Papel', value: 'Autor' },
         { label: 'Período', value: '2025 — hoje' },
@@ -466,7 +466,7 @@ export const caseStudies: CaseStudy[] = [
         { label: 'Fonte', value: 'Um link de compartilhamento do OneDrive' },
       ],
       highlights: [
-        { value: '0', label: 'bancos de dados — a planilha é a verdade' },
+        { value: '0', label: 'bancos de dados: a planilha é a verdade' },
         { value: '5', label: 'baldes em que toda linha cai' },
         { value: '4', label: 'dependências em runtime' },
         { value: '0', label: 'bibliotecas de gráfico: o SVG é escrito à mão' },
@@ -477,27 +477,27 @@ export const caseStudies: CaseStudy[] = [
           body: [
             'Na planilha, aporte parece saída e rendimento parece entrada. Contabilmente está certo e como relatório é desastroso: somar essas linhas ao fluxo de caixa infla receita e despesa ao mesmo tempo e destrói qualquer noção de quanto você gasta e poupa. Por isso toda linha cai em um de cinco baldes, e só dois alimentam o fluxo de caixa.',
           ],
-          sample: asSample('src/lib/types.ts — o produto inteiro em uma union', PULSE_BUCKET_CODE),
-          shot: { ...SHOT_PULSE_INVEST, caption: 'A tela de investimentos, onde aporte e rendimento são o assunto — dados de demonstração' },
+          sample: asSample('src/lib/types.ts: o produto inteiro em uma union', PULSE_BUCKET_CODE),
+          shot: { ...SHOT_PULSE_INVEST, caption: 'A tela de investimentos, onde aporte e rendimento são o assunto (dados de demonstração)' },
         },
         {
           title: 'Lê a sua planilha, não um formato novo',
           body: [
-            'Cole o link de compartilhamento do OneDrive: o leitor converte em URL de download, adivinha a linha de cabeçalho e as colunas por palavra-chave, e mostra as primeiras linhas para você conferir. `.xlsx`, `.csv` e `.tsv` funcionam igual — o leitor de `.xlsx` é próprio, escrito sobre o `fflate`, então a única dependência de verdade é um descompactador de zip.',
+            'Cole o link de compartilhamento do OneDrive: o leitor converte em URL de download, adivinha a linha de cabeçalho e as colunas por palavra-chave, e mostra as primeiras linhas para você conferir. `.xlsx`, `.csv` e `.tsv` funcionam igual; o leitor de `.xlsx` é próprio, escrito sobre o `fflate`, então a única dependência de verdade é um descompactador de zip.',
           ],
           sample: asSample('Formatos brasileiros lidos como estão, sem configuração', PULSE_SHEET_CODE),
         },
         {
           title: 'Sem banco de dados, de propósito',
           body: [
-            'Nada é importado e nada é armazenado: adicione uma linha na planilha, clique em atualizar, o painel muda. A busca tem cache de 60 segundos e guarda contra SSRF, e o único estado persistido é um arquivo de configuração local — link, aba, mapeamento de colunas e regras de classificação. Apague e o app volta ao estado inicial.',
+            'Nada é importado e nada é armazenado: adicione uma linha na planilha, clique em atualizar, o painel muda. A busca tem cache de 60 segundos e guarda contra SSRF, e o único estado persistido é um arquivo de configuração local: link, aba, mapeamento de colunas e regras de classificação. Apague e o app volta ao estado inicial.',
           ],
-          shot: { ...SHOT_PULSE_PANEL, caption: 'O painel do mês lendo a planilha direto — o cabeçalho diz qual arquivo foi lido' },
+          shot: { ...SHOT_PULSE_PANEL, caption: 'O painel do mês lendo a planilha direto; o cabeçalho diz qual arquivo foi lido' },
         },
         {
           title: 'Cinco telas, e gráficos que não escapam da paleta',
           body: [
-            'Painel do mês, tela de investimentos onde aporte e rendimento são o assunto e não ruído, tela de cartões, o extrato completo e filtrável — inclusive as linhas que o leitor não conseguiu interpretar — e a configuração. Os gráficos são SVG escrito à mão e nunca leem hexadecimal: toda cor vem de uma custom property, então tema claro e escuro não divergem e nenhum componente consegue fugir da paleta.',
+            'Painel do mês, tela de investimentos onde aporte e rendimento são o assunto e não ruído, tela de cartões, o extrato completo e filtrável (inclusive as linhas que o leitor não conseguiu interpretar) e a configuração. Os gráficos são SVG escrito à mão e nunca leem hexadecimal: toda cor vem de uma custom property, então tema claro e escuro não divergem e nenhum componente consegue fugir da paleta.',
           ],
           shot: { ...SHOT_PULSE_CARDS, caption: 'A tela de cartões: SVG escrito à mão, e toda cor vinda da paleta' },
         },
@@ -505,7 +505,7 @@ export const caseStudies: CaseStudy[] = [
     },
   },
   {
-    slug: 'trader-bot',
+    slug: 'pouch',
     en: {
       tagline: 'Almost nothing works; the hard part is telling which. Research first, testnet money only.',
       facts: [
@@ -545,15 +545,15 @@ export const caseStudies: CaseStudy[] = [
         {
           title: 'A backtester that refuses to flatter itself',
           body: [
-            'Every assumption is set against the strategy. A signal is filled on the next bar’s open, so it can never see the price it trades at; when a bar touches both the stop and the target, the stop is assumed to hit first; the live engine acts only on closed candles and enters only on a signal transition, so a new allocation never buys a move that started days ago. Fees are read back from the exchange rather than assumed, which matters precisely because the testnet charges none — the 0.2% per round trip would otherwise show up for the first time on real money.',
+            'Every assumption is set against the strategy. A signal is filled on the next bar’s open, so it can never see the price it trades at; when a bar touches both the stop and the target, the stop is assumed to hit first; the live engine acts only on closed candles and enters only on a signal transition, so a new allocation never buys a move that started days ago. Fees are read back from the exchange rather than assumed, which matters precisely because the testnet charges none: the 0.2% per round trip would otherwise show up for the first time on real money.',
           ],
           sample: asSample('Costs charged on both sides, and the rules of engagement', POUCH_COST_CODE),
         },
         {
           title: 'Walk-forward, then three books',
           body: [
-            'One train/test split tests one regime change, so the survivors are re-run over eight rolling quarters and judged on how many they won rather than on the total. Measured on this project’s live allocations, carrying the deployed parameters beat re-optimising each window on five of six — 365 daily bars cannot support a 500-point grid.',
-            'The dashboard runs three books side by side and keeps their ledgers apart: the validated rule-based one, a machine-learning experiment that ranks the universe daily, and an exit experiment that enters identically and exits four different ways — settling by measurement a question usually settled by opinion.',
+            'One train/test split tests one regime change, so the survivors are re-run over eight rolling quarters and judged on how many they won rather than on the total. Measured on this project’s live allocations, carrying the deployed parameters beat re-optimising each window on five of six; 365 daily bars cannot support a 500-point grid.',
+            'The dashboard runs three books side by side and keeps their ledgers apart: the validated rule-based one, a machine-learning experiment that ranks the universe daily, and an exit experiment that enters identically and exits four different ways, settling by measurement a question usually settled by opinion.',
           ],
           shot: { ...SHOT_TRADER_PANEL, caption: 'The validated book and the ML lab side by side, on a testnet account' },
         },
@@ -564,7 +564,7 @@ export const caseStudies: CaseStudy[] = [
             'A local dashboard on 127.0.0.1, no build step',
             'Equity, realised and unrealised P&L, win rate, profit factor, drawdown, Sharpe',
             'Every entry and exit with the indicator values that triggered it',
-            'Seventeen allocations on 4h and 1d candles — mostly doing nothing, legibly',
+            'Seventeen allocations on 4h and 1d candles, mostly doing nothing, legibly',
           ],
         },
       ],
@@ -608,15 +608,15 @@ export const caseStudies: CaseStudy[] = [
         {
           title: 'Um backtester que se recusa a se elogiar',
           body: [
-            'Toda premissa é contra a estratégia. O sinal é executado na abertura do candle seguinte, então nunca vê o preço em que opera; quando um candle toca stop e alvo, assume-se que o stop veio primeiro; o motor ao vivo só age em candle fechado e só entra na transição do sinal, então uma alocação nova nunca compra um movimento que começou dias atrás. As taxas são lidas de volta da corretora em vez de assumidas, e isso importa justamente porque a testnet não cobra nenhuma — os 0,2% por round trip apareceriam pela primeira vez com dinheiro de verdade.',
+            'Toda premissa é contra a estratégia. O sinal é executado na abertura do candle seguinte, então nunca vê o preço em que opera; quando um candle toca stop e alvo, assume-se que o stop veio primeiro; o motor ao vivo só age em candle fechado e só entra na transição do sinal, então uma alocação nova nunca compra um movimento que começou dias atrás. As taxas são lidas de volta da corretora em vez de assumidas, e isso importa justamente porque a testnet não cobra nenhuma: os 0,2% por round trip apareceriam pela primeira vez com dinheiro de verdade.',
           ],
           sample: asSample('Custo dos dois lados, e as regras de engajamento', POUCH_COST_CODE),
         },
         {
           title: 'Walk-forward, e depois três livros',
           body: [
-            'Uma divisão treino/teste testa uma única virada de regime, então as sobreviventes são reexecutadas em oito trimestres móveis e julgadas por quantos venceram, não pelo total. Medido nas alocações ao vivo deste projeto, manter os parâmetros em produção ganhou de reotimizar a cada janela em cinco de seis — 365 candles diários não sustentam uma grade de 500 pontos.',
-            'O painel roda três livros lado a lado com ledgers separados: o validado, baseado em regras; um experimento de machine learning que ranqueia o universo todo dia; e um experimento de saída que entra igual e sai de quatro formas diferentes — resolvendo por medição uma discussão que costuma ser resolvida por opinião.',
+            'Uma divisão treino/teste testa uma única virada de regime, então as sobreviventes são reexecutadas em oito trimestres móveis e julgadas por quantos venceram, não pelo total. Medido nas alocações ao vivo deste projeto, manter os parâmetros em produção ganhou de reotimizar a cada janela em cinco de seis; 365 candles diários não sustentam uma grade de 500 pontos.',
+            'O painel roda três livros lado a lado com ledgers separados: o validado, baseado em regras; um experimento de machine learning que ranqueia o universo todo dia; e um experimento de saída que entra igual e sai de quatro formas diferentes, resolvendo por medição uma discussão que costuma ser resolvida por opinião.',
           ],
           shot: { ...SHOT_TRADER_PANEL, caption: 'O livro validado e o laboratório de ML lado a lado, numa conta de testnet' },
         },
@@ -627,7 +627,7 @@ export const caseStudies: CaseStudy[] = [
             'Painel local em 127.0.0.1, sem build step',
             'Patrimônio, P&L realizado e não realizado, win rate, profit factor, drawdown, Sharpe',
             'Cada entrada e saída com os valores dos indicadores que dispararam',
-            'Dezessete alocações em candles de 4h e 1d — quase sempre paradas, de forma legível',
+            'Dezessete alocações em candles de 4h e 1d, quase sempre paradas, de forma legível',
           ],
         },
       ],

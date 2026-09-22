@@ -22,7 +22,12 @@ export interface Certification {
   name: string;
   /** Year printed on the certificate. */
   year: string;
-  /** Issuer logo under public/icons, when the issuer has one vendored. */
+  /**
+   * The mark under public/icons, which is the issuer's or the technology's
+   * logo rather than the credential's own badge artwork: a badge is a seal
+   * with its name written around the rim, and at the size these rows give it
+   * the lettering is unreadable while the colours fight the rest of the rail.
+   */
   icon?: string;
   /** Public link to the certificate itself; the entry is only clickable with it. */
   url?: string;
@@ -49,11 +54,26 @@ export interface SkillGroup {
   items: string[];
 }
 
+/**
+ * A section's two-part header: the numbered eyebrow that indexes the page, and
+ * the large heading that says what the block is actually about. Split because
+ * the eyebrow has to stay one scannable word while the heading is a sentence.
+ */
+export interface SectionHeading {
+  /** The word after the index, e.g. "Skills" in "03 / Skills". */
+  label: string;
+  /** The large heading under the eyebrow. */
+  title: string;
+}
+
 export interface SiteContent {
   meta: {
     name: string;
     /** Header wordmark: the full name does not fit the row on a phone. */
     shortName: string;
+    /** The hero sets the name as the largest thing on the page, over two lines. */
+    firstName: string;
+    lastName: string;
     role: string;
     location: string;
     /** Browser tab title (also what the tab's hover tooltip shows). */
@@ -62,7 +82,7 @@ export interface SiteContent {
     description: string;
   };
   nav: {
-    experience: string;
+    about: string;
     projects: string;
     skills: string;
     education: string;
@@ -70,17 +90,32 @@ export interface SiteContent {
     resume: string;
   };
   hero: {
-    greeting: string;
-    summary: string;
+    /**
+     * The one paragraph under the name: who he is and what he does. `**bold**`
+     * spans are rendered in the foreground colour, so the technologies worth
+     * catching in a glance can be picked out without splitting the sentence
+     * into fields.
+     */
+    tagline: string;
+  };
+  /** Left-hand column of section 01, beside the experience list. */
+  about: {
+    /** The résumé summary, one string per paragraph. Supports `**bold**`. */
+    body: string[];
+    stackLabel: string;
+    /** The handful of technologies worth naming up front, not the full Skills list. */
+    stack: string[];
+    /** Heading over the experience list in the right-hand column. */
+    experienceLabel: string;
   };
   sections: {
-    experience: string;
-    projects: string;
-    skills: string;
-    education: string;
+    about: SectionHeading;
+    projects: SectionHeading;
+    skills: SectionHeading;
+    education: SectionHeading;
+    contact: SectionHeading;
     certifications: string;
     badges: string;
-    contact: string;
   };
   experience: ExperienceEntry[];
   education: EducationEntry[];
@@ -88,8 +123,12 @@ export interface SiteContent {
   badges: SkillBadge[];
   skills: SkillGroup[];
   contact: {
+    /** The large invitation, set at hero scale. One string per line. */
+    headline: string[];
+    /** The paragraph under the invitation: what there is to talk about. */
     intro: string;
-    phoneLabel: string;
+    /** Caption under the clock in the aside, e.g. "local time". */
+    localTime: string;
     /** Label of the copy-to-clipboard button next to the email address. */
     copy: string;
     /** Confirmation shown for a couple of seconds after a successful copy. */

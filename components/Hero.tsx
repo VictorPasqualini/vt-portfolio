@@ -1,7 +1,8 @@
 'use client';
 
+import { withEmphasis } from '@/lib/emphasis';
 import { useLocale } from '@/lib/i18n-context';
-import { DownloadIcon, GithubIcon, LinkedinIcon, MapPinIcon, WhatsappIcon } from '@/lib/icons';
+import { ChevronDownIcon, DownloadIcon, GithubIcon, LinkedinIcon, MapPinIcon, WhatsappIcon } from '@/lib/icons';
 import { GITHUB_URL, LINKEDIN_URL, WHATSAPP_URL, resumeFor } from '@/lib/site';
 import LetterCurtain from './LetterCurtain';
 
@@ -13,28 +14,48 @@ export default function Hero() {
   const resumeFile = resumeFor(locale);
 
   return (
-    <section id="top" className="relative overflow-hidden">
+    <section
+      id="top"
+      className="relative flex min-h-[calc(100svh-var(--header-h))] flex-col overflow-hidden"
+    >
       <LetterCurtain />
-      {/* Tighter on a phone than anywhere else: the portrait moved above the
-          name there, and the old padding and gap pushed the buttons off the
-          first screen. */}
-      <div className="relative mx-auto grid max-w-content items-center gap-7 px-6 py-12 sm:gap-12 sm:py-28 lg:grid-cols-[1fr_auto] lg:gap-16">
+      {/* One full screen, header excluded: the name and the portrait are the
+          whole first impression, and anything showing under them turns that
+          into a preview of the next section instead.
+
+          `svh` on the section rather than `vh` so a mobile browser measures the
+          viewport it actually leaves visible with its toolbars out. This row
+          takes the space the meta strip below it does not want (`flex-1`) and
+          centres in it; the padding is a floor, so a short screen pushes past
+          the minimum instead of clipping. */}
+      <div className="relative mx-auto grid w-full max-w-content flex-1 content-center items-center gap-8 px-6 py-12 sm:gap-12 sm:py-20 lg:grid-cols-[1fr_auto] lg:gap-16">
         {/* Tighter on a phone for the same reason as the padding above. */}
         <div className="flex flex-col gap-5 sm:gap-7">
-          {/* Where he is matters to whoever is hiring, so it is a badge in the
-              accent rather than a grey line above the name. */}
-          <p className="inline-flex w-fit items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3.5 py-1.5 font-mono text-xs uppercase tracking-[0.16em] text-accent">
-            <MapPinIcon className="h-3.5 w-3.5" />
-            {t.meta.location}
+          {/* The role, as a rule and a line of mono. It was a location badge in
+              the accent, which announced the least interesting fact on the
+              screen; the location is a footnote now and this says what he is
+              before the name says who. */}
+          <p className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.18em] text-fg-3">
+            <span aria-hidden className="h-px w-10 bg-accent" />
+            {t.meta.role}
           </p>
-          {/* Sized in vw so the name still fills the column on a phone and stops
+          {/* The name is the largest thing on the page. It reads as one line of
+              type set over two rows, so the surname carries the accent rather
+              than a separate coloured word further down.
+
+              Sized in vw so it still fills the column on a phone and stops
               growing before it outruns the 1080px measure on a wide screen. */}
-          <h1 className="text-[clamp(2.5rem,6vw,4.25rem)] font-medium leading-[0.95] tracking-[-0.045em]">
-            {t.hero.greeting}
+          <h1 className="text-[clamp(3.25rem,9.5vw,7.5rem)] font-semibold leading-[0.88] tracking-[-0.05em]">
+            {t.meta.firstName}
             <br />
-            <span className="text-accent">{t.meta.role}.</span>
+            <span className="text-accent">{t.meta.lastName}</span>
           </h1>
-          <p className="max-w-xl leading-relaxed text-fg-2">{t.hero.summary}</p>
+          {/* Who he is and what he does, in one paragraph. Set above body size
+              because it is the only prose on the first screen, and the words
+              worth catching in a glance are marked in the copy itself. */}
+          <p className="max-w-xl text-base leading-relaxed text-fg-2 sm:text-lg sm:leading-[1.7]">
+            {withEmphasis(t.hero.tagline)}
+          </p>
           <div className="flex flex-wrap gap-3 text-sm">
             {/* `download` makes the arrow icon tell the truth: the browser saves
                 the PDF (under its already descriptive filename) instead of
@@ -72,7 +93,7 @@ export default function Hero() {
             buttons all still land on the first screen. The order is visual
             only: in the markup the name comes first, which is the order a
             screen reader and a crawler read. */}
-        <div className="relative order-first mx-auto w-40 shrink-0 sm:w-72 lg:order-none lg:mx-0 lg:w-80">
+        <div className="relative order-first mx-auto w-40 shrink-0 sm:w-72 lg:order-none lg:mx-0 lg:w-[22rem]">
           <span aria-hidden className="absolute -inset-3 rounded-full border border-accent/50" />
           {/* The disc is filled: the subject is cut out on transparency, and
               without a fill the curtain would run through the portrait rather
@@ -89,6 +110,26 @@ export default function Hero() {
               className="h-full w-full object-cover object-top"
             />
           </div>
+        </div>
+      </div>
+
+      {/* The bottom edge of the first screen, so that a full-height hero ends
+          on a line instead of on whitespace. It carries the two things the
+          removed badge was carrying — where he is, and that there is more
+          below — and the arrow is a real link, not a decoration. */}
+      <div className="relative mx-auto w-full max-w-content px-6 pb-8">
+        <div className="flex items-center justify-between gap-4 border-t border-line/10 pt-5 font-mono text-[11px] uppercase tracking-[0.16em] text-fg-3">
+          <span className="flex items-center gap-2">
+            <MapPinIcon className="h-3.5 w-3.5 text-accent" />
+            {t.meta.location}
+          </span>
+          <a
+            href="#about"
+            aria-label={t.nav.about}
+            className="flex h-8 w-8 items-center justify-center rounded-full border border-line/15 transition-colors hover:border-fg/40 hover:text-fg"
+          >
+            <ChevronDownIcon className="h-4 w-4 motion-safe:animate-bounce" />
+          </a>
         </div>
       </div>
     </section>
