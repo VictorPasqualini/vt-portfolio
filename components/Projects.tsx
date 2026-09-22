@@ -9,8 +9,8 @@ export default function Projects() {
   const { t } = useLocale();
 
   return (
-    <Section id="projects" index="02" title={t.sections.projects}>
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <Section id="projects" index="02" heading={t.sections.projects}>
+      <div className="grid gap-5 sm:grid-cols-2">
         {projects.map((project) => (
           <ProjectCard key={project.slug} project={project} />
         ))}

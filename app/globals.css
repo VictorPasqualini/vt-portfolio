@@ -41,6 +41,13 @@
   --accent-fg: 26 18 14;
 }
 
+/* The height of the sticky header, declared here because the hero subtracts it
+   to fill exactly one screen. The header sets its own box to this value rather
+   than growing with its contents, so the two can never disagree. */
+:root {
+  --header-h: 3.75rem;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -50,9 +57,20 @@ body {
   color: rgb(var(--fg));
 }
 
-/* The nav is sticky, so anchor jumps need room or the heading lands under it. */
+/* The nav is sticky, so an anchor has to stop exactly its height short of the
+   section: any more and the block above stays on screen, any less and the
+   heading lands under the header. */
 section[id] {
-  scroll-margin-top: 5rem;
+  scroll-margin-top: var(--header-h);
+}
+
+/* The footer is the same dark brown on both themes: it is the last band on the
+   page and reads as its base rather than as another tinted section. The colours
+   are the coffee theme's own background and metadata tone, written as literals
+   because the light theme has no token for either. */
+.footer-band {
+  background: rgb(26 18 14);
+  color: rgb(155 138 122);
 }
 
 /* Hero letter curtain. The characters are drawn on a canvas by

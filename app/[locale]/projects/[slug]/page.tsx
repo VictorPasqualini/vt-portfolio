@@ -14,7 +14,7 @@ const DICTIONARIES: Record<Locale, SiteContent> = { en, pt };
 
 /** Tab and Open Graph title for a case study, in one place. */
 function titleFor(locale: Locale, projectName: string) {
-  return `${projectName} — ${DICTIONARIES[locale].meta.name}`;
+  return `${projectName} · ${DICTIONARIES[locale].meta.name}`;
 }
 
 /** Every locale × every project that actually has a write-up. */

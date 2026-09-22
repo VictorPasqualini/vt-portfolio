@@ -1,12 +1,11 @@
 import type { Metadata } from 'next';
 import Nav from '@/components/Nav';
 import Hero from '@/components/Hero';
-import Experience from '@/components/Experience';
+import About from '@/components/About';
 import Projects from '@/components/Projects';
 import Skills from '@/components/Skills';
 import Education from '@/components/Education';
 import Contact from '@/components/Contact';
-import Footer from '@/components/Footer';
 import HurcaneAgent from '@/components/HurcaneAgent';
 import { en } from '@/content/en';
 import { pt } from '@/content/pt';
@@ -46,7 +45,7 @@ export function generateMetadata({ params }: { params: { locale: string } }): Me
     url: `${SITE_URL}/og-${locale}.png`,
     width: 1200,
     height: 630,
-    alt: `${t.meta.name} — ${t.meta.role}`,
+    alt: `${t.meta.name} · ${t.meta.role}`,
   };
 
   return {
@@ -119,12 +118,11 @@ export default function LocalePage({ params }: { params: { locale: string } }) {
         {/* No shared column here on purpose: every section owns its own centred
             column so that the tinted ones can run the full width of the page. */}
         <Hero />
-        <Experience />
+        <About />
         <Projects />
         <Skills />
         <Education />
         <Contact />
-        <Footer />
       </main>
       <HurcaneAgent />
     </LocaleProvider>

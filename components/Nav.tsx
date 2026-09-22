@@ -7,15 +7,15 @@ import { DownloadIcon, SunIcon, MoonIcon } from '@/lib/icons';
 import { resumeFor } from '@/lib/site';
 
 const LINKS = [
-  { id: 'experience', key: 'experience' as const },
+  { id: 'about', key: 'about' as const },
   { id: 'projects', key: 'projects' as const },
   { id: 'skills', key: 'skills' as const },
   { id: 'education', key: 'education' as const },
   { id: 'contact', key: 'contact' as const },
 ];
 
-/** How far below the sticky header a section counts as the one being read. */
-const PROBE_OFFSET = 140;
+/** The hero, which has no menu entry: winning means no link is lit. */
+const HERO_ID = 'top';
 
 /**
  * @param onHome false on a case study page, where the section ids do not exist:
@@ -31,16 +31,28 @@ export default function Nav({ onHome = true, wide = false }: { onHome?: boolean;
   useEffect(() => {
     if (!onHome) return;
 
+    // Whichever section fills most of the screen, measured under the header
+    // rather than from the top of the document. A probe line at a fixed offset
+    // was simpler but could not light the last section: the footer is not a
+    // section, so once the page bottoms out Contact's top is still below the
+    // line even though Contact is all you can see. Area has no such blind spot,
+    // and the hero competes too so that nothing is lit on the first screen.
     const sync = () => {
-      const probe = window.scrollY + PROBE_OFFSET;
-      // Last section whose top has passed the probe line — sections are stacked
-      // siblings, so the one furthest down that still qualifies is the one on
-      // screen.
+      const header = document.querySelector('header')?.offsetHeight ?? 0;
       let current = '';
-      for (const link of LINKS) {
-        const el = document.getElementById(link.id);
-        if (el && el.offsetTop <= probe) current = link.id;
+      let best = 0;
+
+      for (const id of [HERO_ID, ...LINKS.map((link) => link.id)]) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        const rect = el.getBoundingClientRect();
+        const visible = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, header);
+        if (visible > best) {
+          best = visible;
+          current = id === HERO_ID ? '' : id;
+        }
       }
+
       setActive(current);
     };
 
@@ -56,8 +68,8 @@ export default function Nav({ onHome = true, wide = false }: { onHome?: boolean;
   const home = `/${locale}`;
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line/10 bg-bg/80 backdrop-blur">
-      <div className={`mx-auto flex ${wide ? 'max-w-wide' : 'max-w-content'} items-center justify-between gap-4 px-6 py-4`}>
+    <header className="sticky top-0 z-50 h-[var(--header-h)] border-b border-line/10 bg-bg/80 backdrop-blur">
+      <div className={`mx-auto flex ${wide ? 'max-w-wide' : 'max-w-content'} h-full items-center justify-between gap-4 px-6`}>
         {/* The short name: the header is the one row that cannot wrap, and the
             middle name buys nothing here — the hero and the footer still sign
             in full. */}
@@ -118,11 +130,11 @@ export default function Nav({ onHome = true, wide = false }: { onHome?: boolean;
             aria-label={
               theme === 'dark'
                 ? locale === 'pt'
-                  ? 'Tema escuro ativo — mudar para claro'
-                  : 'Dark theme active — switch to light'
+                  ? 'Tema escuro ativo, mudar para claro'
+                  : 'Dark theme active, switch to light'
                 : locale === 'pt'
-                  ? 'Tema claro ativo — mudar para escuro'
-                  : 'Light theme active — switch to dark'
+                  ? 'Tema claro ativo, mudar para escuro'
+                  : 'Light theme active, switch to dark'
             }
             className="relative flex h-7 w-[52px] shrink-0 items-center rounded-full border border-line/15 bg-surface transition-colors"
           >
@@ -141,7 +153,7 @@ export default function Nav({ onHome = true, wide = false }: { onHome?: boolean;
             role="switch"
             aria-checked={locale === 'pt'}
             onClick={() => setLocale(locale === 'en' ? 'pt' : 'en')}
-            aria-label={locale === 'en' ? 'English active — switch to Portuguese' : 'Português ativo — mudar para inglês'}
+            aria-label={locale === 'en' ? 'English active, switch to Portuguese' : 'Português ativo, mudar para inglês'}
             className="relative flex h-7 w-[52px] shrink-0 items-center rounded-full border border-line/15 bg-surface text-[10px] font-semibold transition-colors"
           >
             <span className="absolute left-1.5 text-fg-4">EN</span>

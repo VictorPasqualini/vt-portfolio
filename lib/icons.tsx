@@ -113,6 +113,28 @@ export function LayersIcon({ className }: { className?: string }) {
   );
 }
 
+/** A trained model: nodes wired together, for ML libraries with no mark. */
+export function NetworkIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" {...stroke} className={className} aria-hidden="true">
+      <circle cx="5" cy="6" r="2" />
+      <circle cx="5" cy="18" r="2" />
+      <circle cx="12" cy="12" r="2" />
+      <circle cx="19" cy="12" r="2" />
+      <path d="M6.7 7.2 10.3 10.8M6.7 16.8l3.6-3.6M14 12h3" />
+    </svg>
+  );
+}
+
+/** Incremental processing: each run adds to what the last one left. */
+export function StepsIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" {...stroke} className={className} aria-hidden="true">
+      <path d="M3 20h5v-5H3zM9.5 20h5V9.5h-5zM16 20h5V4h-5z" />
+    </svg>
+  );
+}
+
 export function PipelineIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" {...stroke} className={className} aria-hidden="true">
