@@ -31,6 +31,8 @@ scripts/        One-off generators — render-og.mjs builds the social preview P
 public/resumes/ Downloadable resume PDFs (EN + PT)
 docs/           Architecture notes and content update guide
 BACKLOG.md      Prioritized future work, including deferred design ideas
+studies/        Certification study tracks, notes and practice questions (pt-BR), not part of the site build
+.claude/skills/ The `study` skill that drives study sessions with Claude Code
 ```
 
 See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for how the pieces fit together, and [docs/CONTENT_GUIDE.md](docs/CONTENT_GUIDE.md) for how to update the site when the resume or project list changes.

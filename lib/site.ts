@@ -43,25 +43,33 @@ export const MONGODB_CERTIFICATE_URL =
   'https://ti-user-certificates.s3.amazonaws.com/ae62dcd7-abdc-4e90-a570-83eccba49043/86bec6ac-b1ee-4832-8fb9-08ceba5c908e-victor-ramos-pasqualini-4ac01021-586b-4780-ba40-c917289b580f-certificate.pdf';
 
 /**
+ * Accredible verification pages, one per credential. Every issuer here hosts on
+ * Accredible under its own domain, and the pages are client-rendered, so
+ * there is nothing to scrape from them — the names and years below live in the
+ * content files and have to be kept right by hand. The issue date can still be
+ * checked without a browser: Accredible's public
+ * `api.accredible.com/v1/credential-net/credentials/<uuid>` returns it as `issued_on`.
+ */
+export const CERTIFICATE_URLS = {
+  dbtFundamentals:
+    'https://credentials.getdbt.com/6c89520c-6d78-4bdb-81b0-7e1679a53693#acc.Q2w0D3NS',
+  databricksFundamentals:
+    'https://credentials.databricks.com/5ff71246-0ed0-4f7b-8a36-2275a5cdbd8c#acc.x2DEWwuj',
+  databricksDataGovernance:
+    'https://credentials.databricks.com/8ac7da9d-77f5-47aa-ad18-66baf4bbc4aa#acc.D18mkpgW',
+  databricksGenerativeAi:
+    'https://credentials.databricks.com/0d8d8fc4-c6be-4d4c-b0f1-59a962d7f7bc#acc.NELBouU1',
+  confluentFlinkEngineer:
+    'https://certificates.confluent.io/eb151eb7-e858-4607-a9f5-1d5885f5ef91#acc.C4WIa82H',
+} as const;
+
+/**
  * Credly verification pages for the MongoDB skill badges, keyed by the art
  * vendored under public/badges/. Credly's own embed is a fixed-size iframe
  * injected by a third-party script, which neither the static export nor the dark
  * theme get on well with, so the art is served from here and these URLs are only
  * what the badges link out to.
  */
-/**
- * Accredible verification pages, one per credential. Both issuers host on
- * Accredible under their own domain, and both pages are client-rendered, so
- * there is nothing to scrape from them — the names and years below live in the
- * content files and have to be kept right by hand.
- */
-export const CERTIFICATE_URLS = {
-  databricksFundamentals:
-    'https://credentials.databricks.com/5ff71246-0ed0-4f7b-8a36-2275a5cdbd8c#acc.x2DEWwuj',
-  confluentFlinkEngineer:
-    'https://certificates.confluent.io/eb151eb7-e858-4607-a9f5-1d5885f5ef91#acc.C4WIa82H',
-} as const;
-
 export const CREDLY_BADGE_URLS = {
   mongodbOverview: 'https://www.credly.com/badges/c0c168d2-8a50-4a16-81c1-977c5a6fa12a/public_url',
   mongodbDocumentModel: 'https://www.credly.com/badges/bbd164cc-0e82-45f3-b249-9cfb7d4cd1bd/public_url',

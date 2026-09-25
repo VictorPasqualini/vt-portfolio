@@ -1,8 +1,13 @@
-// Icon files live in public/icons and were pulled from three sources:
+// Icon files live in public/icons and were pulled from these sources:
 // Simple Icons (cdn.simpleicons.org) for OSS/language brands, IcePanel's copy
 // of the official AWS and GCP architecture icon sets (icon.icepanel.io) for
-// cloud services, and Devicon for Oracle/Cobol. They are vendored rather than
-// hotlinked so a missing or renamed remote file can't silently blank an icon.
+// cloud services, Devicon for Oracle/Cobol, and the project's own site or
+// VectorLogoZone for the few Apache marks Simple Icons doesn't carry. They are
+// vendored rather than hotlinked so a missing or renamed remote file can't
+// silently blank an icon.
+//
+// A name without an extension is a .svg; the handful published only as raster
+// art carry their own, since there is nothing to convert them from.
 const ICON_FILES: [string, string][] = [
   ['kubernetes', 'kubernetes'],
   ['docker', 'docker'],
@@ -18,12 +23,15 @@ const ICON_FILES: [string, string][] = [
   ['airflow', 'apacheairflow'],
   ['kafka', 'apachekafka'],
   ['spark', 'apachespark'],
+  ['flink', 'apacheflink'],
   ['hadoop', 'apachehadoop'],
   ['hive', 'apachehive'],
   ['nifi', 'apachenifi'],
-  ['iceberg', 'apache'],
+  // Iceberg publishes its mark as art only: the one SVG on the site is the
+  // wordmark, which is illegible at the size these marks are drawn.
+  ['iceberg', 'apacheiceberg.png'],
   ['sqoop', 'apache'],
-  ['kudu', 'apache'],
+  ['kudu', 'apachekudu'],
   ['impala', 'apache'],
   ['elasticsearch', 'elasticsearch'],
   ['grafana', 'grafana'],
@@ -44,6 +52,7 @@ const ICON_FILES: [string, string][] = [
   ['fastapi', 'fastapi'],
   ['rust', 'rust'],
   ['snowflake', 'snowflake'],
+  ['dbt', 'dbt'],
   ['redpanda', 'redpanda'],
   // Apache DataFusion's own mark, recoloured off its near-black original.
   ['datafusion', 'datafusion'],
@@ -116,7 +125,10 @@ export function getSkillIcon(label: string): SkillIcon {
 
   const primary = primaryOf(label);
   const file = ICON_FILES.find(([keyword]) => primary.includes(keyword));
-  if (file) return { kind: 'img', src: `/icons/${file[1]}.svg` };
+  if (file) {
+    const name = file[1];
+    return { kind: 'img', src: `/icons/${name.includes('.') ? name : `${name}.svg`}` };
+  }
 
   const inline = INLINE_KEYWORDS.find(([keyword]) => primary.includes(keyword));
   return { kind: 'inline', name: inline ? inline[1] : 'tag' };

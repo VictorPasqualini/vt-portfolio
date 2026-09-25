@@ -1,4 +1,8 @@
-import { CERTIFICATE_URLS, CREDLY_BADGE_URLS, MONGODB_CERTIFICATE_URL } from '@/lib/site';
+import {
+  CERTIFICATE_URLS,
+  CREDLY_BADGE_URLS,
+  MONGODB_CERTIFICATE_URL,
+} from '@/lib/site';
 import type { SiteContent } from '@/lib/types';
 
 export const pt: SiteContent = {
@@ -142,19 +146,12 @@ export const pt: SiteContent = {
     { period: '2017 — 2019', institution: 'ETEC Jardim Ângela', program: 'Técnico de Informática Integrado ao Médio' },
   ],
   certifications: [
-    {
-      name: 'Confluent Data Streaming Engineer',
-      year: '2026',
-      icon: '/icons/confluent.svg',
-      url: CERTIFICATE_URLS.confluentFlinkEngineer,
-    },
-    {
-      name: 'Databricks Fundamentals',
-      year: '2026',
-      icon: '/icons/databricks.svg',
-      url: CERTIFICATE_URLS.databricksFundamentals,
-    },
-    { name: 'MongoDB SI Associate', year: '2025', icon: '/icons/mongodb.svg', url: MONGODB_CERTIFICATE_URL },
+    { issuer: 'Confluent', name: 'Data Streaming Engineer', year: '2026', icon: '/icons/confluent.svg', url: CERTIFICATE_URLS.confluentFlinkEngineer },
+    { issuer: 'dbt Labs', name: 'dbt Fundamentals', year: '2026', icon: '/icons/dbt.svg', url: CERTIFICATE_URLS.dbtFundamentals },
+    { issuer: 'Databricks', name: 'Data Governance Fundamentals', year: '2026', icon: '/icons/databricks.svg', url: CERTIFICATE_URLS.databricksDataGovernance },
+    { issuer: 'Databricks', name: 'Generative AI Fundamentals', year: '2026', url: CERTIFICATE_URLS.databricksGenerativeAi },
+    { issuer: 'Databricks', name: 'Databricks Fundamentals', year: '2025', url: CERTIFICATE_URLS.databricksFundamentals },
+    { issuer: 'MongoDB', name: 'SI Associate', year: '2025', icon: '/icons/mongodb.svg', url: MONGODB_CERTIFICATE_URL },
   ],
   // Badge names stay in English here on purpose: the art beside them is printed in
   // English and the Credly page they open is in English, so a translated caption
@@ -180,6 +177,7 @@ export const pt: SiteContent = {
       label: 'ETL / ELT',
       items: [
         'Spark (Batch/Streaming)',
+        'Flink',
         'Glue',
         'EMR',
         'EC2 (spot)',
@@ -189,6 +187,7 @@ export const pt: SiteContent = {
         'Databricks',
         'Photon',
         'Snowflake',
+        'dbt',
         'Compute Engine',
         'Cloud Functions',
         'Incremental',

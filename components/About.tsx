@@ -11,7 +11,9 @@ const LINK_CLASS = 'inline-flex items-center gap-1 text-fg-2 transition-colors h
 
 const RAIL_HEADING = 'mb-3 mt-8 border-b border-line/10 pb-2 font-mono text-xs uppercase tracking-[0.14em] text-fg-3';
 
-const CERT_ROW = 'flex items-center gap-3 py-2.5';
+const CERT_ROW = 'flex items-baseline gap-2.5';
+
+const CERT_ISSUER = 'font-mono text-[11px] uppercase tracking-[0.14em] text-fg-3';
 
 const PERIOD = 'font-mono text-xs uppercase tracking-[0.12em] text-fg-3';
 
@@ -60,31 +62,84 @@ function useRailOffset() {
 }
 
 /**
- * A certification, fronted by a logo. A row rather than a boxed pill: the rail
- * has to stay short, and three boxes under the stack read as a second section
- * competing with it instead of as evidence for it.
+ * Certifications, grouped by whoever issued them.
  *
+ * Six credentials from four issuers, and the two longest names are
+ * "Databricks Data Governance Fundamentals" and "Databricks Generative AI
+ * Fundamentals": one per row, each behind its own copy of the same logo, the
+ * word Databricks ran down the left edge three times and the names ran off the
+ * right of a 22rem column. Folding a run of one issuer into one logo and one
+ * header buys back the width the repetition was spending, so the names fit on
+ * one line and the rail gets shorter as credentials are added rather than
+ * taller.
+ *
+ * Only consecutive entries fold, so the content files stay in charge of the
+ * order — they already list each issuer's credentials together.
+ */
+interface CertificationGroup {
+  issuer: string;
+  icon?: string;
+  items: Certification[];
+}
+
+function groupByIssuer(certs: Certification[]): CertificationGroup[] {
+  const groups: CertificationGroup[] = [];
+
+  for (const cert of certs) {
+    const open = groups.at(-1);
+
+    if (open?.issuer === cert.issuer) {
+      // The logo belongs to the issuer, so the first entry that carries one
+      // speaks for the whole run and the rest can leave the field out.
+      open.icon ??= cert.icon;
+      open.items.push(cert);
+    } else {
+      groups.push({ issuer: cert.issuer, icon: cert.icon, items: [cert] });
+    }
+  }
+
+  return groups;
+}
+
+/**
  * Logos rather than the issuers' badge artwork, which is what this showed
  * first: a badge is a seal with the credential's name written around its rim,
  * so at 32px the lettering is unreadable and three of them in a column are
  * three different shapes in three different palettes. The name is already
  * spelled out beside the mark, which leaves the mark only one job — saying
- * whose credential it is — and a plain logo does that at any size. The box is
- * fixed so every row keeps the same height whatever shape the logo is.
+ * whose credential it is — and a plain logo does that at any size.
  */
-function CertificationRow({ cert }: { cert: Certification }) {
-  const body = (
-    <>
-      <span className="flex h-10 w-10 shrink-0 items-center justify-center">
-        {cert.icon && (
+function CertificationGroupRow({ group }: { group: CertificationGroup }) {
+  return (
+    <li className="flex gap-3 py-3.5">
+      {/* Fixed box, so every group starts at the same left edge whatever shape
+          the logo is. Aligned to the header rather than centred on the run:
+          a three-credential group would otherwise float its logo halfway down. */}
+      <span className="flex h-6 w-6 shrink-0 items-center justify-center">
+        {group.icon && (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={cert.icon} alt="" loading="lazy" className="h-8 w-8 object-contain" />
+          <img src={group.icon} alt="" loading="lazy" className="h-6 w-6 object-contain" />
         )}
       </span>
-      <span className="flex min-w-0 flex-1 flex-col gap-0.5 leading-tight">
-        <span className="whitespace-nowrap text-sm font-medium">{cert.name}</span>
-        <span className="font-mono text-[11px] text-fg-3">{cert.year}</span>
-      </span>
+      <div className="min-w-0 flex-1">
+        <p className={CERT_ISSUER}>{group.issuer}</p>
+        <ul className="mt-2 flex flex-col gap-1.5">
+          {group.items.map((cert) => (
+            <CertificationRow key={cert.name} cert={cert} issuer={group.issuer} />
+          ))}
+        </ul>
+      </div>
+    </li>
+  );
+}
+
+function CertificationRow({ cert, issuer }: { cert: Certification; issuer: string }) {
+  // The year is pushed to the right edge instead of trailing the name, so the
+  // years read as a column of their own down the rail.
+  const body = (
+    <>
+      <span className="min-w-0 flex-1 text-sm leading-snug">{cert.name}</span>
+      <span className="shrink-0 font-mono text-[11px] text-fg-3">{cert.year}</span>
     </>
   );
 
@@ -96,10 +151,19 @@ function CertificationRow({ cert }: { cert: Certification }) {
         href={cert.url}
         target="_blank"
         rel="noreferrer"
-        className={`${CERT_ROW} transition-colors hover:text-accent`}
+        // The issuer is in the group header, not in the link text: put it back
+        // for anyone reading the links out of context, unless the name already
+        // opens with it: "Databricks Fundamentals", or "dbt Fundamentals" under
+        // dbt Labs, which names the product rather than the company.
+        aria-label={cert.name.startsWith(issuer.split(' ')[0]) ? cert.name : `${issuer} ${cert.name}`}
+        className={`group ${CERT_ROW} transition-colors hover:text-accent`}
       >
         {body}
-        <ExternalLinkIcon className="h-3.5 w-3.5 shrink-0 text-fg-4" />
+        {/* One of these on every row permanently was the clutter the grouping
+            is meant to clear, and the row is the only link in reach, so the
+            mark shows on hover and on keyboard focus. The space it takes is
+            reserved either way, or every row would shift under the pointer. */}
+        <ExternalLinkIcon className="h-3 w-3 shrink-0 self-center text-fg-4 opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100" />
       </a>
     </li>
   );
@@ -264,8 +328,8 @@ export default function About() {
             <>
               <h3 className={RAIL_HEADING}>{t.sections.certifications}</h3>
               <ul className="divide-y divide-line/10">
-                {t.certifications.map((cert) => (
-                  <CertificationRow key={cert.name} cert={cert} />
+                {groupByIssuer(t.certifications).map((group) => (
+                  <CertificationGroupRow key={group.issuer} group={group} />
                 ))}
               </ul>
             </>

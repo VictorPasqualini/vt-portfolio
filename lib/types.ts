@@ -19,6 +19,19 @@ export interface EducationEntry {
 }
 
 export interface Certification {
+  /**
+   * Who issued it. Consecutive entries sharing one are drawn as a single group
+   * under one logo, so the issuer is named once instead of opening every line.
+   */
+  issuer: string;
+  /**
+   * The credential without the issuer in front of it: "Data Governance
+   * Fundamentals", not "Databricks Data Governance Fundamentals". The group
+   * header already says Databricks, and the rail is too narrow to say it twice.
+   * The exception is a name that is nothing without its issuer: "Databricks
+   * Fundamentals" and "dbt Fundamentals" keep it, since "Fundamentals" alone
+   * names no credential.
+   */
   name: string;
   /** Year printed on the certificate. */
   year: string;
@@ -27,6 +40,7 @@ export interface Certification {
    * logo rather than the credential's own badge artwork: a badge is a seal
    * with its name written around the rim, and at the size these rows give it
    * the lettering is unreadable while the colours fight the rest of the rail.
+   * Read off the first entry of a group, since the logo stands for the issuer.
    */
   icon?: string;
   /** Public link to the certificate itself; the entry is only clickable with it. */
