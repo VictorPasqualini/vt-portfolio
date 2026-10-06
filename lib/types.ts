@@ -25,12 +25,11 @@ export interface Certification {
    */
   issuer: string;
   /**
-   * The credential without the issuer in front of it: "Data Governance
-   * Fundamentals", not "Databricks Data Governance Fundamentals". The group
-   * header already says Databricks, and the rail is too narrow to say it twice.
-   * The exception is a name that is nothing without its issuer: "Databricks
-   * Fundamentals" and "dbt Fundamentals" keep it, since "Fundamentals" alone
-   * names no credential.
+   * The credential without the issuer in front of it: "SI Associate", not
+   * "MongoDB SI Associate". The group header already names the issuer, and the
+   * rail is too narrow to say it twice. The exception is a name that is nothing
+   * without its issuer, like "Databricks Fundamentals", which keeps it since
+   * "Fundamentals" alone names no credential.
    */
   name: string;
   /** Year printed on the certificate. */

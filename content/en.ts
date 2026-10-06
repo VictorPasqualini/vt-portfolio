@@ -147,10 +147,6 @@ export const en: SiteContent = {
   ],
   certifications: [
     { issuer: 'Confluent', name: 'Data Streaming Engineer', year: '2026', icon: '/icons/confluent.svg', url: CERTIFICATE_URLS.confluentFlinkEngineer },
-    { issuer: 'dbt Labs', name: 'dbt Fundamentals', year: '2026', icon: '/icons/dbt.svg', url: CERTIFICATE_URLS.dbtFundamentals },
-    { issuer: 'Databricks', name: 'Data Governance Fundamentals', year: '2026', icon: '/icons/databricks.svg', url: CERTIFICATE_URLS.databricksDataGovernance },
-    { issuer: 'Databricks', name: 'Generative AI Fundamentals', year: '2026', url: CERTIFICATE_URLS.databricksGenerativeAi },
-    { issuer: 'Databricks', name: 'Databricks Fundamentals', year: '2025', url: CERTIFICATE_URLS.databricksFundamentals },
     { issuer: 'MongoDB', name: 'SI Associate', year: '2025', icon: '/icons/mongodb.svg', url: MONGODB_CERTIFICATE_URL },
   ],
   badges: [
@@ -166,6 +162,31 @@ export const en: SiteContent = {
       year: '2026',
       art: '/badges/mongodb-cluster-reliability.png',
       url: CREDLY_BADGE_URLS.mongodbClusterReliability,
+    },
+    {
+      name: 'Vector Search Fundamentals',
+      year: '2026',
+      art: '/badges/mongodb-vector-search.png',
+      url: CREDLY_BADGE_URLS.mongodbVectorSearch,
+    },
+    { name: 'dbt Fundamentals', year: '2026', art: '/badges/dbt-fundamentals.png', url: CERTIFICATE_URLS.dbtFundamentals },
+    {
+      name: 'Data Governance Fundamentals',
+      year: '2026',
+      art: '/badges/databricks-data-governance.png',
+      url: CERTIFICATE_URLS.databricksDataGovernance,
+    },
+    {
+      name: 'Generative AI Fundamentals',
+      year: '2026',
+      art: '/badges/databricks-generative-ai.png',
+      url: CERTIFICATE_URLS.databricksGenerativeAi,
+    },
+    {
+      name: 'Databricks Fundamentals',
+      year: '2025',
+      art: '/badges/databricks-fundamentals.png',
+      url: CERTIFICATE_URLS.databricksFundamentals,
     },
   ],
   skills: [

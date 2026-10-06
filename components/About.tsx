@@ -64,14 +64,16 @@ function useRailOffset() {
 /**
  * Certifications, grouped by whoever issued them.
  *
- * Six credentials from four issuers, and the two longest names are
- * "Databricks Data Governance Fundamentals" and "Databricks Generative AI
- * Fundamentals": one per row, each behind its own copy of the same logo, the
- * word Databricks ran down the left edge three times and the names ran off the
- * right of a 22rem column. Folding a run of one issuer into one logo and one
- * header buys back the width the repetition was spending, so the names fit on
- * one line and the rail gets shorter as credentials are added rather than
- * taller.
+ * This came in when the rail held six credentials from four issuers, and the
+ * two longest names were "Databricks Data Governance Fundamentals" and
+ * "Databricks Generative AI Fundamentals": one per row, each behind its own
+ * copy of the same logo, the word Databricks ran down the left edge three times
+ * and the names ran off the right of a 22rem column. Folding a run of one
+ * issuer into one logo and one header buys back the width the repetition was
+ * spending, so the names fit on one line and the rail gets shorter as
+ * credentials are added rather than taller. The Fundamentals have since moved
+ * to the skill badges, leaving one certification per issuer, but a second one
+ * from either joins its run.
  *
  * Only consecutive entries fold, so the content files stay in charge of the
  * order — they already list each issuer's credentials together.
@@ -153,8 +155,8 @@ function CertificationRow({ cert, issuer }: { cert: Certification; issuer: strin
         rel="noreferrer"
         // The issuer is in the group header, not in the link text: put it back
         // for anyone reading the links out of context, unless the name already
-        // opens with it: "Databricks Fundamentals", or "dbt Fundamentals" under
-        // dbt Labs, which names the product rather than the company.
+        // opens with the issuer's first word, as a product-named credential such
+        // as "dbt Fundamentals" under dbt Labs would, to avoid saying it twice.
         aria-label={cert.name.startsWith(issuer.split(' ')[0]) ? cert.name : `${issuer} ${cert.name}`}
         className={`group ${CERT_ROW} transition-colors hover:text-accent`}
       >
