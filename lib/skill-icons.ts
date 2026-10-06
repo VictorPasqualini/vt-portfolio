@@ -96,9 +96,9 @@ const ICON_FILES: [string, string][] = [
 
 export type InlineIconName = 'database' | 'sync' | 'layers' | 'network' | 'pipeline' | 'steps' | 'tag';
 
-// Concepts and generic terms with no logo anywhere (SQL, DB2, CDC, Delta Lake,
-// Medallion, Incremental, CI/CD) get a hand-drawn glyph that says what kind of
-// thing it is. See lib/icons.tsx.
+// Concepts and generic terms with no logo anywhere (SQL, IBM DB2, CDC, Delta
+// Lake, Medallion, Incremental, CI/CD) get a hand-drawn glyph that says what
+// kind of thing it is. See lib/icons.tsx.
 const INLINE_KEYWORDS: [string, InlineIconName][] = [
   ['sql', 'database'],
   ['incremental', 'steps'],
