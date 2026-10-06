@@ -43,12 +43,15 @@ export const MONGODB_CERTIFICATE_URL =
   'https://ti-user-certificates.s3.amazonaws.com/ae62dcd7-abdc-4e90-a570-83eccba49043/86bec6ac-b1ee-4832-8fb9-08ceba5c908e-victor-ramos-pasqualini-4ac01021-586b-4780-ba40-c917289b580f-certificate.pdf';
 
 /**
- * Accredible verification pages, one per credential. Every issuer here hosts on
- * Accredible under its own domain, and the pages are client-rendered, so
- * there is nothing to scrape from them — the names and years below live in the
- * content files and have to be kept right by hand. The issue date can still be
- * checked without a browser: Accredible's public
- * `api.accredible.com/v1/credential-net/credentials/<uuid>` returns it as `issued_on`.
+ * Accredible verification pages, one per credential: the Confluent certification
+ * and the dbt and Databricks Fundamentals, which are listed as skill badges and
+ * link out from there. Every issuer here hosts on Accredible under its own
+ * domain, and the pages are client-rendered, so there is nothing to scrape from
+ * them — the names and years below live in the content files and have to be
+ * kept right by hand. The issue date can still be checked without a browser:
+ * Accredible's public `api.accredible.com/v1/credential-net/credentials/<uuid>`
+ * returns it as `issued_on`, and its `badge_image` is where the art under
+ * public/badges came from.
  */
 export const CERTIFICATE_URLS = {
   dbtFundamentals:
@@ -74,6 +77,7 @@ export const CREDLY_BADGE_URLS = {
   mongodbOverview: 'https://www.credly.com/badges/c0c168d2-8a50-4a16-81c1-977c5a6fa12a/public_url',
   mongodbDocumentModel: 'https://www.credly.com/badges/bbd164cc-0e82-45f3-b249-9cfb7d4cd1bd/public_url',
   mongodbClusterReliability: 'https://www.credly.com/badges/43769d0f-9614-4fc5-bbbc-b332bc52a337/public_url',
+  mongodbVectorSearch: 'https://www.credly.com/badges/0496fb7c-f638-464a-84f8-ed17a4a4b5fb/public_url',
 } as const;
 
 /**
