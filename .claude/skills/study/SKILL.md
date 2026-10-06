@@ -88,6 +88,7 @@ Leia `study-plan.md` e `progress.md` e responda: cursos concluídos (e se o crit
 Quando o usuário começar outra certificação:
 
 1. Crie `studies/<slug>/` com a mesma estrutura, usando a pasta da AIB-C01 como modelo.
+   Se ela estiver em `studies/roadmap.md`, parta dos fatos de lá, mas confira de novo nas páginas oficiais antes de usar, e tire a seção dela do roadmap quando a pasta existir.
 2. Busque o exam guide oficial e preencha o `README.md` (formato, domínios, pesos, escopo) e os blocos de skills no topo de cada nota.
 3. Monte o `study-plan.md` a partir do material que o usuário tiver (learning plan, evento, data da prova).
-4. Adicione a linha no índice de `studies/README.md`.
+4. Adicione a linha no índice de `studies/README.md`, ou troque o status de "Planejada" para "Em estudo" e aponte a coluna Material para a pasta nova.

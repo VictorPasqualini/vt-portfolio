@@ -31,7 +31,7 @@ export const en: SiteContent = {
   },
   about: {
     body: [
-      "I have been a Data Engineer for more than five years, designing and running pipelines in cloud architectures. I work on moving legacy systems, from on-premise **Cloudera**, **Hadoop**/**Hive** estates to **Cobol/DB2** mainframes, onto modern data platforms such as **Databricks**, with ETL/ELT processing in **Spark** and infrastructure on **AWS** and **GCP**.",
+      "I have been a Data Engineer for more than five years, designing and running pipelines in cloud architectures. I work on moving legacy systems, from on-premise **Cloudera**, **Hadoop**/**Hive** estates to **Cobol/IBM DB2** mainframes, onto modern data platforms such as **Databricks**, with ETL/ELT processing in **Spark** and infrastructure on **AWS** and **GCP**.",
       'Across credit bureaus, capital markets and consultancies I have built medallion lakehouses over 20+ TB of daily ingestion, cut batch processing time by 40% on Databricks, and held a 90% SLA on pipelines other teams depend on. Data quality, integrity and availability are the part of the job I care about most, and open source is what I build it with.',
     ],
     stackLabel: 'Core stack',
@@ -56,7 +56,7 @@ export const en: SiteContent = {
       viaCompany: 'ACT Digital',
       viaCompanyUrl: 'https://actdigital.com',
       description:
-        'Led a complex mainframe (Cobol/DB2) to AWS pipeline migration processing massive daily positional file ingestion. Implemented data validation and quality with consolidated table generation (bronze/silver/gold) for ML and other products. Production deployment with dual-running across environments, integrations via EventBridge, REST APIs and IaC with CloudFormation.',
+        'Led a complex mainframe (Cobol/IBM DB2) to AWS pipeline migration processing massive daily positional file ingestion. Implemented data validation and quality with consolidated table generation (bronze/silver/gold) for ML and other products. Production deployment with dual-running across environments, integrations via EventBridge, REST APIs and IaC with CloudFormation.',
       stack: [
         'Spark (Scala/Python)',
         'DuckDB',
@@ -215,7 +215,7 @@ export const en: SiteContent = {
     { label: 'Messaging', items: ['Kafka', 'SQS', 'MSK', 'RabbitMQ', 'Redpanda'] },
     { label: 'Orchestration', items: ['Airflow', 'MWAA', 'EventBridge', 'Step Functions', 'Composer', 'Ctrl-M', 'NiFi', 'Databricks DLT', 'Databricks Workflows'] },
     { label: 'Storage & Lakehouse', items: ['S3', 'Glue Catalog', 'Iceberg', 'Hadoop', 'Kudu', 'BigQuery', 'Cloud Storage', 'Delta Lake', 'Unity Catalog', 'Medallion Architecture'] },
-    { label: 'Databases', items: ['RDS/Aurora', 'PostgreSQL', 'MySQL', 'DynamoDB', 'MongoDB', 'DocumentDB', 'Oracle', 'DB2'] },
+    { label: 'Databases', items: ['RDS/Aurora', 'PostgreSQL', 'MySQL', 'DynamoDB', 'MongoDB', 'DocumentDB', 'Oracle', 'IBM DB2'] },
     { label: 'Infra', items: ['Terraform', 'Terragrunt', 'CloudFormation'] },
     { label: 'Analytics & Observability', items: ['Datadog', 'Grafana', 'Metabase', 'Power BI', 'Hive', 'Impala', 'ElasticSearch', 'CloudWatch', 'Athena'] },
     { label: 'Other', items: ['CI/CD (Cockpit)', 'Git (GitLab, Bitbucket)', 'Linux (Shell/Bash Script)'] },

@@ -2,9 +2,14 @@
 
 Trilhas, notas, bancos de questões e histórico de simulados das certificações em preparação. Cada certificação tem a própria pasta, todas com a mesma estrutura.
 
-| Certificação | Código | Status | Pasta |
+| Certificação | Código | Status | Material |
 |---|---|---|---|
 | AWS Certified AI Business Strategist | AIB-C01 | Em estudo (beta a partir de 29/09/2026) | [aws-ai-business-strategist](aws-ai-business-strategist/) |
+| Databricks Certified Data Engineer Associate | (sem código) | Planejada | [roadmap](roadmap.md#databricks-certified-data-engineer-associate) |
+| Databricks Certified Data Engineer Professional | (sem código) | Planejada | [roadmap](roadmap.md#databricks-certified-data-engineer-professional) |
+| CDMP Associate (DAMA International) | Data Management Fundamentals | Planejada | [roadmap](roadmap.md#cdmp-certified-data-management-professional-dama-international) |
+
+A ordem, o motivo de cada posição e os fatos de cada prova estão no [roadmap](roadmap.md). Uma certificação planejada ganha a própria pasta quando o estudo começa.
 
 ## Estrutura de cada pasta
 
