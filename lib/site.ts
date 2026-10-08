@@ -81,6 +81,25 @@ export const CREDLY_BADGE_URLS = {
 } as const;
 
 /**
+ * AWS Skill Builder course completions from the AI Business Strategist learning
+ * plan, listed as skill badges. A completed course gets a PDF certificate and
+ * nothing else: no verification page and no badge art. So the PDFs are served
+ * from public/certificates, and all seven share one hand-made tile,
+ * public/badges/aws-ai-business-strategist.svg.
+ */
+export const AWS_COURSE_CERTIFICATES = {
+  coreAiConcepts: '/certificates/aws-ai-business-strategist/core-ai-concepts-and-terminology.pdf',
+  aiSolutionTypes: '/certificates/aws-ai-business-strategist/ai-solution-types-and-enterprise-considerations.pdf',
+  generativeAiConcepts: '/certificates/aws-ai-business-strategist/generative-ai-concepts-and-techniques.pdf',
+  developAiStrategies: '/certificates/aws-ai-business-strategist/develop-ai-strategies-aligned-with-business-objectives.pdf',
+  measureAiBusinessValue: '/certificates/aws-ai-business-strategist/measure-and-demonstrate-ai-business-value.pdf',
+  positionAiForAdvantage: '/certificates/aws-ai-business-strategist/position-ai-for-competitive-advantage.pdf',
+  responsibleAiPrinciples: '/certificates/aws-ai-business-strategist/responsible-ai-principles-and-dimensions.pdf',
+} as const;
+
+export const AWS_BADGE_ART = '/badges/aws-ai-business-strategist.svg';
+
+/**
  * Hurcane agent embedded by components/HurcaneAgent.tsx — one per locale, since
  * each agent is configured to answer in its own language. The ids are visible in
  * the page anyway (the widget puts them in an iframe URL), so they are constants

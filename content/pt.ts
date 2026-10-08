@@ -1,4 +1,6 @@
 import {
+  AWS_BADGE_ART,
+  AWS_COURSE_CERTIFICATES,
   CERTIFICATE_URLS,
   CREDLY_BADGE_URLS,
   MONGODB_CERTIFICATE_URL,
@@ -153,12 +155,22 @@ export const pt: SiteContent = {
   // English and the page they open is in English, so a translated caption
   // would be the only Portuguese in sight.
   badges: [
-    { name: 'MongoDB Overview', year: '2026', art: '/badges/mongodb-core-concepts.png', url: CREDLY_BADGE_URLS.mongodbOverview },
+    // Grouped by issuer, newest first at both levels: an issuer's block goes by
+    // its most recent badge, and badges inside a block by issue date (Credly's
+    // `issuedOn`, Accredible's `issued_on`, the date printed on the AWS PDFs).
+    // Badges issued the same day keep the order their learning path runs them in.
+    { name: 'Core AI Concepts and Terminology', year: '2026', art: AWS_BADGE_ART, url: AWS_COURSE_CERTIFICATES.coreAiConcepts },
+    { name: 'AI Solution Types and Enterprise Considerations', year: '2026', art: AWS_BADGE_ART, url: AWS_COURSE_CERTIFICATES.aiSolutionTypes },
+    { name: 'Generative AI Concepts and Techniques', year: '2026', art: AWS_BADGE_ART, url: AWS_COURSE_CERTIFICATES.generativeAiConcepts },
+    { name: 'Develop AI Strategies That Align with Business Objectives', year: '2026', art: AWS_BADGE_ART, url: AWS_COURSE_CERTIFICATES.developAiStrategies },
+    { name: 'Measure and Demonstrate AI Business Value', year: '2026', art: AWS_BADGE_ART, url: AWS_COURSE_CERTIFICATES.measureAiBusinessValue },
+    { name: 'Position AI for Competitive Advantage', year: '2026', art: AWS_BADGE_ART, url: AWS_COURSE_CERTIFICATES.positionAiForAdvantage },
+    { name: 'Responsible AI Principles and Dimensions', year: '2026', art: AWS_BADGE_ART, url: AWS_COURSE_CERTIFICATES.responsibleAiPrinciples },
     {
-      name: 'Relational to Document Model',
+      name: 'Vector Search Fundamentals',
       year: '2026',
-      art: '/badges/mongodb-document-model.png',
-      url: CREDLY_BADGE_URLS.mongodbDocumentModel,
+      art: '/badges/mongodb-vector-search.png',
+      url: CREDLY_BADGE_URLS.mongodbVectorSearch,
     },
     {
       name: 'Cluster Reliability',
@@ -166,11 +178,12 @@ export const pt: SiteContent = {
       art: '/badges/mongodb-cluster-reliability.png',
       url: CREDLY_BADGE_URLS.mongodbClusterReliability,
     },
+    { name: 'MongoDB Overview', year: '2026', art: '/badges/mongodb-core-concepts.png', url: CREDLY_BADGE_URLS.mongodbOverview },
     {
-      name: 'Vector Search Fundamentals',
+      name: 'Relational to Document Model',
       year: '2026',
-      art: '/badges/mongodb-vector-search.png',
-      url: CREDLY_BADGE_URLS.mongodbVectorSearch,
+      art: '/badges/mongodb-document-model.png',
+      url: CREDLY_BADGE_URLS.mongodbDocumentModel,
     },
     { name: 'dbt Fundamentals', year: '2026', art: '/badges/dbt-fundamentals.png', url: CERTIFICATE_URLS.dbtFundamentals },
     {

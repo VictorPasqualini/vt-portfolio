@@ -10,10 +10,10 @@ Ritmo sugerido: 5 a 6 horas por semana. Cursos no começo da semana, sessão ao 
 
 Skill Builder:
 
-- [ ] Core AI Concepts and Terminology — D1, task 1.1
-- [ ] AI Solution Types and Enterprise Considerations — D1, task 1.2
-- [ ] Generative AI Concepts and Techniques — D1, task 1.3
-- [ ] Develop AI Strategies That Align with Business Objectives — D2, task 2.1
+- [x] Core AI Concepts and Terminology — D1, task 1.1
+- [x] AI Solution Types and Enterprise Considerations — D1, task 1.2
+- [x] Generative AI Concepts and Techniques — D1, task 1.3
+- [x] Develop AI Strategies That Align with Business Objectives — D2, task 2.1
 
 Sessões:
 
@@ -39,9 +39,9 @@ Primeira coisa da semana:
 
 Skill Builder:
 
-- [ ] Measure and Demonstrate AI Business Value — D2, task 2.2
-- [ ] Position AI for Competitive Advantage — D2, task 2.3
-- [ ] Responsible AI Principles and Dimensions — D3, task 3.1
+- [x] Measure and Demonstrate AI Business Value — D2, task 2.2
+- [x] Position AI for Competitive Advantage — D2, task 2.3
+- [x] Responsible AI Principles and Dimensions — D3, task 3.1
 - [ ] AI Governance Structures and Regulatory Compliance — D3, task 3.2
 - [ ] AI Risk Controls and Mitigation Strategies — D3, task 3.3
 - [ ] Assess Business AI Readiness and Maturity — D4, task 4.1
