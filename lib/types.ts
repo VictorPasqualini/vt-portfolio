@@ -48,17 +48,20 @@ export interface Certification {
 
 /**
  * A skill badge, which is a lighter credential than a certification: earned per
- * skill rather than by sitting an exam, and issued as artwork rather than as a
- * certificate. Both the art and the verification page always exist, so unlike
+ * skill rather than by sitting an exam, and usually issued as artwork rather
+ * than as a certificate. Every entry has art and a link, so unlike
  * `Certification` neither field is optional.
  */
 export interface SkillBadge {
   name: string;
   /** Year the badge was issued. */
   year: string;
-  /** Badge artwork under public/badges. */
+  /** Badge artwork under public/badges, or a hand-made tile when the issuer gives none. */
   art: string;
-  /** Issuer's public verification page for this badge. */
+  /**
+   * Issuer's public verification page for this badge, or the certificate PDF
+   * under public/certificates when the issuer has no such page (AWS Skill Builder).
+   */
   url: string;
 }
 

@@ -4,7 +4,7 @@ Atualizado pelo Claude ao fim de cada quiz ou simulado. Critério de prontidão 
 
 ## Cursos concluídos
 
-**0 de 13 cursos** · **0 de 44 questões do banco respondidas**
+**7 de 13 cursos** (certificados do Skill Builder de 07/10/2026; o conteúdo deles ainda não veio para as notas) · **0 de 44 questões do banco respondidas**
 
 ## Histórico
 
@@ -32,4 +32,4 @@ _Nenhuma ainda._
 
 ## Próximo passo
 
-Começar a semana 1 da trilha e mandar o conteúdo do primeiro curso (*Core AI Concepts and Terminology*) com `/study conteudo`.
+Mandar o conteúdo dos sete cursos já concluídos com `/study conteudo`, começando por *Core AI Concepts and Terminology*, para completar as notas de D1 a D3 com o que veio dos cursos.
