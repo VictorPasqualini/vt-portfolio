@@ -53,6 +53,11 @@ export interface Certification {
  * `Certification` neither field is optional.
  */
 export interface SkillBadge {
+  /**
+   * Who issued it. Consecutive entries sharing one are folded into a single card
+   * on the page, so the content files keep an issuer's badges together.
+   */
+  issuer: string;
   name: string;
   /** Year the badge was issued. */
   year: string;
@@ -132,6 +137,11 @@ export interface SiteContent {
     contact: SectionHeading;
     certifications: string;
     badges: string;
+  };
+  /** The issuer cards the skill badges are folded into. */
+  badgeStack: {
+    /** Count on a card that folds several badges; `{n}` is replaced by the number. */
+    count: string;
   };
   experience: ExperienceEntry[];
   education: EducationEntry[];

@@ -49,6 +49,9 @@ export const en: SiteContent = {
     certifications: 'Certifications',
     badges: 'Skill Badges',
   },
+  badgeStack: {
+    count: '{n} badges',
+  },
   experience: [
     {
       period: '2025 — now',
@@ -152,50 +155,119 @@ export const en: SiteContent = {
     { issuer: 'MongoDB', name: 'SI Associate', year: '2025', icon: '/icons/mongodb.svg', url: MONGODB_CERTIFICATE_URL },
   ],
   badges: [
-    // Grouped by issuer, newest first at both levels: an issuer's block goes by
-    // its most recent badge, and badges inside a block by issue date (Credly's
-    // `issuedOn`, Accredible's `issued_on`, the date printed on the AWS PDFs).
-    // Badges issued the same day keep the order their learning path runs them in.
-    { name: 'Core AI Concepts and Terminology', year: '2026', art: AWS_BADGE_ART, url: AWS_COURSE_CERTIFICATES.coreAiConcepts },
-    { name: 'AI Solution Types and Enterprise Considerations', year: '2026', art: AWS_BADGE_ART, url: AWS_COURSE_CERTIFICATES.aiSolutionTypes },
-    { name: 'Generative AI Concepts and Techniques', year: '2026', art: AWS_BADGE_ART, url: AWS_COURSE_CERTIFICATES.generativeAiConcepts },
-    { name: 'Develop AI Strategies That Align with Business Objectives', year: '2026', art: AWS_BADGE_ART, url: AWS_COURSE_CERTIFICATES.developAiStrategies },
-    { name: 'Measure and Demonstrate AI Business Value', year: '2026', art: AWS_BADGE_ART, url: AWS_COURSE_CERTIFICATES.measureAiBusinessValue },
-    { name: 'Position AI for Competitive Advantage', year: '2026', art: AWS_BADGE_ART, url: AWS_COURSE_CERTIFICATES.positionAiForAdvantage },
-    { name: 'Responsible AI Principles and Dimensions', year: '2026', art: AWS_BADGE_ART, url: AWS_COURSE_CERTIFICATES.responsibleAiPrinciples },
+    // One card per issuer on the page, in the order the issuers first appear
+    // here, so keep an issuer's badges together. Newest first at both levels: an
+    // issuer goes by its most recent badge, and badges inside it by issue date
+    // (Credly's `issuedOn`, Accredible's `issued_on`, the date printed on the AWS
+    // PDFs). Badges issued the same day keep the order their learning path runs
+    // them in; across paths, the lower Accredible credential `id` was issued first.
     {
+      issuer: 'AWS Skill Builder',
+      name: 'Core AI Concepts and Terminology',
+      year: '2026',
+      art: AWS_BADGE_ART,
+      url: AWS_COURSE_CERTIFICATES.coreAiConcepts,
+    },
+    {
+      issuer: 'AWS Skill Builder',
+      name: 'AI Solution Types and Enterprise Considerations',
+      year: '2026',
+      art: AWS_BADGE_ART,
+      url: AWS_COURSE_CERTIFICATES.aiSolutionTypes,
+    },
+    {
+      issuer: 'AWS Skill Builder',
+      name: 'Generative AI Concepts and Techniques',
+      year: '2026',
+      art: AWS_BADGE_ART,
+      url: AWS_COURSE_CERTIFICATES.generativeAiConcepts,
+    },
+    {
+      issuer: 'AWS Skill Builder',
+      name: 'Develop AI Strategies That Align with Business Objectives',
+      year: '2026',
+      art: AWS_BADGE_ART,
+      url: AWS_COURSE_CERTIFICATES.developAiStrategies,
+    },
+    {
+      issuer: 'AWS Skill Builder',
+      name: 'Measure and Demonstrate AI Business Value',
+      year: '2026',
+      art: AWS_BADGE_ART,
+      url: AWS_COURSE_CERTIFICATES.measureAiBusinessValue,
+    },
+    {
+      issuer: 'AWS Skill Builder',
+      name: 'Position AI for Competitive Advantage',
+      year: '2026',
+      art: AWS_BADGE_ART,
+      url: AWS_COURSE_CERTIFICATES.positionAiForAdvantage,
+    },
+    {
+      issuer: 'AWS Skill Builder',
+      name: 'Responsible AI Principles and Dimensions',
+      year: '2026',
+      art: AWS_BADGE_ART,
+      url: AWS_COURSE_CERTIFICATES.responsibleAiPrinciples,
+    },
+    {
+      issuer: 'MongoDB',
       name: 'Vector Search Fundamentals',
       year: '2026',
       art: '/badges/mongodb-vector-search.png',
       url: CREDLY_BADGE_URLS.mongodbVectorSearch,
     },
     {
+      issuer: 'MongoDB',
       name: 'Cluster Reliability',
       year: '2026',
       art: '/badges/mongodb-cluster-reliability.png',
       url: CREDLY_BADGE_URLS.mongodbClusterReliability,
     },
-    { name: 'MongoDB Overview', year: '2026', art: '/badges/mongodb-core-concepts.png', url: CREDLY_BADGE_URLS.mongodbOverview },
     {
+      issuer: 'MongoDB',
+      name: 'MongoDB Overview',
+      year: '2026',
+      art: '/badges/mongodb-core-concepts.png',
+      url: CREDLY_BADGE_URLS.mongodbOverview,
+    },
+    {
+      issuer: 'MongoDB',
       name: 'Relational to Document Model',
       year: '2026',
       art: '/badges/mongodb-document-model.png',
       url: CREDLY_BADGE_URLS.mongodbDocumentModel,
     },
-    { name: 'dbt Fundamentals', year: '2026', art: '/badges/dbt-fundamentals.png', url: CERTIFICATE_URLS.dbtFundamentals },
     {
+      issuer: 'dbt Labs',
+      name: 'dbt Fundamentals',
+      year: '2026',
+      art: '/badges/dbt-fundamentals.png',
+      url: CERTIFICATE_URLS.dbtFundamentals,
+    },
+    {
+      issuer: 'Databricks',
       name: 'Data Governance Fundamentals',
       year: '2026',
       art: '/badges/databricks-data-governance.png',
       url: CERTIFICATE_URLS.databricksDataGovernance,
     },
     {
+      issuer: 'Databricks',
       name: 'Generative AI Fundamentals',
       year: '2026',
       art: '/badges/databricks-generative-ai.png',
       url: CERTIFICATE_URLS.databricksGenerativeAi,
     },
     {
+      issuer: 'Databricks',
+      name: 'Azure Databricks Foundations',
+      year: '2026',
+      art: '/badges/databricks-azure-foundations.png',
+      url: CERTIFICATE_URLS.databricksAzureFoundations,
+    },
+    {
+      issuer: 'Databricks',
       name: 'Databricks Fundamentals',
       year: '2025',
       art: '/badges/databricks-fundamentals.png',

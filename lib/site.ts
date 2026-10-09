@@ -44,8 +44,8 @@ export const MONGODB_CERTIFICATE_URL =
 
 /**
  * Accredible verification pages, one per credential: the Confluent certification
- * and the dbt and Databricks Fundamentals, which are listed as skill badges and
- * link out from there. Every issuer here hosts on Accredible under its own
+ * and the dbt and Databricks badges, which are listed as skill badges and link
+ * out from there. Every issuer here hosts on Accredible under its own
  * domain, and the pages are client-rendered, so there is nothing to scrape from
  * them — the names and years below live in the content files and have to be
  * kept right by hand. The issue date can still be checked without a browser:
@@ -62,6 +62,8 @@ export const CERTIFICATE_URLS = {
     'https://credentials.databricks.com/8ac7da9d-77f5-47aa-ad18-66baf4bbc4aa#acc.D18mkpgW',
   databricksGenerativeAi:
     'https://credentials.databricks.com/0d8d8fc4-c6be-4d4c-b0f1-59a962d7f7bc#acc.NELBouU1',
+  databricksAzureFoundations:
+    'https://credentials.databricks.com/9b8e4378-c327-4880-9229-09262d241e87#acc.ANcZTFOi',
   confluentFlinkEngineer:
     'https://certificates.confluent.io/eb151eb7-e858-4607-a9f5-1d5885f5ef91#acc.C4WIa82H',
 } as const;
